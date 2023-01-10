@@ -40,7 +40,7 @@
 <body>
 
 
-  <form action="{{route('login.submit.form')}}" method="post">
+  <form action="{{route('login.post')}}" method="post">
     @csrf
 
     <section class="vh-100" style="background-color: #508bfc;">

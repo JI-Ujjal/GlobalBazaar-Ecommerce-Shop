@@ -26,17 +26,18 @@ use PhpParser\Node\Stmt\Return_;
 //login
 
 Route::get('/register-form',[AuthController::class,'registerForm'])->name('register.Form');
-
 Route::post('/register-submit-form',[AuthController::class,'registerSubmitForm'])->name('register.submit.form');
 
-Route::get('/login-form',[AuthController::class,'loginForm'])->name('login.Form');
-Route::post('/login-submit-form',[AuthController::class,'loginSubmitForm'])->name('login.submit.form');
+Route::get('/',[AuthController::class,'loginForm'])->name('login');
+Route::post('/login-submit-form',[AuthController::class,'loginSubmitForm'])->name('login.post');
+
+//all_routes
+
+Route::group(['middleware=>CheckAdmin'],function()
+{
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 //Route
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
@@ -88,3 +89,5 @@ Route::get('/customer-edit/{id}', [CustomerController::class, 'editCustomer'])->
 Route::put('/customer-update/{id}', [CustomerController::class, 'updateCustomer'])->name('update.customer');
 Route::get('/delete-customer/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
 Route::get('/customer-view/{id}', [CustomerController::class, 'viewCustomer'])->name('view.customer');
+
+});

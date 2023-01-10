@@ -20,7 +20,8 @@ class UserTableSeeder extends Seeder
         User::create([
             'name'=>'admin',
             'email'=>'admin@gmail.com',
-            'password'=>bcrypt('12345')
+            'password'=>bcrypt('12345'),
+            'role'=> 'admin'
         ]);
     }
 }

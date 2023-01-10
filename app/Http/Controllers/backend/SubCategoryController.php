@@ -12,13 +12,13 @@ class SubCategoryController extends Controller
     {
         //return view('backend.pages.subCategoryList');
         $Subcategory = Subcategory::all();
-        return view('backend.pages.subCategoryList', compact('Subcategory'));
+        return view('backend.pages.subcategory.subCategoryList', compact('Subcategory'));
     }
 
 
     public function createForm()
     {
-        return view('backend.pages.subCategoryForm');
+        return view('backend.pages.subcategory.subCategoryCreateForm');
     }
 
 
@@ -36,7 +36,7 @@ class SubCategoryController extends Controller
     public function editSubCategory($id)
     {
         $Subcategory = Subcategory::find($id);
-        return view('backend.pages.subCategoryEdit', compact('Subcategory'));
+        return view('backend.pages.subcategory.subCategoryEdit', compact('Subcategory'));
     }
 
     public function updateSubCategory(Request $request, $id)
@@ -52,7 +52,7 @@ class SubCategoryController extends Controller
     public function viewSubCategory($id)
     {
         $Subcategory = Subcategory::find($id);
-        return view('backend.pages.subCategoryView', compact('Subcategory'));
+        return view('backend.pages.subcategory.subCategoryView', compact('Subcategory'));
     }
 
     //delete

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\CategoryController;
@@ -22,6 +23,17 @@ use PhpParser\Node\Stmt\Return_;
 |
 */
 
+//login
+
+Route::get('/register-form',[AuthController::class,'registerForm'])->name('register.Form');
+
+Route::post('/register-submit-form',[AuthController::class,'registerSubmitForm'])->name('register.submit.form');
+
+Route::get('/login-form',[AuthController::class,'loginForm'])->name('login.Form');
+Route::post('/login-submit-form',[AuthController::class,'loginSubmitForm'])->name('login.submit.form');
+
+//Route
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,7 +51,6 @@ Route::get('/edit-category/{id}', [CategoryController::class, 'editCategory'])->
 Route::put('/update-category/{id}', [CategoryController::class, 'updateCategory'])->name('update.category');
 Route::get('/delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('delete.category');
 Route::get('/view-category/{id}', [CategoryController::class, 'viewCategory'])->name('view.category');
-
 
 
 
@@ -64,8 +75,8 @@ Route::get('/brand-view/{id}', [BrandController::class, 'viewBrand'])->name('vie
 Route::get('/product-list', [ProductController::class, 'list'])->name('product.list');
 Route::get('/product-create-form', [ProductController::class, 'createForm'])->name('product.create.form');
 Route::post('/product-submit-form', [ProductController::class, 'submitForm'])->name('product.submit.form');
-Route::get('/product-edit/{id}',[ProductController::class,'editProduct'])->name('edit.product');
-Route::put('/product-update/{id}',[ProductController::class, 'updateProduct'])->name('update.product');
+Route::get('/product-edit/{id}', [ProductController::class, 'editProduct'])->name('edit.product');
+Route::put('/product-update/{id}', [ProductController::class, 'updateProduct'])->name('update.product');
 Route::get('/delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete.product');
 Route::get('/product-view/{id}', [ProductController::class, 'viewProduct'])->name('view.product');
 
@@ -76,3 +87,4 @@ Route::post('/customer-submit-form', [CustomerController::class, 'submitForm'])-
 Route::get('/customer-edit/{id}', [CustomerController::class, 'editCustomer'])->name('edit.customer');
 Route::put('/customer-update/{id}', [CustomerController::class, 'updateCustomer'])->name('update.customer');
 Route::get('/delete-customer/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
+Route::get('/customer-view/{id}', [CustomerController::class, 'viewCustomer'])->name('view.customer');

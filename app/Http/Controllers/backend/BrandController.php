@@ -11,14 +11,14 @@ class BrandController extends Controller
     public function list()
     {
         //return view('backend.pages.brandList');
-        $Brand = Brand::all();
-        return view('backend.pages.brandList', compact('Brand'));
+        $Brands = Brand::all();
+        return view('backend.pages.brand.brandList', compact('Brands'));
     }
 
 
     public function createForm()
     {
-        return view('backend.pages.brandCreateForm');
+        return view('backend.pages.brand.brandCreateForm');
     }
 
 
@@ -35,7 +35,7 @@ class BrandController extends Controller
     public function editBrand($id)
     {
         $Brand = Brand::find($id);
-        return view('backend.pages.brandEdit', compact('Brand'));
+        return view('backend.pages.brand.brandEdit', compact('Brand'));
     }
 
     //update
@@ -59,6 +59,6 @@ class BrandController extends Controller
     public function viewBrand($id)
     {
         $Brand = Brand::find($id);
-        return view('backend.pages.brandView', compact('Brand'));
+        return view('backend.pages.brand.brandView', compact('Brand'));
     }
 }

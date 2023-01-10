@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($Brand as $Brand)
+            @foreach ($Brands as $Brand)
             <tr>
                 <th scope="row">{{ $Brand->id }}</th>
                 <td>{{ $Brand->email_address }}</td>

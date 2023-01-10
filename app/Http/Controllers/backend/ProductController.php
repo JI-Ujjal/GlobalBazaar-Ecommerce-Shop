@@ -11,22 +11,37 @@ class ProductController extends Controller
     public function list()
     {
         //return view('backend.pages.productList');
-        $Product = Product::all();
-        return view('backend.pages.productList', compact('Product'));
+        $Products = Product::paginate(3);
+        return view('backend.pages.product.productList', compact('Products'));
     }
 
 
     public function createForm()
     {
-        return view('backend.pages.productCreateForm');
+        //$categories = Catego
+        return view('backend.pages.product.productCreateForm');
     }
 
 
     public function submitForm(Request $request)
     {
+
+
+        $fileName = null;
+        if ($request->hasFile('product_image')) {
+            $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('product_image')->getClientOriginalExtension();
+            $request->file('product_image')->storeAs('uploads/product', $fileName);
+        }
+
+
         Product::create([
-            'email_address' => $request->email_address,
-            'password' => $request->password
+            'product_name' => $request->product_name,
+            'product_image' => $fileName,
+            'product_details' => $request->product_details,
+            'product_price' => $request->product_price,
+            'product_quantity' => $request->product_quantity,
+            'product_status' => $request->product_status
+            
         ]);
         return redirect()->route('product.list')->with('message','Product Create Successfully');
     }
@@ -34,14 +49,18 @@ class ProductController extends Controller
     public function editProduct($id)
     {
         $Product = Product::find($id);
-        return view('backend.pages.productEdit', compact('Product'));
+        return view('backend.pages.product.productEdit', compact('Product'));
     }
 
     public function updateProduct(Request $request, $id)
     {
         $Product = Product::find($id)->update([
-            'email_address' => $request->email_address,
-            'password' => $request->password
+            'product_name' => $request->product_name,
+            'product_image' => $request->product_image,
+            'product_details' => $request->product_details,
+            'product_price' => $request->product_price,
+            'product_quantity' => $request->product_quantity,
+            'product_status' => $request->product_status
         ]);
         return redirect()->route('product.list')->with('message','Product Update Successfully');
     }
@@ -49,7 +68,7 @@ class ProductController extends Controller
     public function viewProduct($id)
     {
         $Product = Product::find($id);
-        return view('backend.pages.productView', compact('Product'));
+        return view('backend.pages.product.productView', compact('Product'));
     }
 
     public function deleteProduct($id)

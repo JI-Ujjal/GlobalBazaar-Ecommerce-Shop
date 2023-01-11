@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\backend\AdminController;
-use App\Http\Controllers\backend\CategoryController;
-use App\Http\Controllers\backend\SubCategoryController;
-use App\Http\Controllers\backend\BrandController;
-use App\Http\Controllers\backend\ProductController;
-use App\Http\Controllers\backend\CustomerController;
 use App\Models\Brand;
 use App\Models\Customer;
 use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\BrandController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\CustomerController;
+use App\Http\Controllers\backend\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ use PhpParser\Node\Stmt\Return_;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+//frontend_all
+
+Route::get('/home',[HomeController::class,'frontendHome'])->name('home');
 
 //login
 

@@ -25,12 +25,13 @@ class CustomerController extends Controller
 
     public function submitForm(Request $request)
     {
+        //validation
         $request->validate([
 
-            'customer_name' =>'required',
-            'customer_image' =>'required',
-            'customer_order' =>'required',
-            'customer_address' =>'required',
+            'customer_name' => 'required',
+            'customer_image' => 'required',
+            'customer_order' => 'required',
+            'customer_address' => 'required'
 
         ]);
 
@@ -50,7 +51,7 @@ class CustomerController extends Controller
             'customer_address' => $request->customer_address
 
         ]);
-        return redirect()->route('customer.list')->with('message','Customer Created Successfully.');
+        return redirect()->route('customer.list')->with('message', 'Customer Created Successfully.');
     }
 
 
@@ -59,33 +60,32 @@ class CustomerController extends Controller
     public function updateCustomer(Request $request, $id)
     {
         $request->validate([
-        
-        'customer_name' =>'required',
-        'customer_image' =>'required',
-        'customer_order' =>'required',
-        'customer_address' =>'required',
 
-    ]);
-    $updateCustomer = Customer::find($id);
+            'customer_name' => 'required',
+            'customer_image' => 'required',
+            'customer_order' => 'required',
+            'customer_address' => 'required'
 
-    $fileName = null;
-    if ($request->hasFile('customer_image')) {
-        $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('customer_image')->getClientOriginalExtension();
-        $request->file('customer_image')->storeAs('uploads/customer', $fileName);
-    }
+        ]);
+        $updateCustomer = Customer::find($id);
 
-    // dd($fileName);
+        $fileName = null;
+        if ($request->hasFile('customer_image')) {
+            $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('customer_image')->getClientOriginalExtension();
+            $request->file('customer_image')->storeAs('uploads/customer', $fileName);
+        }
+
+        // dd($fileName);
 
 
-    $updateCustomer->update([
-        'customer_name' => $request->customer_name,
-        'customer_image' => $fileName,
-        'customer_order' => $request->customer_order,
-        'customer_address' => $request->customer_address
+        $updateCustomer->update([
+            'customer_name' => $request->customer_name,
+            'customer_image' => $fileName,
+            'customer_order' => $request->customer_order,
+            'customer_address' => $request->customer_address
 
-    ]);
-    return redirect()->route('customer.list')->with('message','Customer Updated Successfully');
-       
+        ]);
+        return redirect()->route('customer.list')->with('message', 'Customer Updated Successfully');
     }
 
 

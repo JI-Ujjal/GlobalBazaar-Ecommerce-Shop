@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,15 +12,16 @@ class ProductController extends Controller
     public function list()
     {
         //return view('backend.pages.productList');
-        $Products = Product::paginate(3);
+        $Products = Product::with('categories')->get();
         return view('backend.pages.product.productList', compact('Products'));
     }
 
 
     public function createForm()
     {
+        $Categories = Category::all();
         //$categories = Catego
-        return view('backend.pages.product.productCreateForm');
+        return view('backend.pages.product.productCreateForm', compact('Categories'));
     }
 
 
@@ -36,14 +38,15 @@ class ProductController extends Controller
 
         Product::create([
             'product_name' => $request->product_name,
+            'category_id' => $request->category_id,
             'product_image' => $fileName,
             'product_details' => $request->product_details,
             'product_price' => $request->product_price,
             'product_quantity' => $request->product_quantity,
             'product_status' => $request->product_status
-            
+
         ]);
-        return redirect()->route('product.list')->with('message','Product Create Successfully');
+        return redirect()->route('product.list')->with('message', 'Product Create Successfully');
     }
 
     public function editProduct($id)
@@ -62,7 +65,7 @@ class ProductController extends Controller
             'product_quantity' => $request->product_quantity,
             'product_status' => $request->product_status
         ]);
-        return redirect()->route('product.list')->with('message','Product Update Successfully');
+        return redirect()->route('product.list')->with('message', 'Product Update Successfully');
     }
 
     public function viewProduct($id)

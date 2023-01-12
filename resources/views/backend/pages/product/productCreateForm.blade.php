@@ -10,6 +10,17 @@
         </div>
 
         <div class="form-group">
+            <label for="">Category Name</label>
+            <select name="category_id" class="form-control" placeholder="Enter Product Name">
+                @foreach ($Categories as $Category)
+
+                <option value="{{$Category->id}}">{{$Category->category_name}}</option>
+
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="">Product Image</label>
             <input type="file" name="product_image" class="form-control" placeholder="Enter Product Image">
         </div>

@@ -28,10 +28,10 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registration">
                                 Registration
                             </button>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login">
                                 Login
                             </button>
                         </div>
@@ -85,7 +85,7 @@
 
 
 <!--Register Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -95,7 +95,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            hello
+                hello
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -109,7 +109,7 @@
 
 
 <!--Login Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -119,7 +119,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                ujjal
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

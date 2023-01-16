@@ -14,15 +14,13 @@ class AuthController extends Controller
     }
 
 
-
-
-
+    //read
     public function registerSubmitForm(Request $request)
     {
         User::create([
-            'name' => $request->name,
+            'name' => $request->name, 
             'email' => $request->email,
-            'password' => $request->password
+            'password' => bcrypt($request['password'])
 
         ]);
 
@@ -46,8 +44,10 @@ class AuthController extends Controller
             return to_route('register.Form');
         }
     }
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return to_route('login');
     }
 }
+

@@ -95,12 +95,38 @@
                 </button>
             </div>
             <div class="modal-body">
-                hello
+
+
+                <!--Form -->
+                <form action="{{ route('register.submit.form') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Email Address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+
+
+                    </div>
+
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -119,12 +145,30 @@
                 </button>
             </div>
             <div class="modal-body">
-                ujjal
+
+                <form action="{{ route('login.submit') }}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Email Address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+
+                    </div>
+
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">submit</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

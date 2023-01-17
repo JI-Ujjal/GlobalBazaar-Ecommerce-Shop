@@ -46,7 +46,7 @@ Route::post('/login-submit', [AuthController::class, 'loginSubmitForm'])->name('
 
 //all_routes
 
-Route::group(['middleware=>CheckAdmin'], function () {
+Route::middleware('CheckAdmin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     //Route

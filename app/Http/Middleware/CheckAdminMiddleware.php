@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckAdminMiddleware
 {
@@ -17,11 +18,11 @@ class CheckAdminMiddleware
 
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()) {
-            if (auth()->user()->role == 'admin')
-                return $next($request);
-        } else {
-            return to_route('login');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            return $next($request);
+        }
+        else {
+            return back();
         }
     }
 }

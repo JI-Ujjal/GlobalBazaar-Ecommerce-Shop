@@ -21,6 +21,7 @@ class AuthController extends Controller
             'name' => $request->name, 
             'email' => $request->email,
             'password' => bcrypt($request['password'])
+            
 
         ]);
 
@@ -41,7 +42,7 @@ class AuthController extends Controller
         if ($authentication) {
             return to_route('admin.newPage');
         } else {
-            return to_route('register.Form');
+            return to_route('register.form');
         }
     }
     public function logout()

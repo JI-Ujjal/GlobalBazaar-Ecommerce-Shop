@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title> BOYZOBD </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{url('frontend/assets/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/style.css')}}" type="text/css">
+    @notifyCss
 </head>
 
 <body>
@@ -91,7 +92,7 @@
     <!-- Header Section Begin -->
     @include('frontend.fixed.header')
     <!-- Header Section End -->
-
+    <x:notify-messages />
     <!-- Hero Section Begin -->
     @yield('contents')
     <!-- Blog Section End -->
@@ -111,6 +112,7 @@
     <script src="{{url('frontend/assets/js/mixitup.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
+    @notifyJs
 
 
 

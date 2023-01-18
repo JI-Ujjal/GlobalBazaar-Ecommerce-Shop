@@ -20,8 +20,7 @@ class CheckAdminMiddleware
     {
         if (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
-        }
-        else {
+        } else {
             return back();
         }
     }

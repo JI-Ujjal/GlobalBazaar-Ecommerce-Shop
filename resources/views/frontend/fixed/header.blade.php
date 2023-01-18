@@ -28,12 +28,25 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
+                            @guest
+
+
+
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registration">
                                 Registration
                             </button>
+
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login">
                                 Login
                             </button>
+
+                            @endguest
+
+                            @auth
+                            <button class="btn btn-success">{{auth()->user()->name}}</button>
+                            <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
+                            @endauth
+
                         </div>
                     </div>
                 </div>
@@ -51,7 +64,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./shop-grid.html">Shop</a></li>
+                        <li><a href="{{route('shop.page')}}">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
@@ -98,7 +111,7 @@
 
 
                 <!--Form -->
-                <form action="{{ route('register.submit.form') }}" method="POST">
+                <form action="{{ route('register.submit.front') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
@@ -146,7 +159,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="{{ route('login.submit') }}" method="POST">
+                <form action="{{ route('login.submit.front') }}" method="POST">
                     @csrf
 
                     <div class="form-group">

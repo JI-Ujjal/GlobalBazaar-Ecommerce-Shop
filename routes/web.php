@@ -12,6 +12,8 @@ use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\backend\SubCategoryController;
+use App\Http\Controllers\frontend\ShopController;
+use Faker\Guesser\Name;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,24 +26,34 @@ use App\Http\Controllers\backend\SubCategoryController;
 |
 */
 
+//////////////////////////frontend///////////////////////////
 
 //Frontend_all
 
-Route::get('/home', [HomeController::class, 'frontendHome'])->name('home');
+Route::get('/boyzobd', [HomeController::class, 'frontendHome'])->name('home');
+
+//frontend reg & login
+Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
+Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
+Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
+
+Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 
 
 
+
+
+
+
+///////////////Backend////////////////
 
 //login
 
-Route::get('/register', [AuthController::class, 'registerForm'])->name('register.Form');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
 Route::post('/register-submit', [AuthController::class, 'registerSubmitForm'])->name('register.submit.form');
 
 Route::get('/', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login-submit', [AuthController::class, 'loginSubmitForm'])->name('login.submit');
-
-
-
 
 
 //all_routes

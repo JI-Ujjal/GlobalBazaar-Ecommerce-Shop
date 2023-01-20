@@ -35,7 +35,7 @@ class HomeController extends Controller
         $credentials = $request->except('_token');
         $authentication = auth()->attempt($credentials);
         if ($authentication) {
-            return to_route('home');
+            return to_route('admin.newPage');
             notify()->success('login Successfully!');
         } 
         else {

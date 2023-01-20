@@ -30,7 +30,7 @@ use Faker\Guesser\Name;
 
 //Frontend_all
 
-Route::get('/boyzobd', [HomeController::class, 'frontendHome'])->name('home');
+Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 
 //frontend reg & login
 Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
@@ -52,7 +52,7 @@ Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
 Route::post('/register-submit', [AuthController::class, 'registerSubmitForm'])->name('register.submit.form');
 
-Route::get('/', [AuthController::class, 'loginForm'])->name('login');
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login-submit', [AuthController::class, 'loginSubmitForm'])->name('login.submit');
 
 

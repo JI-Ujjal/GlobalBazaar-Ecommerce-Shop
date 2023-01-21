@@ -31,14 +31,18 @@ class HomeController extends Controller
 
     public function loginSubmitForm(Request $request)
     {
-        
+
         $credentials = $request->except('_token');
         $authentication = auth()->attempt($credentials);
         if ($authentication) {
-            return to_route('admin.newPage');
+            // dd($authentication);
             notify()->success('login Successfully!');
-        } 
-        else {
+
+            if (auth()->user()->role == 'admin') {
+                return to_route('admin.newPage');
+            }
+            return to_route('home');
+        } else {
             notify()->success('Email or Password Not Matched!');
             return to_route('home');
         }

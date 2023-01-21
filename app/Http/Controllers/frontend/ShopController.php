@@ -9,6 +9,6 @@ class ShopController extends Controller
 {
     public function shopPage()
     {
-        return view('frontend.shop.shopPage');
+        return view('frontend.headermenu.shop.shopPage');
     }
 }

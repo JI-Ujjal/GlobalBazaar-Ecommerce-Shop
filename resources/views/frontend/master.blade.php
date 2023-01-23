@@ -25,11 +25,16 @@
 </head>
 
 <body>
-    
-    @include('frontend.fixed.header')
-    <x:notify-messages />
-    @yield('contents')
 
+    @include('frontend.fixed.header')
+
+
+    <section>
+
+        <x:notify-messages />
+        @yield('contents')
+
+    </section>
     @include('frontend.fixed.footer')
 
     <!-- Js Plugins -->

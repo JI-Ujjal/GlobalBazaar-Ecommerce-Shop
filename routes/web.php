@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\BrandController;
+use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\ShopController;
@@ -42,6 +43,9 @@ Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.
 //frontend Category routes
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
+
+Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
+
 
 
 

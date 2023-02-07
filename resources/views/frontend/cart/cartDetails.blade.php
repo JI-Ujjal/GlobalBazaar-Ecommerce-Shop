@@ -39,23 +39,24 @@
                         </thead>
                         <tbody>
                             @foreach (session()->get('myCart') as $cart)
+
                             <tr>
                                 <td class="shoping__cart__item">
                                     <img src="{{url('frontend/assets/img/cart/cart-1.jpg')}}" alt="">
-                                    <h5>Vegetable’s Package</h5>
+                                    <h5>{{$cart['product_name']}}</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    $55.00
+                                    {{$cart['product_price']}} BDT
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" value="1">
+                                            <input type="text" value="{{$cart['product_quantity']}}">
                                         </div>
                                     </div>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    $110.00
+                                    {{$cart['subtotal']}} BDT
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <span class="icon_close"></span>

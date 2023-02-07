@@ -17,22 +17,50 @@ class CartController extends Controller
 
     public function addCartPage($id)
     {
-        $Products = Product::find($id);
 
+        $products = Product::find($id);
 
-        //case1:add new product to cart
+        $myCart=session()->get('myCart'); //get, put, has, flush, forget
+        if(!$myCart)
+        {
+            //case1: cart is empty
+            //solution: add product to cart
 
-        $cart[$id] = [
-            'product_name' => $Products->product_name,
-            'product_price' => $Products->product_price,
+           $cart[$id] = [
+            'product_name' => $products->product_name,
+            'product_price' => $products->product_price,
             'product_quantity' => 1,
-            'subtotal' => $Products->product_price,
-            'product_image' => $Products->product_image
+            'subtotal' => $products->product_price * 1,
+            'product_image' => $products->product_image
         ];
+           session()->put('myCart',$cart);
+        }else
+        {
+            //case2: cart not empty but product not exist,
+            // solution: add product to cart
 
-        session()->put('myCart', $cart);
+            if(!array_key_exists($id,$myCart))
+            {
+                $myCart[$id] = [
+                    'product_name' => $products->product_name,
+                    'product_price' => $products->product_price,
+                    'product_quantity' => 1,
+                    'subtotal' => $products->product_price * 1,
+                    'product_image' => $products->product_image
+                ];
+                session()->put('myCart',$myCart);
+            }else{
+                //case3: cart not empty but product exist
+                //solution: increment the quantity
 
-        notify()->success('Product Cart Successfully');
+                $myCart[$id]['product_quantity']=$myCart[$id]['product_quantity']+1;// pre increment and post increment
+
+                $myCart[$id]['subtotal']= $myCart[$id]['product_price'] * $myCart[$id]['product_quantity'];
+                session()->put('myCart',$myCart);
+            }
+        }
+
+        notify()->success('Product Added to Cart Successfully');
         return redirect()->back();
     }
 }

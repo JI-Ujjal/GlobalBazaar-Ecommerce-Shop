@@ -71,8 +71,6 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     //Route
-
-
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
     Route::get('/master-dashboard', [AdminController::class, 'master']);
     Route::get('/admin-newPage', [AdminController::class, 'newPage'])->name('admin.newPage');

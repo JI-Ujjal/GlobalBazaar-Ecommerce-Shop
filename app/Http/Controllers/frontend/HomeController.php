@@ -6,13 +6,15 @@ namespace App\Http\Controllers\frontend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function frontendHome()
     {
-        return view('frontend.pages.home');
+        $Products = Product::all();
+        return view('frontend.pages.home',compact('Products'));
     }
 
     public function registerSubmitForm(Request $request)
@@ -43,7 +45,7 @@ class HomeController extends Controller
             }
             return to_route('home');
         } else {
-            notify()->success('Email or Password Not Matched!');
+            notify()->error('Email or Password Not Matched!');
             return to_route('home');
         }
     }

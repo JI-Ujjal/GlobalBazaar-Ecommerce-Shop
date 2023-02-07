@@ -45,6 +45,7 @@ Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
 
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
+Route::get('/add-cart/{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
 
 
 

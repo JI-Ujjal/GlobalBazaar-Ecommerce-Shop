@@ -38,11 +38,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (session()->get('myCart') as $cart)
+                            @if (session()->has('myCart'))
 
+                            @foreach (session()->get('myCart') as $cart)
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="{{url('frontend/assets/img/cart/cart-1.jpg')}}" alt="">
+                                    <img width="60px" src="{{url('uploads/product', $cart['product_image'])}}" alt="">
                                     <h5>{{$cart['product_name']}}</h5>
                                 </td>
                                 <td class="shoping__cart__price">
@@ -63,6 +64,9 @@
                                 </td>
                             </tr>
                             @endforeach
+
+                            @endif
+
                         </tbody>
                     </table>
                 </div>

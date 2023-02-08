@@ -11,8 +11,14 @@ class ProductController extends Controller
 {
     public function list()
     {
-        //return view('backend.pages.productList');
-        $Products = Product::with('categories')->get();
+
+        if (\request()->has('search')) {
+            $search_key = request()->search;
+            $Products = Product::where('product_name', 'LIKE', '%' . $search_key . '%')->get();
+        } else {
+            $Products = Product::with('categories')->get();
+        }
+        // dd($Products);
         return view('backend.pages.product.productList', compact('Products'));
     }
 
@@ -23,6 +29,7 @@ class ProductController extends Controller
         //$categories = Catego
         return view('backend.pages.product.productCreateForm', compact('Categories'));
     }
+
 
 
     public function submitForm(Request $request)

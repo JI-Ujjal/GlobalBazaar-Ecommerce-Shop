@@ -17,7 +17,7 @@ class CartController extends Controller
 
     public function addCartPage($id)
     {
-
+        
         $products = Product::find($id);
 
         $myCart=session()->get('myCart'); //get, put, has, flush, forget
@@ -62,5 +62,7 @@ class CartController extends Controller
 
         notify()->success('Product Added to Cart Successfully');
         return redirect()->back();
+
+        
     }
 }

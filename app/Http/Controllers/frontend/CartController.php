@@ -65,4 +65,15 @@ class CartController extends Controller
 
         
     }
+
+    public function deleteCartItem($id)
+    {
+       $newCart=session()->get('myCart');
+        unset($newCart[$id]);
+        session()->put('myCart',$newCart);
+
+        notify()->success('Item deleted from cart.');
+        return redirect()->back();
+    }
+
 }

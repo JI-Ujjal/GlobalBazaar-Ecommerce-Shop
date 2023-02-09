@@ -15,9 +15,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ url('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -32,11 +30,18 @@
     <link href="{{ url('backend/assets/css/style.css') }}" rel="stylesheet">
 
     <!-- =======================================================
-  * Template Name: NiceAdmin - v2.4.1
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    * Template Name: NiceAdmin - v2.4.1
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    @notifyCss
+    <style>
+        .notify {
+            z-index: 99999999;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,6 +56,7 @@
 
     <main id="main" class="main">
 
+        <x:notify-messages />
         @yield('contents')
 
     </main><!-- End #main -->
@@ -59,8 +65,7 @@
     @include('backend.fixed.footer')
     <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ url('backend/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
@@ -74,6 +79,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ url('backend/assets/js/main.js') }}"></script>
+    @notifyJs
 
 </body>
 

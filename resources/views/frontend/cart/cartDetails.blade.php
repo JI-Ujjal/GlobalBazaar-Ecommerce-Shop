@@ -40,7 +40,7 @@
                         <tbody>
                             @if (session()->has('myCart'))
 
-                            @foreach (session()->get('myCart') as $cart)
+                            @foreach (session()->get('myCart') as $key=>$cart)
                             <tr>
                                 <td class="shoping__cart__item">
                                     <img width="60px" src="{{url('uploads/product', $cart['product_image'])}}" alt="">
@@ -60,10 +60,12 @@
                                     {{$cart['subtotal']}} BDT
                                 </td>
                                 <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
+                                    <a class="btn btn-danger" href="{{route('delete.cart.item',$key)}}"><i class="icon-trash icon-large"></i> Delete</a>
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <p>Nothing in the cart</p>
 
                             @endif
 

@@ -35,6 +35,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+        .notify {
+            z-index: 99999999;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 
 <body>

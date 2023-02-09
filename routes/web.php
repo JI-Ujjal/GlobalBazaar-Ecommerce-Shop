@@ -13,6 +13,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\ShopController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\backend\SubCategoryController;
@@ -39,6 +40,9 @@ Route::post('/register-submit-front', [HomeController::class, 'registerSubmitFor
 Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
 
+//////////////////search/////////////////
+Route::get('/search',[SearchController::class,'search'])->name('search');
+
 
 //frontend Category routes
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
@@ -46,6 +50,7 @@ Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->
 
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
 Route::get('/add-cart/{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
+Route::get('/delete-cart-item/{id}',[CartController::class,'deleteCartItem'])->name('delete.cart.item');
 
 
 

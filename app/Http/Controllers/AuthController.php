@@ -40,15 +40,17 @@ class AuthController extends Controller
         $credentials = $request->except('_token');
         $authentication = auth()->attempt($credentials);
         if ($authentication) {
-            notify()->success('login Successfully!');
+            smilify('success', 'Admin Login successfully');
             return to_route('admin.newPage');
         } else {
-            return to_route('register.form');
+            notify()->error('Please! login as Admin');
+            return to_route('home');
         }
     }
     public function logout()
     {
         Auth::logout();
+        smilify('error', 'Admin Login successfully');
         return to_route('login');
     }
 }

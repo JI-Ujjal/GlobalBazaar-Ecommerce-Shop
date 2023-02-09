@@ -28,6 +28,13 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url('backend/assets/css/style.css') }}" rel="stylesheet">
+  @notifyCss
+  <style>
+        .notify {
+            z-index: 99999999;
+            margin-top: 40px;
+        }
+    </style>
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -38,10 +45,12 @@
 </head>
 
 <body>
+<x:notify-messages />
 
 
   <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">
+    
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
           <div class="card text-black" style="border-radius: 25px;">
@@ -49,15 +58,14 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
+                
+
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
                   <form action="{{route('login.submit')}}" method="post">
+                  
                     @csrf
-                    @if(session()->has('message'))
-
-                    <p class="alert alert-success">{{session()->get('message')}}</p>
-
-                    @endif
+                    
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -117,6 +125,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url('backend/assets/js/main.js') }}"></script>
+  @notifyJs
 
 </body>
 

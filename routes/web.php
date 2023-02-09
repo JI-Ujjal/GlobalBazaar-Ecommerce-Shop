@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\BrandController;
+use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
@@ -51,6 +52,9 @@ Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
 Route::get('/add-cart/{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
 Route::get('/delete-cart-item/{id}',[CartController::class,'deleteCartItem'])->name('delete.cart.item');
+
+
+Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 
 
 

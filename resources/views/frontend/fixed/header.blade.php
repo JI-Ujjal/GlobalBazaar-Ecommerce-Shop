@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="{{url('frontend/assets/img/logo.png')}}" alt=""></a>
+                    <a href="./index.html"><img src="{{url('frontend/assets/img/boyzobd logo1.png')}}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -100,7 +100,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="hero__categories">
-                        <div class="hero__categories__all">
+                        <div class="hero__categories__all" style="background-color:#3C5587;">
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
@@ -123,7 +123,7 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="{{route('search')}}">
-                                <div class="hero__search__categories">
+                                <div class="hero__search__categories" style="background-color:#3C5587;">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>

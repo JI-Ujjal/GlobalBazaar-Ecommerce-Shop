@@ -11,6 +11,7 @@ class CartController extends Controller
 {
     public function cartDetails()
     {
+        //$carts = session()->get('myCart');
 
         return view('frontend.cart.cartDetails');
     }

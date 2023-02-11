@@ -36,16 +36,25 @@ use App\Http\Controllers\backend\SubCategoryController;
 
 Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 
-//frontend reg & login
+
+
+///////////////frontend reg & login////////////////////
+
 Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
 Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
 
+
+
 //////////////////search/////////////////
+
 Route::get('/search',[SearchController::class,'search'])->name('search');
 
 
-//frontend Category routes
+
+
+/////////////////////frontend Category routes//////////////////////////
+
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
 

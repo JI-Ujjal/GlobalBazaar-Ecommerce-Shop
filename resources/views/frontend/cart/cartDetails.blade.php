@@ -34,13 +34,14 @@
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (session()->has('myCart'))
 
                             @foreach (session()->get('myCart') as $key=>$cart)
+
                             <tr>
                                 <td class="shoping__cart__item">
                                     <img width="60px" src="{{url('uploads/product', $cart['product_image'])}}" alt="">
@@ -97,8 +98,8 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal <span>$454.98</span></li>
-                        <li>Total <span>$454.98</span></li>
+                        <li>Discount</li>
+                        <li>Total Amount <span>{{array_sum(array_column($carts = session()->get('myCart'),'subtotal'))}}</span></li>
                     </ul>
                     <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>

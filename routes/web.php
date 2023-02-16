@@ -19,6 +19,7 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\backend\SubCategoryController;
+use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +50,7 @@ Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.
 
 //////////////////search/////////////////
 
-Route::get('/search',[SearchController::class,'search'])->name('search');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
 
@@ -60,9 +61,9 @@ Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
 
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
-Route::get('/add-cart/{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
-Route::get('/delete-cart-item/{id}',[CartController::class,'deleteCartItem'])->name('delete.cart.item');
-Route::get('/cart-update/{id}',[CartController::class, 'updateCartItem'])->name('update.cart.item');
+Route::get('/add-cart/{id}', [CartController::class, 'addCartPage'])->name('add.cart.page');
+Route::get('/delete-cart-item/{id}', [CartController::class, 'deleteCartItem'])->name('delete.cart.item');
+Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name('update.cart.item');
 
 /////////////////Blog Page////////////////////////
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
@@ -70,7 +71,7 @@ Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 
 
 //////////////////////Contact//////////////////////////////
-Route::get('/contact',[ContactController::class,'contact'])->name('contact');
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
 
 
@@ -146,3 +147,22 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/delete-customer/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
     Route::get('/customer-view/{id}', [CustomerController::class, 'viewCustomer'])->name('view.customer');
 });
+
+
+
+
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+// Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

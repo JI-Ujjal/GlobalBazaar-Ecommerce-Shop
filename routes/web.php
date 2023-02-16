@@ -61,6 +61,7 @@ Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
 Route::get('/add-cart/{id}',[CartController::class,'addCartPage'])->name('add.cart.page');
 Route::get('/delete-cart-item/{id}',[CartController::class,'deleteCartItem'])->name('delete.cart.item');
+Route::get('/cart-update/{id}',[CartController::class, 'updateCartItem'])->name('update.cart.item');
 
 
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');

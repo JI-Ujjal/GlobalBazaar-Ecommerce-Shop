@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 use App\Http\Controllers\Controller;
+use Nette\Utils\Floats;
 
 class CartController extends Controller
 {
@@ -18,30 +19,27 @@ class CartController extends Controller
 
     public function addCartPage($id)
     {
-        
+
         $products = Product::find($id);
 
-        $myCart=session()->get('myCart'); //get, put, has, flush, forget
-        if(!$myCart)
-        {
+        $myCart = session()->get('myCart'); //get, put, has, flush, forget
+        if (!$myCart) {
             //case1: cart is empty
             //solution: add product to cart
 
-           $cart[$id] = [
-            'product_name' => $products->product_name,
-            'product_price' => $products->product_price,
-            'product_quantity' => 1,
-            'subtotal' => $products->product_price * 1,
-            'product_image' => $products->product_image
-        ];
-           session()->put('myCart',$cart);
-        }else
-        {
+            $cart[$id] = [
+                'product_name' => $products->product_name,
+                'product_price' => $products->product_price,
+                'product_quantity' => 1,
+                'subtotal' => $products->product_price * 1,
+                'product_image' => $products->product_image
+            ];
+            session()->put('myCart', $cart);
+        } else {
             //case2: cart not empty but product not exist,
             // solution: add product to cart
 
-            if(!array_key_exists($id,$myCart))
-            {
+            if (!array_key_exists($id, $myCart)) {
                 $myCart[$id] = [
                     'product_name' => $products->product_name,
                     'product_price' => $products->product_price,
@@ -49,32 +47,48 @@ class CartController extends Controller
                     'subtotal' => $products->product_price * 1,
                     'product_image' => $products->product_image
                 ];
-                session()->put('myCart',$myCart);
-            }else{
+                session()->put('myCart', $myCart);
+            } else {
                 //case3: cart not empty but product exist
                 //solution: increment the quantity
 
-                $myCart[$id]['product_quantity']=$myCart[$id]['product_quantity']+1;// pre increment and post increment
+                $myCart[$id]['product_quantity'] = $myCart[$id]['product_quantity'] + 1; // pre increment and post increment
 
-                $myCart[$id]['subtotal']= $myCart[$id]['product_price'] * $myCart[$id]['product_quantity'];
-                session()->put('myCart',$myCart);
+                $myCart[$id]['subtotal'] = (float) $myCart[$id]['product_price'] * (int) $myCart[$id]['product_quantity'];
+                session()->put('myCart', $myCart);
             }
         }
 
-        notify()->success('Product Added to Cart Successfully');
+        notify()->success('Cart Successfully');
         return redirect()->back();
-
-        
     }
 
     public function deleteCartItem($id)
     {
-       $newCart=session()->get('myCart');
+        $newCart = session()->get('myCart');
         unset($newCart[$id]);
-        session()->put('myCart',$newCart);
+        session()->put('myCart', $newCart);
 
         notify()->success('Item deleted from cart.');
         return redirect()->back();
     }
 
+    public function updateCartItem(Request $request, $id)
+
+    {
+
+        // dd($id);
+        $myCart = session()->get('myCart');
+        //dd(gettype($myCart[2]['product_price']));
+
+
+        $myCart[$id]['product_quantity'] = $request->qty;
+
+        // dd($myCart[$id]);
+
+        $myCart[$id]['subtotal'] = (float) $myCart[$id]['product_price'] * (int) $myCart[$id]['product_quantity'];
+
+        session()->put('myCart', $myCart);
+        return to_route('cart.details');
+    }
 }

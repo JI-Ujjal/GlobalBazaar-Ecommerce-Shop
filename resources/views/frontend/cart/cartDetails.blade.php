@@ -40,33 +40,39 @@
                         <tbody>
                             @if (session()->has('myCart'))
 
-                            @foreach (session()->get('myCart') as $key=>$cart)
+                            @foreach (session()->get('myCart') as $key => $cart)
 
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img width="60px" src="{{url('uploads/product', $cart['product_image'])}}" alt="">
-                                    <h5>{{$cart['product_name']}}</h5>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    {{$cart['product_price']}} BDT
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="{{$cart['product_quantity']}}">
+                            <form action="{{route('update.cart.item', $key)}}">
+                                <tr>
+                                    <td class="shoping__cart__item">
+                                        <img width="60px" src="{{url('uploads/product', $cart['product_image'])}}" alt="">
+                                        <h5>{{$cart['product_name']}}</h5>
+                                    </td>
+                                    <td class="shoping__cart__price">
+                                        {{$cart['product_price']}} BDT
+                                    </td>
+                                    <td class="shoping__cart__quantity">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" name="qty" value="{{$cart['product_quantity']}}">
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="shoping__cart__total">
-                                    {{$cart['subtotal']}} BDT
-                                </td>
-                                <td class="shoping__cart__item__close">
-                                    <a class="btn btn-danger" href="{{route('delete.cart.item',$key)}}"><i class="icon-trash icon-large"></i> Delete</a>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="shoping__cart__total">
+                                        {{$cart['subtotal']}} BDT
+                                    </td>
+                                    <td class="shoping__cart__item__close">
+                                        <a class="btn btn-danger" href="{{route('delete.cart.item',$key)}}"><i class="icon-trash icon-large"></i> Delete</a>
+                                    </td>
+                                    <td class="shoping__cart__item__close">
+                                        <button class="btn btn-warning">Update</button>
+                                    </td>
+                                </tr>
+                            </form>
                             @endforeach
                             @else
-                            <p>Nothing in the cart</p>
+                            
+                            <h2 class="btn btn-warning"> Nothing is the cart </h2>
 
                             @endif
 
@@ -99,7 +105,10 @@
                     <h5>Cart Total</h5>
                     <ul>
                         <li>Discount</li>
-                        <li>Total Amount <span>{{array_sum(array_column($carts = session()->get('myCart'),'subtotal'))}}</span></li>
+
+                        <!--'''session()->get('myCart') ?''' ternary operator-->
+                        
+                        <li>Total Amount <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }}</span></li>
                     </ul>
                     <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>

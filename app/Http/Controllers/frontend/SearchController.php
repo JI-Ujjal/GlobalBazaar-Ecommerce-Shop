@@ -14,9 +14,12 @@ class SearchController extends Controller
         
         $search_key=$request->search_key;
 
+        //dd($search_key);
+
        // $column_name=$request->column_name;
 
         $order_by=$request->order_by ?? 'asc';
+
 
         $Products=Product::where('product_name','LIKE','%'.$search_key.'%')
         ->orderBy('product_price',$order_by)

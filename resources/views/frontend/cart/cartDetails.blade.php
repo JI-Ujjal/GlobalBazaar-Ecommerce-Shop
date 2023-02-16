@@ -71,8 +71,8 @@
                             </form>
                             @endforeach
                             @else
-                            
-                            <h2 class="btn btn-warning"> Nothing is the cart </h2>
+
+                            <p style="font-size: 50px;" class="btn btn-warning">Nothing in the cart</p>
 
                             @endif
 
@@ -107,7 +107,7 @@
                         <li>Discount</li>
 
                         <!--'''session()->get('myCart') ?''' ternary operator-->
-                        
+
                         <li>Total Amount <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }}</span></li>
                     </ul>
                     <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>

@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                            <li><i class="fa fa-envelope"></i> foysal.kodeeo@gmail.com</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
@@ -19,7 +19,7 @@
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         <div class="header__top__right__language">
-                            <img src="{{url('frontend/assets/img/language.png')}}" alt="">
+                            <img width="30px" src="{{url('frontend/assets/img/Flag_of_Bangladesh.svg.png')}}" alt="">
                             <div>English</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
@@ -74,7 +74,7 @@
                             </ul>
                         </li>
                         <li><a href="{{route('blog')}}">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -136,7 +136,7 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>+880 1854-969657</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>

@@ -18,8 +18,9 @@ use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
-use App\Http\Controllers\backend\SubCategoryController;
+use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\backend\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,8 +66,14 @@ Route::get('/add-cart/{id}', [CartController::class, 'addCartPage'])->name('add.
 Route::get('/delete-cart-item/{id}', [CartController::class, 'deleteCartItem'])->name('delete.cart.item');
 Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name('update.cart.item');
 
+
+///////////////////////Check-out///////////////////////
+
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
 /////////////////Blog Page////////////////////////
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
+Route::get('/blog-details', [BlogController::class, 'blogDetails'])->name('blog.details');
 
 
 

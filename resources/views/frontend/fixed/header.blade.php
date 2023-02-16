@@ -69,8 +69,8 @@
                             <ul class="header__menu__dropdown">
                                 <li><a href="{{route('pages.shop.details')}}">Shop Details</a></li>
                                 <li><a href="{{route('cart.details')}}">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="{{route('checkout')}}">Check Out</a></li>
+                                <li><a href="{{route('blog.details')}}">Blog Details</a></li>
                             </ul>
                         </li>
                         <li><a href="{{route('blog')}}">Blog</a></li>

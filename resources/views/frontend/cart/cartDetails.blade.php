@@ -110,7 +110,7 @@
 
                         <li>Total Amount <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }}</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="{{route('checkout')}}" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>

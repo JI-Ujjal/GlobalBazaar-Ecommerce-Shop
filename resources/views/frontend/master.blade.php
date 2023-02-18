@@ -32,6 +32,7 @@
     <section>
 
         <x:notify-messages />
+        @include('sweetalert::alert')
         @yield('contents')
 
     </section>
@@ -48,6 +49,20 @@
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
     @notifyJs
 
+    <script>
+        var obj = {};
+        obj.cus_name = $('#customer_name').val();
+        obj.cus_phone = $('#mobile').val();
+        obj.cus_email = $('#email').val();
+        obj.cus_addr1 = $('#address').val();
+        obj.amount = $('#total_amount').val();
+
+        let total = $('#total_amount').text();
+        total = total.split("$")[1];
+        // obj.amount = total;
+        $("#total_payment").val(total)
+        $('#sslczPayBtn').prop('postdata', obj);
+    </script>
     <script>
         (function(window, document) {
             var loader = function() {

@@ -68,8 +68,18 @@ Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name
 
 
 ///////////////////////Check-out///////////////////////
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
-Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name("pay.now");
+    //Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+});
+
 
 /////////////////Blog Page////////////////////////
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
@@ -160,16 +170,17 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
 
-// SSLCOMMERZ Start
-Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+//////////////////////////// SSLCOMMERZ Start ////////////////////////////
+
+
+
+//Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 // Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name("pay.now");
-Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
-Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+
+//if mobile transection happens then this route will work//
+
+//Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END

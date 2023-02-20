@@ -60,7 +60,7 @@
         let total = $('#total_amount').text();
         total = total.split("$")[1];
         // obj.amount = total;
-        $("#total_payment").val(total)
+        $("#total_payment").val(total);
         $('#sslczPayBtn').prop('postdata', obj);
     </script>
     <script>

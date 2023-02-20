@@ -32,6 +32,11 @@
             <h4>Billing Details</h4>
             <form action="{{route('pay.now')}}" method="post">
                 @csrf
+
+                @if (session()->has('myCart'))
+
+                @foreach (session()->get('myCart') as $key => $cart)
+
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
@@ -108,17 +113,19 @@
                             <input type="text" placeholder="Notes about your order, e.g. special notes for delivery.">
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4>Your Order</h4>
                             <div class="checkout__order__products">Products <span>Total</span></div>
                             <ul>
-                                <li>Vegetable’s Package <span>$75.99</span></li>
-                                <li>Fresh Vegetable <span>$151.99</span></li>
-                                <li>Organic Bananas <span>$53.99</span></li>
+                                <li>{{$cart['product_name']}}<span>{{$cart['product_price']}} BDT</span></li>
+                              
                             </ul>
                             <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                            <div class="checkout__order__total">Total <span id="total_amount">$750.99</span></div>
+                            <div class="checkout__order__total">Total <span id="total_amount"></span></div>
                             <input type="hidden" name="total_payment" id="total_payment">
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">
@@ -148,6 +155,7 @@
                     </div>
                 </div>
             </form>
+            @endforeach
         </div>
     </div>
 </section>

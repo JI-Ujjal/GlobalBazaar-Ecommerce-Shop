@@ -14,6 +14,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\ShopController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CustomerController;
@@ -117,6 +118,9 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
     Route::get('/master-dashboard', [AdminController::class, 'master']);
     Route::get('/admin-newPage', [AdminController::class, 'newPage'])->name('admin.newPage');
+
+
+    Route::get('/my-profile', [ProfileController::class, 'myProfile'])->name('my.profile');
 
 
     Route::get('/category-list', [CategoryController::class, 'list'])->name('category.list');

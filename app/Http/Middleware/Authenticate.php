@@ -17,7 +17,7 @@ class Authenticate extends Middleware
     {
         // dd($request);
         if (request()->route()->getName() == "checkout") {
-            Alert::warning('Login as Customer', 'Log in Or Register as Customer');
+            Alert::warning('You are not Customer', 'Log in Or Register as Customer');
 
             return route('home');
         };

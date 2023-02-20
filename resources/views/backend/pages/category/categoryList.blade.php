@@ -29,9 +29,9 @@
             <td><img width="70px" src="{{ url('uploads/category', $Category->category_image) }}" alt="" srcset=""></td>
             <td>{{ $Category->category_details }}</td>
             <td>{{ $Category->category_status }}</td>
-            <td><a class="btn btn-primary" href="{{route('edit.category',$Category->id)}}">Edit</a>
-                <a class="btn btn-success" href="{{ route('view.category', $Category->id) }}">View</a>
-                <a class="btn btn-danger" href="{{ route('delete.category', $Category->id) }}">Delete</a>
+            <td><a class="btn btn-outline-primary" href="{{route('edit.category',$Category->id)}}">Edit</a>
+                <a class="btn btn-outline-success" href="{{ route('view.category', $Category->id) }}">View</a>
+                <a class="btn btn-outline-danger" href="{{ route('delete.category', $Category->id) }}">Delete</a>
             </td>
 
         </tr>

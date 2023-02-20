@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('contents')
 <div class="container">
-    <h3>Category Create Form</h3>
+    <h3 style="font-size: 30px">Category Create Form</h3>
     <form action="{{ route('submit.form') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">

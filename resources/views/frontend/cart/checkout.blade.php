@@ -35,7 +35,8 @@
 
                 @if (session()->has('myCart'))
 
-                @foreach (session()->get('myCart') as $key => $cart)
+
+
 
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
@@ -120,12 +121,19 @@
                         <div class="checkout__order">
                             <h4>Your Order</h4>
                             <div class="checkout__order__products">Products <span>Total</span></div>
+
+
+                            @foreach (session()->get('myCart') as $key => $cart)
                             <ul>
                                 <li>{{$cart['product_name']}}<span>{{$cart['product_price']}} BDT</span></li>
-                              
+
                             </ul>
-                            <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                            <div class="checkout__order__total">Total <span id="total_amount"></span></div>
+                            @endforeach
+
+                            
+                            <div class="checkout__order__subtotal"> Subtotal <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0}}</span></div>
+                            
+                            <div class="checkout__order__total">Total <span id="total_amount"><span> </span></div>
                             <input type="hidden" name="total_payment" id="total_payment">
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">
@@ -155,7 +163,8 @@
                     </div>
                 </div>
             </form>
-            @endforeach
+
+            @endif
         </div>
     </div>
 </section>

@@ -167,6 +167,14 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::put('/customer-update/{id}', [CustomerController::class, 'updateCustomer'])->name('update.customer');
     Route::get('/delete-customer/{id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
     Route::get('/customer-view/{id}', [CustomerController::class, 'viewCustomer'])->name('view.customer');
+
+
+
+    /////////////////------Order--------////////////////////
+
+    Route::get('/order-edit', [AdminController::class, 'orderEdit'])->name('order.edit');
+    Route::get('/order-update', [AdminController::class, 'orderUpdate'])->name('order.update');
+    
 });
 
 

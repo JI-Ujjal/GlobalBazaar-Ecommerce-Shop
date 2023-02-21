@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,21 @@ class AdminController extends Controller
     }
     public function newPage()
     {
-
-        return view('backend.pages.newPage');
+        $Orders = Order::all();
+        return view('backend.pages.newPage', compact('Orders'));
     }
+
+    public function orderEdit($id){
+        $Order = Order::find($id);
+        return view('backend.pages.newPage', compact('Order'));
+    }
+
+    public function orderUpdate($id){
+        $Order = Order::find($id);
+
+        $Order->update([
+            "status"=>"Approved"
+        ]);
+        return redirect()->back();
+    } 
 }

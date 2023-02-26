@@ -131,9 +131,10 @@
                             @endforeach
 
                             
-                            <div class="checkout__order__subtotal"> Subtotal <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0}}</span></div>
-                            
-                            <div class="checkout__order__total">Total <span id="total_amount"><span> </span></div>
+                            <div class="checkout__order__subtotal"> Subtotal <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }}</span></div>
+                           
+                            <div class="checkout__order__total">Order Total <span id="total_amount"><span></span></div>
+
                             <input type="hidden" name="total_payment" id="total_payment">
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">

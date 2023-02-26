@@ -24,6 +24,12 @@ class AdminController extends Controller
         return view('backend.pages.newPage', compact('Orders'));
     }
 
+
+    public function orderList(){
+        $Orders = Order::all();
+        return view('backend.pages.order.orderlist', compact('Orders'));
+    }
+
     public function orderEdit($id){
         $Order = Order::find($id);
         return view('backend.pages.newPage', compact('Order'));

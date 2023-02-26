@@ -50,17 +50,18 @@ Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.
 
 
 
-//////////////////search/////////////////
+//////////////////------------search-----------/////////////////
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
 
 
-/////////////////////frontend Category routes//////////////////////////
+/////////////////////-----frontend Category routes-----//////////////////////////
 
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
+
 
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
 Route::get('/add-cart/{id}', [CartController::class, 'addCartPage'])->name('add.cart.page');
@@ -68,7 +69,8 @@ Route::get('/delete-cart-item/{id}', [CartController::class, 'deleteCartItem'])-
 Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name('update.cart.item');
 
 
-///////////////////////Check-out///////////////////////
+///////////////////////-----------Check-out--------------///////////////////////
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
@@ -171,6 +173,8 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     /////////////////------Order--------////////////////////
+
+    Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
 
     Route::get('/order-edit', [AdminController::class, 'orderEdit'])->name('order.edit');
     Route::get('/order-update', [AdminController::class, 'orderUpdate'])->name('order.update');

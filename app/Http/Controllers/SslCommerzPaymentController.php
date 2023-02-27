@@ -27,6 +27,7 @@ class SslCommerzPaymentController extends Controller
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
+
         $post_data = array();
         $post_data['total_amount'] = "$request->total_payment"; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
@@ -78,6 +79,10 @@ class SslCommerzPaymentController extends Controller
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency']
             ]);
+
+
+            session()->forget('myCart');
+           
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
@@ -133,6 +138,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_b'] = "ref002";
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
+
 
 
         #Before  going to initiate the payment order status need to update as Pending.

@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('contents')
 
-<main id="main" class="main">
+
 
     <div class="pagetitle">
       <h1>Profile</h1>
@@ -293,7 +293,7 @@
       </div>
     </section>
 
-  </main><!-- End #main -->
+
 
 
 

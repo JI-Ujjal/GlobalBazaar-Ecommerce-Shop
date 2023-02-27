@@ -1,6 +1,8 @@
 @extends('backend.master')
 @section('contents')
 
+<h2>Order List</h2>
+
 <table class="table">
 
     <thead>
@@ -28,7 +30,7 @@
             <td>{{$Order->status}}</td>
             <td>{{$Order->address}}</td>
             <td>{{$Order->transaction_id}}</td>
-            <td>{{$Order->currency}} BDT</td>
+            <td>{{$Order->currency}}</td>
             <td>
                 <button type="submit" class="btn btn-outline-success" >Approved</button>
             </td>

@@ -130,10 +130,20 @@
                             </ul>
                             @endforeach
 
+
+                            @php
+                            $subtotal = session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0;
+
+                            $delivery = 100;
+                            @endphp
+
+                            <div class="checkout__order__subtotal"> Subtotal <span>{{ $subtotal }} BDT</span></div>
+
+                            <div class="checkout__order__total"> Delivery <span>{{ $delivery }} BDT</span></div>
+
                             
-                            <div class="checkout__order__subtotal"> Subtotal <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }}</span></div>
-                           
-                            <div class="checkout__order__total">Order Total <span id="total_amount"><span></span></div>
+
+                            <div class="checkout__order__total">Order Total <span id="total_amount">{{$subtotal + $delivery}}</span></div>
 
                             <input type="hidden" name="total_payment" id="total_payment">
                             <div class="checkout__input__checkbox">

@@ -6,6 +6,7 @@ use App\Models\Customer;
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\BrandController;
 use App\Http\Controllers\frontend\BlogController;
@@ -176,8 +177,11 @@ Route::middleware('CheckAdmin')->group(function () {
 
     Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
 
-    Route::get('/order-edit', [AdminController::class, 'orderEdit'])->name('order.edit');
-    Route::get('/order-update', [AdminController::class, 'orderUpdate'])->name('order.update');
+    Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
+    Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
+
+
+    Route::get('/user-list', [UserController::class, 'userList'])->name('user.list');
     
 });
 

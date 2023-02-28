@@ -9,8 +9,8 @@
 <p class="alert alert-primary">{{session()->get('message')}}</p>
     
 @endif
-<table class="table table-striped table-dark">
-    <thead>
+<table class="table">
+    <thead class="table-dark">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Email Address</th>

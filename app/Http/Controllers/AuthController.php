@@ -52,7 +52,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        smilify('error', 'Admin Login successfully');
+        smilify('error', 'Admin Logout successfully');
         return to_route('login');
     }
 }

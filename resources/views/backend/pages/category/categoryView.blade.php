@@ -7,10 +7,7 @@
             <label for="">Category Name</label>
             <input type="text" name="category_name" class="form-control" placeholder="Enter Category Name" value="{{$Category->category_name}}">
     </div>
-    <div>
-            <label for="">Category Image</label>
-            <input type="file" name="category_image" class="form-control" placeholder="Enter Category Image" value="{{$Category->category_image}}">
-    </div>
+    
     <div>
             <label for="">Category Details</label>
             <input type="text" name="category_details" class="form-control" placeholder="Enter Category Details" value="{{$Category->category_details}}">

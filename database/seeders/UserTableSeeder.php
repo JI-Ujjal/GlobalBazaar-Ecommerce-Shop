@@ -23,5 +23,7 @@ class UserTableSeeder extends Seeder
             'password'=>bcrypt('12345'),
             'role'=> 'admin'
         ]);
+        
+        User::factory()->count(50)->create();
     }
 }

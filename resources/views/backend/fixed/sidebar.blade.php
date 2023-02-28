@@ -47,6 +47,12 @@
                 <span>Order List</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('user.list') }}">
+                <i class="bi bi-grid"></i>
+                <span>Users</span>
+            </a>
+        </li>
 
     </ul>
 

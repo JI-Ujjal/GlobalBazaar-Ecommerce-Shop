@@ -20,18 +20,20 @@
             </form>
         </div>
     </div>
+    
 
     @if(session()->has('message'))
 
     <p class="alert alert-success">{{session()->get('message')}}</p>
 
     @endif
+    
 
-    <div id="printableArea">
+    <div id="printableArea" style="padding-top: 10px;">
 
         <table class="table">
 
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">#Id</th>
                     <th scope="col">Product Name</th>

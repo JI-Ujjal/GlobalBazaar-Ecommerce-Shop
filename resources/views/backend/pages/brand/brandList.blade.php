@@ -11,7 +11,7 @@
     @endif
 
     <table class="table">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Email Address</th>

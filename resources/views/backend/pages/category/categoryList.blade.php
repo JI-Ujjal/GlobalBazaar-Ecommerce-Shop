@@ -1,6 +1,8 @@
 @extends('backend.master')
 @section('contents')
-<h3>Category List</h3>
+
+<h3 style="font-size: xx-large;">Category List</h3>
+
 <a class="btn btn-success" href="{{ route('create.form') }}">Create</a>
 
 @if(session()->has('message'))
@@ -10,11 +12,10 @@
 @endif
 
 <table class="table">
-    <thead>
+    <thead class="table-dark">
         <tr>
-            <th scope="col">#Id</th>
+            <th scope="col">Id</th>
             <th scope="col">Category Name</th>
-            <th scope="col">Category Image</th>
             <th scope="col">Category Details</th>
             <th scope="col">Category Status</th>
             <th scope="col">Action</th>
@@ -22,11 +23,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($Categories as $Category)
+        @foreach ($Categories as $key=>$Category)
         <tr>
-            <th scope="row">{{ $Category->id }}</th>
+            <th scope="row">{{ $key+1 }}</th>
             <td>{{ $Category->category_name }}</td>
-            <td><img width="70px" src="{{ url('uploads/category', $Category->category_image) }}" alt="" srcset=""></td>
             <td>{{ $Category->category_details }}</td>
             <td>{{ $Category->category_status }}</td>
             <td><a class="btn btn-outline-primary" href="{{route('edit.category',$Category->id)}}">Edit</a>
@@ -39,5 +39,6 @@
 
     </tbody>
 </table>
+
 {{$Categories->links()}}
 @endsection

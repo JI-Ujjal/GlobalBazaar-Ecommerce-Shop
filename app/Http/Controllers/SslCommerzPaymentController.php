@@ -27,6 +27,8 @@ class SslCommerzPaymentController extends Controller
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
+       
+
 
         $post_data = array();
         $post_data['total_amount'] = "$request->total_payment"; # You cant not pay less than 10
@@ -81,8 +83,8 @@ class SslCommerzPaymentController extends Controller
             ]);
 
 
-            session()->forget('myCart');
-           
+        
+
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
@@ -206,6 +208,9 @@ class SslCommerzPaymentController extends Controller
         }
 
         //notify()->success('Transection Successfully');
+
+        session()->forget('myCart');
+
         Alert::success('Payment', 'Transection Successfully');
         return to_route('home');
     }

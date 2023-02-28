@@ -44,48 +44,48 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Fist Name<span>*</span></p>
-                                    <input type="text" name="first_name">
+                                    <input type="text" required name="first_name">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Last Name<span>*</span></p>
-                                    <input type="text" name="last_name">
+                                    <input type="text" required name="last_name">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Country<span>*</span></p>
-                            <input type="text" name="country">
+                            <input type="text" required name="country">
                         </div>
                         <div class="checkout__input">
                             <p>Address<span>*</span></p>
-                            <input type="text" name="add1" placeholder="Street Address" class="checkout__input__add">
+                            <input type="text" name="add1" required placeholder="Street Address" class="checkout__input__add">
                             <input type="text" name="add2" placeholder="Apartment, suite, unite ect (optinal)">
                         </div>
                         <div class="checkout__input">
                             <p>Town/City<span>*</span></p>
-                            <input type="text" name="city">
+                            <input type="text" required name="city">
                         </div>
                         <div class="checkout__input">
                             <p>State<span></span></p>
-                            <input type="text" name="state">
+                            <input type="text" required name="state">
                         </div>
                         <div class="checkout__input">
                             <p>Postcode / ZIP<span>*</span></p>
-                            <input type="text" name="postcode">
+                            <input type="text" required name="postcode">
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Phone<span>*</span></p>
-                                    <input type="text" name="phone">
+                                    <input type="text" required name="phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text" name="email">
+                                    <input type="text" required name="email">
                                 </div>
                             </div>
                         </div>
@@ -137,9 +137,9 @@
                             $delivery = 100;
                             @endphp
 
-                            <div class="checkout__order__subtotal"> Subtotal <span>{{ $subtotal }} BDT</span></div>
+                            <div class="checkout__order__subtotal"> Subtotal <span>{{ $subtotal }} BDT</span>
 
-                            <div class="checkout__order__total"> Delivery <span>{{ $delivery }} BDT</span></div>
+                            <div class="checkout__order__subtotal"> Delivery <span>{{ $delivery }} BDT</span></div>
 
                             
 

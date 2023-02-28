@@ -1,18 +1,18 @@
 @extends('backend.master')
 @section('contents')
 
-<h2>Order List</h2>
+<h3 style="font-size: xx-large;">Order List</h3>
 
 <table class="table">
 
-    <thead>
+    <thead class="table-dark">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Order Name</th>
             <th scope="col">Order Email</th>
             <th scope="col">Order Phone</th>
             <th scope="col">Order Amount</th>
-            <th scope="col">Order Status</th>
+            <th scope="col">Status</th>
             <th scope="col">Order Address</th>
             <th scope="col">Transaction ID</th>
             <th scope="col">Currency</th>
@@ -32,7 +32,7 @@
             <td>{{$Order->transaction_id}}</td>
             <td>{{$Order->currency}}</td>
             <td>
-                <button type="submit" class="btn btn-outline-success" >Approved</button>
+                <a type="submit" href="{{route('order.update', $Order->id)}}" class="btn btn-outline-success">Approve</a>
             </td>
 
         </tr>

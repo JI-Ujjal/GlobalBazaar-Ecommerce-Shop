@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -20,8 +21,10 @@ class AdminController extends Controller
     }
     public function newPage()
     {
+        $totalCustomer = User::get()->count();
+        $totalOrder = Order::get()->count();
         $Orders = Order::all();
-        return view('backend.pages.newPage', compact('Orders'));
+        return view('backend.pages.newPage', compact('Orders', 'totalOrder', 'totalCustomer'));
     }
 
 

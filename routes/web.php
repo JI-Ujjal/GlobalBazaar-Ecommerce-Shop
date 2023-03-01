@@ -39,6 +39,8 @@ use App\Http\Controllers\backend\SubCategoryController;
 
 //Frontend_all
 
+
+
 Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 
 

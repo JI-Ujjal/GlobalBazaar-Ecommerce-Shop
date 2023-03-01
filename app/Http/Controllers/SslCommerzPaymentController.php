@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Product;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SslCommerzPaymentController extends Controller
@@ -27,7 +28,7 @@ class SslCommerzPaymentController extends Controller
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
-       
+
 
 
         $post_data = array();
@@ -83,7 +84,7 @@ class SslCommerzPaymentController extends Controller
             ]);
 
 
-        
+
 
 
         $sslc = new SslCommerzNotification();
@@ -208,6 +209,18 @@ class SslCommerzPaymentController extends Controller
         }
 
         //notify()->success('Transection Successfully');
+
+        if (session()->get("myCart")) {
+
+
+
+            foreach (session()->get("myCart") as $key => $product) {
+                $product = Product::find($key);
+                $product->update(["product_quantity" => (int) $product->product_quantity - $product->product_quantity]);
+            }
+        }
+
+
 
         session()->forget('myCart');
 

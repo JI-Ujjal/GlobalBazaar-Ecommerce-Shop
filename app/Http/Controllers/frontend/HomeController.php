@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         ]);
 
-        notify()->success('Laravel Notify is awesome!');
+        notify()->success('Customer Registration Successfully');
         return back();
     }
 

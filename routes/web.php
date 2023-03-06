@@ -126,6 +126,8 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     Route::get('/my-profile', [ProfileController::class, 'myProfile'])->name('my.profile');
+    Route::put('/profile-update', [ProfileController::class, 'profileUpdate'])->name('profile.update');
+   
 
 
     Route::get('/category-list', [CategoryController::class, 'list'])->name('category.list');

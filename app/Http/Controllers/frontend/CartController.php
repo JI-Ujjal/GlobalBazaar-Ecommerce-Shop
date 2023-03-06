@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Models\Product;
+use Nette\Utils\Floats;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 use App\Http\Controllers\Controller;
-use Nette\Utils\Floats;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -79,7 +80,19 @@ class CartController extends Controller
 
         // dd($id);
         $myCart = session()->get('myCart');
+
+        $product = Product::find($id);
+
+        if($product->product_quantity < $request->qty){
+            Alert::warning("Stock Out" , "Product Available $product->product_quantity");
+            return redirect()->back();
+        }
+
         //dd(gettype($myCart[2]['product_price']));
+        if($request->qty < 1){
+            Alert::warning("Cart Error" , "Cart 1 or More Product");
+            return redirect()->back();
+        }
 
 
         $myCart[$id]['product_quantity'] = $request->qty;
@@ -87,6 +100,8 @@ class CartController extends Controller
         // dd($myCart[$id]);
 
         $myCart[$id]['subtotal'] = (float) $myCart[$id]['product_price'] * (int) $myCart[$id]['product_quantity'];
+
+        
 
         session()->put('myCart', $myCart);
         return to_route('cart.details');

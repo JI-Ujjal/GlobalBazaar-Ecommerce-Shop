@@ -210,16 +210,17 @@ class SslCommerzPaymentController extends Controller
 
         //notify()->success('Transection Successfully');
 
-        if (session()->get("myCart")) {
 
+        foreach (session()->get("myCart") as $key => $product) {
 
-
-            foreach (session()->get("myCart") as $key => $product) {
-                $product = Product::find($key);
-                $product->update(["product_quantity" => (int) $product->product_quantity - $product->product_quantity]);
-            }
+            $dbProduct = Product::find($key);
+            $dbProduct->update(
+                [
+                    "product_quantity" => (int) $dbProduct->product_quantity - $product['product_quantity']
+                ]
+            );
         }
-
+        session()->get("myCart");
 
 
         session()->forget('myCart');

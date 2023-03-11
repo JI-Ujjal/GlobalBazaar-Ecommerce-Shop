@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SubCategoryController extends Controller
 {
     public function list()
     {
         //return view('backend.pages.subCategoryList');
-        $Subcategory = Subcategory::all();
+        $Subcategory = Subcategory::with('categories')->get();
         return view('backend.pages.subcategory.subCategoryList', compact('Subcategory'));
     }
 
 
     public function createForm()
     {
-        return view('backend.pages.subcategory.subCategoryCreateForm');
+        $Categories = Category::all();
+        return view('backend.pages.subcategory.subCategoryCreateForm', compact('Categories'));
     }
 
 
@@ -26,8 +28,10 @@ class SubCategoryController extends Controller
     {
         //return view('backend.pages.subCategoryForm');
         Subcategory::create([
-            'email_address' => $request->email_address,
-            'password' => $request->password
+            'subcategory_name' => $request->subcategory_name,
+            'subcategory_details' => $request->subcategory_details,
+            'category_id' => $request->category_id,
+            'subcategory_status' => $request->subcategory_status
         ]);
         return redirect()->route('sub.category.list')->with('message','Sub-Category Create Successfully.');
     }
@@ -42,8 +46,9 @@ class SubCategoryController extends Controller
     public function updateSubCategory(Request $request, $id)
     {
         $Subcategory = Subcategory::find($id)->update([
-            'email_address' => $request->email_address,
-            'password' => $request->password
+            'subcategory_name' => $request->subcategory_name,
+            'subcategory_details' => $request->subcategory_details,
+            'subcategory_status' => $request->subcategory_status
         ]);
         return redirect()->route('sub.category.list');
     }

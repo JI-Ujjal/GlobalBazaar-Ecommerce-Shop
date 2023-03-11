@@ -13,17 +13,21 @@
     <thead class="table-dark">
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Email Address</th>
-            <th scope="col">Password</th>
+            <th scope="col">Sub-Category Name</th>
+            <th scope="col">Sub-Category Details</th>
+            <th scope="col">Category</th>
+            <th scope="col">Sub-Category Status</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($Subcategory as $Subcategory)
+        @foreach ($Subcategory as $key=>$Subcategory)
         <tr>
-            <th scope="row">{{ $Subcategory->id }}</th>
-            <td>{{ $Subcategory->email_address }}</td>
-            <td>{{ $Subcategory->password }}</td>
+            <th scope="row">{{ $Subcategory-> $key+1 }}</th>
+            <td>{{ $Subcategory->subcategory_name}}</td>
+            <td>{{ $Subcategory->subcategory_details }}</td>
+            <td>{{ $Subcategory->categories->category_name}}</td>
+            <td>{{ $Subcategory->subcategory_status }}</td>
             <td>
                 <a class="btn btn-primary" href="{{ route('edit.sub.category', $Subcategory->id) }}">Edit</a>
                 <a class="btn btn-success" href="{{ route('view.sub.category', $Subcategory->id) }}">View</a>

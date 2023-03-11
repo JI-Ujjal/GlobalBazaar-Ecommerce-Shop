@@ -85,7 +85,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text" required name="email">
+                                    <input type="text" required name="email" value="{{auth()->user()->email}}">
                                 </div>
                             </div>
                         </div>

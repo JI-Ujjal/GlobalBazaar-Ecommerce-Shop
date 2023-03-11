@@ -1,6 +1,5 @@
 @extends('frontend.master')
 @section('contents')
-
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container">
@@ -70,7 +69,7 @@
                             @if($Product->product_quantity>0)
 
                             <li><a href="{{route('add.cart.page',$Product->id)}}"><i class="fa fa-shopping-cart"></i></a></li>
-                            
+
                             @else
 
                             <p style="color: red;">Stock Out</p>

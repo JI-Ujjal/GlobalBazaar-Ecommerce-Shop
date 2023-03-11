@@ -7,17 +7,23 @@
         @method('PUT')
         @csrf
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" name="email_address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{$Subcategory->email_address}}">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label for="">Sub-Category Name</label>
+            <input type="text" name="subcategory_name" class="form-control" placeholder="Enter Sub-Category Name" value="{{$Subcategory->subcategory_name}}">
         </div>
+
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$Subcategory->password}}">
+            <label for="">Sub-Category Details</label>
+            <input type="text" name="subcategory_details" class="form-control" placeholder="Enter Sub-Category Details" value="{{$Subcategory->subcategory_details}}">
         </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+        
+        <div class="from-group" style="padding: 10px;">
+            <label for="">Sub-Category Status</label>
+            <select name="subcategory_status" class="from-control" id="" value="{{$Subcategory->subcategory_status}}">
+                <option selected>Choose...</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-warning">Update</button>
     </form>

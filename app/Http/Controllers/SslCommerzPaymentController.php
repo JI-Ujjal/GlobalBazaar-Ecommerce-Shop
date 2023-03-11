@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use DB;
-use Illuminate\Http\Request;
-use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Product;
+use App\Models\OrderDetails;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Library\SslCommerz\SslCommerzNotification;
+use App\Mail\OrderEmail;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -177,11 +180,10 @@ class SslCommerzPaymentController extends Controller
         $currency = $request->input('currency');
 
         $sslc = new SslCommerzNotification();
-
         #Check order status in order tabel against the transaction id or order id.
         $order_details = DB::table('orders')
             ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+            ->select('id', 'transaction_id', 'status', 'currency', 'amount', 'email')->first();
 
         if ($order_details->status == 'Pending') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
@@ -219,9 +221,15 @@ class SslCommerzPaymentController extends Controller
                     "product_quantity" => (int) $dbProduct->product_quantity - $product['product_quantity']
                 ]
             );
+            OrderDetails::create([
+                "product_id" => $dbProduct->id,
+                "order_id" => $order_details->id,
+                "qty" => $product['product_quantity']
+            ]);
         }
-        session()->get("myCart");
 
+
+        Mail::to($order_details->email)->send(new OrderEmail());
 
         session()->forget('myCart');
 
@@ -236,7 +244,6 @@ class SslCommerzPaymentController extends Controller
         $order_details = DB::table('orders')
             ->where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount')->first();
-
         if ($order_details->status == 'Pending') {
             $update_product = DB::table('orders')
                 ->where('transaction_id', $tran_id)
@@ -256,7 +263,6 @@ class SslCommerzPaymentController extends Controller
         $order_details = DB::table('orders')
             ->where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount')->first();
-
         if ($order_details->status == 'Pending') {
             $update_product = DB::table('orders')
                 ->where('transaction_id', $tran_id)

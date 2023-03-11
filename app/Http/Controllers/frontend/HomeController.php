@@ -53,6 +53,7 @@ class HomeController extends Controller
     public function frontLogout()
     {
         auth()->logout();
+        session()->flush();
         notify()->success('logout Successfully');
         return to_route('home');
     }

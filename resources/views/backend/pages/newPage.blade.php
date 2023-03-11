@@ -263,9 +263,12 @@
                                         </td>
 
                                     </tr>
+
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            {{$Orders->Links()}}
 
                         </div>
 

@@ -16,10 +16,10 @@ return [
 		'refund_status' => "/validator/api/merchantTransIDvalidationAPI.php",
 	],
 	'apiDomain' => $apiDomain,
-	'connect_from_localhost' => env("IS_LOCALHOST", false), // For Sandbox, use "true", For Live, use "false"
+	'connect_from_localhost' => env("IS_LOCALHOST", true), // For Sandbox, use "true", For Live, use "false"
 	'success_url' => ':8000/success',
 	'failed_url' => ':8000/fail',
 	'cancel_url' => ':8000/cancel',
 	'ipn_url' => '/ipn',
-	'same_site' => 'none',
+	'same_site' => 'null',
 ];

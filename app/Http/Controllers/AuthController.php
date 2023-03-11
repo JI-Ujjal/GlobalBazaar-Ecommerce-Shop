@@ -40,7 +40,7 @@ class AuthController extends Controller
         $credentials = $request->except('_token');
         $authentication = auth()->attempt($credentials);
 
-        
+
         if ($authentication) {
             smilify('success', 'Admin Login successfully');
             return to_route('admin.newPage');
@@ -51,7 +51,9 @@ class AuthController extends Controller
     }
     public function logout()
     {
+    
         Auth::logout();
+        session()->flush();
         smilify('error', 'Admin Logout successfully');
         return to_route('login');
     }

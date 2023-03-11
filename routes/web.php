@@ -178,11 +178,12 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     /////////////////------Order--------////////////////////
+    
 
     Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
-
     Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
     Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
+    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
 
 
     Route::get('/user-list', [UserController::class, 'userList'])->name('user.list');

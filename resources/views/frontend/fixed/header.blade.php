@@ -43,7 +43,9 @@
                             @endguest
 
                             @auth
-                            <button class="btn btn-success">{{auth()->user()->name}}</button>
+                            
+                            <button class="btn btn-outline-success"><a href="{{route('frontuser.profile')}}"> {{auth()->user()->name}}
+                                <i class="fa fa-user" ></i> </a></button>
                             <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
                             @endauth
 

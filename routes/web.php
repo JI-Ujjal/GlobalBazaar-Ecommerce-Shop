@@ -22,6 +22,7 @@ use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\SubCategoryController;
 
 /*
@@ -50,6 +51,11 @@ Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
 Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
+
+
+////////////////-----Frontend--User------///////////////////
+Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
+Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
 
 
 
@@ -119,15 +125,17 @@ Route::post('/login-submit', [AuthController::class, 'loginSubmitForm'])->name('
 Route::middleware('CheckAdmin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    //Route
+    /////////-----Dashboard-----/////////
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
     Route::get('/master-dashboard', [AdminController::class, 'master']);
     Route::get('/admin-newPage', [AdminController::class, 'newPage'])->name('admin.newPage');
 
 
+
+    ////////////-----User Profile-----/////////////
     Route::get('/my-profile', [ProfileController::class, 'myProfile'])->name('my.profile');
     Route::put('/profile-update', [ProfileController::class, 'profileUpdate'])->name('profile.update');
-   
+
 
 
     Route::get('/category-list', [CategoryController::class, 'list'])->name('category.list');
@@ -178,7 +186,7 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     /////////////////------Order--------////////////////////
-    
+
 
     Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
     Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
@@ -187,7 +195,6 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     Route::get('/user-list', [UserController::class, 'userList'])->name('user.list');
-    
 });
 
 

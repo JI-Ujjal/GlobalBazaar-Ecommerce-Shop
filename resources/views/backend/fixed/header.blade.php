@@ -177,7 +177,7 @@
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{auth()->user()->name}}</span>
                 </a><!-- End Profile Iamge Icon -->
 
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile ml-t">
                     <li class="dropdown-header">
                         <h6>{{auth()->user()->name}}</h6>
                         <span>Web Developer</span>

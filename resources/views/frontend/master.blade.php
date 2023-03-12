@@ -7,6 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title> Ogani Grocery Shop </title>
 
     <!-- Google Font -->
@@ -14,6 +15,8 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{url('frontend/assets/css/bootstrap.min.css')}}" type="text/css">
+    <link href="{{ url('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url('backend/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{url('frontend/assets/css/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/elegant-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/nice-select.css')}}" type="text/css">
@@ -41,12 +44,14 @@
     <!-- Js Plugins -->
     <script src="{{url('frontend/assets/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{url('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/jquery-ui.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/jquery.slicknav.js')}}"></script>
     <script src="{{url('frontend/assets/js/mixitup.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     @notifyJs
 
     <script>

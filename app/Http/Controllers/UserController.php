@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function userList(){
-        $Users=User::all();
+        $Users=User::paginate(10);
         return view('backend.pages.user.userList', compact('Users'));
     }
 }

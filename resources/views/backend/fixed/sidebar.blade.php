@@ -4,13 +4,13 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('admin.newPage') }}">
-                <i class="bi bi-grid"></i>
+            <i class="fa fa-dashboard"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
             <a class="nav-link " href="{{ route('category.list') }}">
-                <i class="bi bi-grid"></i>
+                <i class="fa fa-"></i>
                 <span>Category</span>
             </a>
         </li>
@@ -49,7 +49,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link " href="{{ route('user.list') }}">
-                <i class="bi bi-grid"></i>
+                <i class="fa fa-fw fa-user"></i>
                 <span>Users</span>
             </a>
         </li>

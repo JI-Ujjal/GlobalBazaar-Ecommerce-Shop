@@ -12,7 +12,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
-                    <th scope="col">Password</th>
+                    
 
                 </tr>
             </thead>
@@ -23,14 +23,15 @@
                     <td>{{ $User->name }}</td>
                     <td>{{ $User->email }}</td>
                     <td>{{ $User->role }}</td>
-                    <td>{{ $User->password }}</td>
-
+                
                 </tr>
                 @endforeach
 
             </tbody>
         </table>
     </div>
+
+    {{$Users->Links()}}
 
 </div>
 

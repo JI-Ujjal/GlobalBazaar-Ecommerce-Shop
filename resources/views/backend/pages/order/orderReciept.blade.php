@@ -57,10 +57,10 @@
             </thead>
 
             <tbody>
-              @foreach($order_details as $order_detail)
+              @foreach($order_details as $key=>$order_detail)
 
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ $key+1 }}</th>
                 <td>{{$order_detail->product->product_name}}</td>
                 <td><img width="70px" src="{{url('uploads/product', $order_detail->product->product_image)}}" alt=""></td>
                 <td>{{$order_detail->qty}}</td>
@@ -95,7 +95,7 @@
                 </div>
 
             </ul>
-            <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span style="font-size: 25px;">{{$subtotal + $delivery}}</span></p>
+            <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span style="font-size: 25px;">{{$subtotal + $delivery}} BDT</span></p>
           </div>
         </div>
         <hr>

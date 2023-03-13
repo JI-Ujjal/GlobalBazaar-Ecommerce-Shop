@@ -51,7 +51,7 @@
     <script src="{{url('frontend/assets/js/mixitup.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    
     @notifyJs
 
     <script>

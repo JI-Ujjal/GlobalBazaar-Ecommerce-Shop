@@ -4,7 +4,7 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('admin.newPage') }}">
-            <i class="fa fa-dashboard"></i>
+                <i class="fa fa-dashboard"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
@@ -41,12 +41,21 @@
                 <span>Customer</span>
             </a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
-                <i class="bi bi-grid"></i>
+                <i class="fas fa-shopping-cart"></i>
                 <span>Order List</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('delivery.man.list') }}">
+                <i class="bi bi-truck"></i>
+                <span>Delivery Man</span>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link " href="{{ route('user.list') }}">
                 <i class="fa fa-fw fa-user"></i>

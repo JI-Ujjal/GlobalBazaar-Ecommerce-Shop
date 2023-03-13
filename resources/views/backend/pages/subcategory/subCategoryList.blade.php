@@ -23,7 +23,7 @@
     <tbody>
         @foreach ($Subcategory as $key=>$Subcategory)
         <tr>
-            <th scope="row">{{ $Subcategory-> $key+1 }}</th>
+            <th scope="row">{{ $key+1 }}</th>
             <td>{{ $Subcategory->subcategory_name}}</td>
             <td>{{ $Subcategory->subcategory_details }}</td>
             <td>{{ $Subcategory->categories->category_name}}</td>

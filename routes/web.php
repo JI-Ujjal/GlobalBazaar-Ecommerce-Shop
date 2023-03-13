@@ -23,6 +23,7 @@ use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\frontend\FrontUserController;
+use App\Http\Controllers\backend\DeliveryManController;
 use App\Http\Controllers\backend\SubCategoryController;
 
 /*
@@ -195,6 +196,12 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     Route::get('/user-list', [UserController::class, 'userList'])->name('user.list');
+
+
+    ///////////-------Delivery Man--------///////////
+    Route::get('/delivery-man-list', [DeliveryManController::class, 'dManList'])->name('delivery.man.list');
+    Route::get('/delivery-man-create', [DeliveryManController::class, 'dManCreate'])->name('delivery.man.create');
+    Route::post('/delivery-man-submit', [DeliveryManController::class, 'dManSubmit'])->name('delivery.man.submit');
 });
 
 

@@ -43,4 +43,57 @@ class DeliveryManController extends Controller
         return redirect()->route('delivery.man.list')->with('message', 'Delivery Man Created Successfully.');
     }
 
+    public function updateCustomer(Request $request, $id)
+    {
+        $request->validate([
+
+            'customer_name' => 'required',
+            'customer_image' => 'required',
+            'customer_order' => 'required',
+            'customer_address' => 'required'
+
+        ]);
+        $updateCustomer = DeliveryMan::find($id);
+
+        $fileName = null;
+        if ($request->hasFile('customer_image')) {
+            $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('customer_image')->getClientOriginalExtension();
+            $request->file('customer_image')->storeAs('uploads/customer', $fileName);
+        }
+
+        // dd($fileName);
+
+
+        $updateCustomer->update([
+            'customer_name' => $request->customer_name,
+            'customer_image' => $fileName,
+            'customer_order' => $request->customer_order,
+            'customer_address' => $request->customer_address
+
+        ]);
+        return redirect()->route('customer.list')->with('message', 'Customer Updated Successfully');
+    }
+
+
+    public function editCustomer($id)
+    {
+        $Customer = Customer::find($id);
+        return view('backend.pages.customer.customerEdit', compact('Customer'));
+    }
+
+
+    public function viewCustomer($id)
+    {
+
+        $Customer = Customer::find($id);
+        return view('backend.pages.customer.customerView', compact('Customer'));
+    }
+
+
+    public function deleteCustomer($id)
+    {
+        $Customer = Customer::find($id)->delete();
+        return redirect()->back();
+    }
+
 }

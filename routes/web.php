@@ -21,6 +21,7 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CheckoutController;
+use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\DeliveryManController;
@@ -57,6 +58,9 @@ Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.
 ////////////////-----Frontend--User------///////////////////
 Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
 Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
+
+
+Route::get('/switch-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('switch.language');
 
 
 

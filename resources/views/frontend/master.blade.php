@@ -7,13 +7,14 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title> Ogani Grocery Shop </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+
     <link rel="stylesheet" href="{{url('frontend/assets/css/bootstrap.min.css')}}" type="text/css">
     <link href="{{ url('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ url('backend/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="{{url('frontend/assets/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/style.css')}}" type="text/css">
+
     @notifyCss
 </head>
 
@@ -42,6 +44,8 @@
     @include('frontend.fixed.footer')
 
     <!-- Js Plugins -->
+
+
     <script src="{{url('frontend/assets/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/bootstrap.min.js')}}"></script>
     <script src="{{ url('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -51,7 +55,7 @@
     <script src="{{url('frontend/assets/js/mixitup.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
-    
+
     @notifyJs
 
     <script>

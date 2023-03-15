@@ -22,6 +22,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
 
                 </tr>
             </thead>
@@ -30,11 +31,11 @@
                 <tr>
                     <th scope="row">{{ $key+1 }}</th>
                     <td>{{ $deliveryman->man_name }}</td>
-                    <td><img width="70px" src="{{url('uploads/deliveryMan', $deliveryman->man_image)}}" alt="" srcset=""></td>
+                    <td><img width="80px" src="{{url('uploads/deliveryMan', $deliveryman->man_image)}}" alt="" srcset=""></td>
                     <td>{{ $deliveryman->man_email }}</td>
                     <td>{{ $deliveryman->man_number }}</td>
+                    <td>{{ $deliveryman->man_status }}</td>
                     <td><a class="btn btn-outline-primary" href="">Edit</a>
-                        <a class="btn btn-outline-success" href="">View</a>
                         <a class="btn btn-outline-danger" href="">Delete</a>
                     </td>
 

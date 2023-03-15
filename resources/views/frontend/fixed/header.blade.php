@@ -20,7 +20,7 @@
                         </div>
                         <div class="header__top__right__language">
                             <img width="30px" src="{{url('frontend/assets/img/Flag_of_Bangladesh.svg.png')}}" alt="">
-                            <div>English</div>
+                            <div>{{__('Language')}}</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
                                 <li><a href="#">Spanis</a></li>

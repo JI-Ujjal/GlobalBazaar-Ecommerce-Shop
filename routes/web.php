@@ -206,6 +206,9 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/delivery-man-list', [DeliveryManController::class, 'dManList'])->name('delivery.man.list');
     Route::get('/delivery-man-create', [DeliveryManController::class, 'dManCreate'])->name('delivery.man.create');
     Route::post('/delivery-man-submit', [DeliveryManController::class, 'dManSubmit'])->name('delivery.man.submit');
+    Route::get('/delivery-man-edit/{id}', [DeliveryManController::class, 'dManEdit'])->name('delivery.man.edit');
+    Route::put('/delivery-man-update/{id}', [DeliveryManController::class, 'dManUpdate'])->name('delivery.man.update');
+    Route::get('/delivery-man-delete/{id}', [DeliveryManController::class, 'dManDelete'])->name('delivery.man.delete');
 });
 
 

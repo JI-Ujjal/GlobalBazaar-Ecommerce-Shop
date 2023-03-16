@@ -64,9 +64,16 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, $id)
     {
-        $Product = Product::find($id)->update([
+        $updateProduct= Product::find($id);
+        $fileName = null;
+        if ($request->hasFile('product_image')) {
+            $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('product_image')->getClientOriginalExtension();
+            $request->file('product_image')->storeAs('uploads/product', $fileName);
+        }
+
+        $updateProduct->update([
             'product_name' => $request->product_name,
-            'product_image' => $request->product_image,
+            'product_image' => $fileName,
             'product_details' => $request->product_details,
             'product_price' => $request->product_price,
             'product_quantity' => $request->product_quantity,

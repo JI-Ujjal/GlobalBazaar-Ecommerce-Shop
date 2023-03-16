@@ -44,7 +44,7 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="bi bi-card-checklist"></i>
                 <span>Order List</span>
             </a>
         </li>

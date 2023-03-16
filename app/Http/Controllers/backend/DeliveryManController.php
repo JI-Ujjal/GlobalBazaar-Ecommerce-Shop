@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 
 class DeliveryManController extends Controller
 {
-    public function dManList(){
+    public function dManList()
+    {
         $deliverymans = DeliveryMan::paginate(10);
         return view('backend.deliveryMan.dManList', compact('deliverymans'));
     }
@@ -22,7 +23,7 @@ class DeliveryManController extends Controller
 
     public function dManSubmit(Request $request)
     {
-       
+
         $fileName = null;
         if ($request->hasFile('man_image')) {
             $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('man_image')->getClientOriginalExtension();
@@ -43,57 +44,43 @@ class DeliveryManController extends Controller
         return redirect()->route('delivery.man.list')->with('message', 'Delivery Man Created Successfully.');
     }
 
-    public function updateCustomer(Request $request, $id)
+
+    public function dManEdit($id)
     {
-        $request->validate([
+        $deliveryman = DeliveryMan::find($id);
+        return view('backend.deliveryMan.dManEdit', compact('deliveryman'));
+    }
 
-            'customer_name' => 'required',
-            'customer_image' => 'required',
-            'customer_order' => 'required',
-            'customer_address' => 'required'
 
-        ]);
-        $updateCustomer = DeliveryMan::find($id);
+    public function dManUpdate(Request $request, $id)
+    {
 
+        $updateman = DeliveryMan::find($id);
         $fileName = null;
-        if ($request->hasFile('customer_image')) {
-            $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('customer_image')->getClientOriginalExtension();
-            $request->file('customer_image')->storeAs('uploads/customer', $fileName);
+        if ($request->hasFile('man_image')) {
+            $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('man_image')->getClientOriginalExtension();
+            $request->file('man_image')->storeAs('uploads/deliveryMan', $fileName);
         }
 
         // dd($fileName);
 
 
-        $updateCustomer->update([
-            'customer_name' => $request->customer_name,
-            'customer_image' => $fileName,
-            'customer_order' => $request->customer_order,
-            'customer_address' => $request->customer_address
+        $updateman->update([
+            'man_name' => $request->man_name,
+            'man_email' => $request->man_email,
+            'man_number' => $request->man_number,
+            'man_image' => $fileName,
+            'man_status' => $request->man_status
 
         ]);
-        return redirect()->route('customer.list')->with('message', 'Customer Updated Successfully');
+        
+        return redirect()->route('delivery.man.list')->with('message', 'Delivery Man Updated Successfully.');
     }
 
-
-    public function editCustomer($id)
+    public function dManDelete($id)
     {
-        $Customer = Customer::find($id);
-        return view('backend.pages.customer.customerEdit', compact('Customer'));
+        $deliveryman = DeliveryMan::find($id)->delete();
+        notify()->success('Delete','Delivery Man Delete Successfully.');
+        return redirect()->route('delivery.man.list');
     }
-
-
-    public function viewCustomer($id)
-    {
-
-        $Customer = Customer::find($id);
-        return view('backend.pages.customer.customerView', compact('Customer'));
-    }
-
-
-    public function deleteCustomer($id)
-    {
-        $Customer = Customer::find($id)->delete();
-        return redirect()->back();
-    }
-
 }

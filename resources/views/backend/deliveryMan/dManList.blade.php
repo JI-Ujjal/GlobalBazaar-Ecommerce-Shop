@@ -35,8 +35,8 @@
                     <td>{{ $deliveryman->man_email }}</td>
                     <td>{{ $deliveryman->man_number }}</td>
                     <td>{{ $deliveryman->man_status }}</td>
-                    <td><a class="btn btn-outline-primary" href="">Edit</a>
-                        <a class="btn btn-outline-danger" href="">Delete</a>
+                    <td><a class="btn btn-outline-primary" href="{{ route('delivery.man.edit',$deliveryman->id) }}">Edit</a>
+                        <a class="btn btn-outline-danger" href="{{route('delivery.man.delete', $deliveryman->id)}}">Delete</a>
                     </td>
 
                 </tr>

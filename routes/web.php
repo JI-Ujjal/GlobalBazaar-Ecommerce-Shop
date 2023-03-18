@@ -25,6 +25,7 @@ use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\DeliveryManController;
+use App\Http\Controllers\backend\DeliveryOrderTrackingController;
 use App\Http\Controllers\backend\SubCategoryController;
 
 /*
@@ -209,6 +210,17 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/delivery-man-edit/{id}', [DeliveryManController::class, 'dManEdit'])->name('delivery.man.edit');
     Route::put('/delivery-man-update/{id}', [DeliveryManController::class, 'dManUpdate'])->name('delivery.man.update');
     Route::get('/delivery-man-delete/{id}', [DeliveryManController::class, 'dManDelete'])->name('delivery.man.delete');
+
+
+
+    //////////----------Order Tracking------------//////////////
+
+
+    Route::get('/dot-list', [DeliveryOrderTrackingController::class, 'dOrderTracking'])->name('dot.list');
+    Route::get('/dot-create', [DeliveryOrderTrackingController::class, 'dOTCreate'])->name('dot.create');
+    Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
+    Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
+    Route::put('/dot-update/{id}', [DeliveryOrderTrackingController::class, 'dOTUpdate'])->name('dot.update');
 });
 
 

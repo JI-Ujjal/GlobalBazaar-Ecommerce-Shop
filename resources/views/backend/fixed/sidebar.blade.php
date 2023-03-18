@@ -57,6 +57,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link " href="{{ route('dot.list') }}">
+                <i class="bi bi-truck"></i>
+                <span>Delivery Order Tracking</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link " href="{{ route('user.list') }}">
                 <i class="fa fa-fw fa-user"></i>
                 <span>Users</span>

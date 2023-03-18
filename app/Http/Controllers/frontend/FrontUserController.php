@@ -5,12 +5,14 @@ namespace App\Http\Controllers\frontend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class FrontUserController extends Controller
 {
     public function frontUserProfile()
     {
-        return view('frontend.frontUser.frontUser');
+        $Orders =Order::all();
+        return view('frontend.frontUser.frontUser', compact('Orders'));
     }
 
     public function frontUserProfileUpdate(Request $request)

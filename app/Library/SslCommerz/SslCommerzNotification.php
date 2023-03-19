@@ -190,12 +190,14 @@ class SslCommerzNotification extends AbstractSslCommerz
             return "Please provide a valid information list about transaction with transaction id, amount, success url, fail url, cancel url, store id and pass at least";
         }
 
+
         $header = [];
 
         $this->setApiUrl($this->config['apiDomain'] . $this->config['apiUrl']['make_payment']);
 
         // Set the required/additional params
         $this->setParams($requestData);
+
 
         // Set the authentication information
         $this->setAuthenticationInfo();
@@ -267,6 +269,7 @@ class SslCommerzNotification extends AbstractSslCommerz
         ##  Integration Required Parameters
         $this->setRequiredInfo($requestData);
 
+        // dd($requestData);
         ##  Customer Information
         $this->setCustomerInfo($requestData);
 
@@ -284,7 +287,6 @@ class SslCommerzNotification extends AbstractSslCommerz
     {
         $this->data['store_id'] = $this->getStoreId();
         $this->data['store_passwd'] = $this->getStorePassword();
-
         return $this->data;
     }
 

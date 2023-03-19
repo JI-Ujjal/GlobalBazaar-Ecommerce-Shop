@@ -93,7 +93,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name("pay.now");
     //Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
-    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/success', [SslCommerzPaymentController::class, 'success'])->name('payment.success');
     Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
     Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 });
@@ -199,6 +199,8 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
     Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
 
+
+    /////////////-------User-------////////////////
 
     Route::get('/user-list', [UserController::class, 'userList'])->name('user.list');
 

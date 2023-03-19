@@ -32,9 +32,10 @@ class AdminController extends Controller
 
     public function orderList()
     {
+        $Users = User::all();
         $Orders = Order::orderBy('id', 'DESC')->paginate(10);
         $order_details = OrderDetails::with("order")->with("product")->get();
-        return view('backend.pages.order.orderlist', compact('Orders', 'order_details'));
+        return view('backend.pages.order.orderlist', compact('Orders', 'order_details', 'Users'));
     }
 
     public function orderEdit($id)

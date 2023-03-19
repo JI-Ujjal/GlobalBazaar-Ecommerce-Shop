@@ -32,10 +32,10 @@
             <label for="">Tracking Status</label>
             <select name="status" class="from-control" id="">
                 <option selected>Choose...</option>
-                <option value="Order_Process">Order Process</option>
-                <option value="Order_Shipped">Order Shipped</option>
-                <option value="Order_EN_Route">Order EN Route</option>
-                <option value="Order_Arrived">Order Arrived</option>
+                <option value="Process">Order Process</option>
+                <option value="Shipped">Order Shipped</option>
+                <option value="Way">On The Way</option>
+                <option value="Arrived">Order Arrived</option>
             </select>
         </div>
 

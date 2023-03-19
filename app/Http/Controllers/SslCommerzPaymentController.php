@@ -72,10 +72,12 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
 
+
         #Before  going to initiate the payment order status need to insert or update as Pending.
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
+                "user_id" => auth()->user()->id,
                 'name' => $post_data['cus_name'],
                 'email' => $post_data['cus_email'],
                 'phone' => $post_data['cus_phone'],
@@ -89,11 +91,13 @@ class SslCommerzPaymentController extends Controller
 
 
 
-
         $sslc = new SslCommerzNotification();
+
+
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
 
+        // dd($payment_options);
         if (!is_array($payment_options)) {
             print_r($payment_options);
             $payment_options = array();
@@ -151,6 +155,7 @@ class SslCommerzPaymentController extends Controller
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
+
                 'name' => $post_data['cus_name'],
                 'email' => $post_data['cus_email'],
                 'phone' => $post_data['cus_phone'],
@@ -175,6 +180,7 @@ class SslCommerzPaymentController extends Controller
     {
         echo "Transaction is Successful";
 
+
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
         $currency = $request->input('currency');
@@ -186,6 +192,7 @@ class SslCommerzPaymentController extends Controller
             ->select('id', 'transaction_id', 'status', 'currency', 'amount', 'email')->first();
 
         if ($order_details->status == 'Pending') {
+
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
 
             if ($validation) {
@@ -213,20 +220,23 @@ class SslCommerzPaymentController extends Controller
         //notify()->success('Transection Successfully');
 
 
-        foreach (session()->get("myCart") as $key => $product) {
+        if (session()->get("myCart")) {
+            foreach (session()->get("myCart") as $key => $product) {
 
-            $dbProduct = Product::find($key);
-            $dbProduct->update(
-                [
-                    "product_quantity" => (int) $dbProduct->product_quantity - $product['product_quantity']
-                ]
-            );
-            OrderDetails::create([
-                "product_id" => $dbProduct->id,
-                "order_id" => $order_details->id,
-                "qty" => $product['product_quantity']
-            ]);
+                $dbProduct = Product::find($key);
+                $dbProduct->update(
+                    [
+                        "product_quantity" => (int) $dbProduct->product_quantity - $product['product_quantity']
+                    ]
+                );
+                OrderDetails::create([
+                    "product_id" => $dbProduct->id,
+                    "order_id" => $order_details->id,
+                    "qty" => $product['product_quantity']
+                ]);
+            }
         }
+
 
 
         Mail::to($order_details->email)->send(new OrderEmail());

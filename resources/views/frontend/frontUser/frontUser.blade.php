@@ -351,13 +351,14 @@
                                     <div class="row d-flex justify-content-center">
                                         <div class="col-12">
                                             <ul id="progressbar" class="text-center">
-                                            @if($Orders->status =='Order_Process')
-                                                <li class="active step0"></li>
                                                 
+                                                
+                                                <li class="active step0"></li>
+                                                       
                                                 <li class="active step0"></li>
                                                 <li class="active step0"></li>
                                                 <li class="step0"></li>
-                                                @endif
+                                                
                                             </ul>
                                         </div>
                                     </div>

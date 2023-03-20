@@ -4,61 +4,63 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('admin.newPage') }}">
-                <i class="fa fa-dashboard"></i>
+            <i class="bi bi-bug-fill"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
             <a class="nav-link " href="{{ route('category.list') }}">
-                <i class="fa fa-"></i>
+            <i class="bi bi-circle-square"></i>
                 <span>Category</span>
             </a>
         </li>
+        
+        <!--
         <li class="nav-item">
             <a class="nav-link " href="{{ route('sub.category.list') }}">
                 <i class="bi bi-grid"></i>
                 <span>Sub Category</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('brand.list') }}">
-                <i class="bi bi-grid"></i>
+            <i class="bi bi-bootstrap-fill"></i>
                 <span>Brand</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('product.list') }}">
-                <i class="bi bi-grid"></i>
+            <i class="bi bi-p-circle-fill"></i>
                 <span>Product</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('customer.list') }}">
-                <i class="bi bi-grid"></i>
+            <i class="bi bi-person-lines-fill"></i>
                 <span>Customer</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
-                <i class="bi bi-card-checklist"></i>
+            <i class="bi bi-stack"></i>
                 <span>Order List</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('delivery.man.list') }}">
-                <i class="bi bi-truck"></i>
+            <i class="bi bi-microsoft-teams"></i>
                 <span>Delivery Man</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('dot.list') }}">
-                <i class="bi bi-truck"></i>
+            <i class="bi bi-geo-alt-fill"></i>
                 <span>Delivery Order Tracking</span>
             </a>
         </li>

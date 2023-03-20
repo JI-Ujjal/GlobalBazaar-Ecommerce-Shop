@@ -56,16 +56,11 @@ Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
 
 
-////////////////-----Frontend--User------///////////////////
-Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
-Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
-
-
 Route::get('/switch-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('switch.language');
 
 
 
-//////////////////------------search-----------/////////////////
+//////////////////------------front search-----------/////////////////
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
@@ -84,9 +79,16 @@ Route::get('/delete-cart-item/{id}', [CartController::class, 'deleteCartItem'])-
 Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name('update.cart.item');
 
 
-///////////////////////-----------Check-out--------------///////////////////////
+
+
+///////////////////////-----------front user         &&&&&&     Check-out--------------///////////////////////
 
 Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
+    Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
+
+
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
 
@@ -97,6 +99,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
     Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 });
+
+
 
 
 /////////////////Blog Page////////////////////////

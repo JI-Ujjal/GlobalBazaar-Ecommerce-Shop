@@ -23,7 +23,9 @@ class Authenticate extends Middleware
         };
 
         if (!$request->expectsJson()) {
-            return route('login');
+
+            Alert::error('Unknown User! 😴', 'Login as Customer');
+            return route('home');
         }
     }
 }

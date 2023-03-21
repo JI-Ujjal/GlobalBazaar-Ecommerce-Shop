@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\OrderDetails;
 
 class FrontUserController extends Controller
 {
@@ -14,7 +15,8 @@ class FrontUserController extends Controller
     {
         $dots = DOT::all();
         $Orders =Order::all();
-        return view('frontend.frontUser.frontUser', compact('Orders', 'dots'));
+        $order_details = OrderDetails::all();
+        return view('frontend.frontUser.frontUser', compact('Orders', 'dots', 'order_details'));
     }
 
     public function frontUserProfileUpdate(Request $request)

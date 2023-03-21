@@ -177,7 +177,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-tracking">Order Tracking</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-order-list">Order Tracking List</button>
                         </li>
 
                     </ul>
@@ -329,74 +329,47 @@
 
                         <!-- Tracking -->
 
-                        <div class="tracking tab-pane fade pt-3" id="profile-change-tracking">
+                        <div class="tracking tab-pane fade pt-3" id="profile-change-order-list">
 
 
                             <div class="container px-1 px-md-4 py-5" style="margin-top: -80px;">
-                                <div>
 
+                                <div style="margin-top: 30px;">
+                                    <table class="table">
 
-                                    <div class="row d-flex justify-content-between px-3 top">
-                                        <div class="d-flex">
-                                            <h5>ORDER <span class="text-primary font-weight-bold">#Y34XDHR</span></h5>
-                                        </div>
-                                        <div class="d-flex flex-column text-sm-right">
-                                            <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
-                                            <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
-                                        </div>
-                                    </div>
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Order Date</th>
+                                                <th scope="col">Order Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Order Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($Orders as $Order)
+                                            <tr>
 
+                                                <th scope="row">{{$Order->id}}</th>
+                                                <td>{{$Order->created_at}}</td>
+                                                <td>{{$Order->amount}} BDT</td>
+                                                <td>
+                                                    <a type="submit" href="" class="btn btn-success">Tracking Status</a>
+                                                </td>
+                                                <td>
+                                                    <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                </td>
 
-                                    <!-- Add class 'active' to progress -->
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="col-12">
-                                            <ul id="progressbar" class="text-center">
-                                                
-                                                
-                                                <li class="active step0"></li>
-                                                       
-                                                <li class="active step0"></li>
-                                                <li class="active step0"></li>
-                                                <li class="step0"></li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row justify-content-between top">
-
-                                        <div class="row flex-column icon-content">
-                                            <div class="icon-size: 20px">
-                                                <i class="bi bi-card-checklist"></i>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <p class="font-weight-bold">Order<br>Processed</p>
-                                            </div>
-                                        </div>
-                                        <div class="row flex-column icon-content">
-                                            <i class="bi bi-box-seam"></i>
-                                            <div class="d-flex flex-column">
-                                                <p class="font-weight-bold">Order<br>Shipped</p>
-                                            </div>
-                                        </div>
-                                        <div class="row flex-column icon-content">
-                                            <i class="bi bi-truck"></i>
-                                            <div class="d-flex flex-column">
-                                                <p class="font-weight-bold">Order<br>En Route</p>
-                                            </div>
-                                        </div>
-                                        <div class="row flex-column icon-content">
-                                            <i class="bi bi-folder-check"></i>
-                                            <div class="d-flex flex-column">
-                                                <p class="font-weight-bold">Order<br>Arrived</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
                         </div>
+
+
 
 
 

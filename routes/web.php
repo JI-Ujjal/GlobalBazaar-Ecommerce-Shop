@@ -6,7 +6,8 @@ use App\Models\Customer;
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\BrandController;
 use App\Http\Controllers\frontend\BlogController;
@@ -25,8 +26,8 @@ use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\DeliveryManController;
-use App\Http\Controllers\backend\DeliveryOrderTrackingController;
 use App\Http\Controllers\backend\SubCategoryController;
+use App\Http\Controllers\backend\DeliveryOrderTrackingController;
 
 /*
 |--------------------------------------------------------------------------

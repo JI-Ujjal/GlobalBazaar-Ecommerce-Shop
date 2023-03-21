@@ -8,8 +8,8 @@
     <thead class="table-dark">
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">User Id</th>
-            <th scope="col">Order Name</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Order Receiver Name</th>
             <th scope="col">Order Email</th>
             <th scope="col">Order Phone</th>
             <th scope="col">Order Amount</th>
@@ -24,7 +24,7 @@
         @foreach ($Orders as $Order)
         <tr>
             <th scope="row">{{$Order->id}}</th>
-            <td>{{$Order->user->id}}</td>
+            <td>{{$Order->user->name}}</td>
             <td>{{$Order->name}}</td>
             <td>{{$Order->email}}</td>
             <td>{{$Order->phone}}</td>

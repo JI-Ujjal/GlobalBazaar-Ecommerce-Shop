@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Mail\OrderEmail;
+use App\Models\Order;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -74,8 +75,7 @@ class SslCommerzPaymentController extends Controller
 
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
-        $update_product = DB::table('orders')
-            ->where('transaction_id', $post_data['tran_id'])
+        $update_product = Order::where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
                 "user_id" => auth()->user()->id,
                 'name' => $post_data['cus_name'],
@@ -239,7 +239,7 @@ class SslCommerzPaymentController extends Controller
 
 
 
-        Mail::to($order_details->email)->send(new OrderEmail());
+        Mail::to('jahedulislamujjal0@gmail.com')->send(new OrderEmail());
 
         session()->forget('myCart');
 

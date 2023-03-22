@@ -347,6 +347,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
                                             @foreach ($Orders as $Order)
                                             <tr>
 
@@ -354,10 +355,10 @@
                                                 <td>{{$Order->created_at}}</td>
                                                 <td>{{$Order->amount}} BDT</td>
                                                 <td>
-                                                    <a type="submit" href="" class="btn btn-success">Tracking Status</a>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
                                                 </td>
                                                 <td>
-                                                    <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                    <a href="{{route('order.reciept', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
 
                                             </tr>

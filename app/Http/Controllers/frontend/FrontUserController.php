@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Models\DOT;
+
 use App\Models\User;
 use App\Models\Order;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\OrderDetails;
+use App\Models\DOT;
 
 class FrontUserController extends Controller
 {
     public function frontUserProfile()
     {
-        $dots = DOT::all();
-        $Orders =Order::all();
-        $order_details = OrderDetails::all();
-        return view('frontend.frontUser.frontUser', compact('Orders', 'dots', 'order_details'));
+        $Orders = Order::where("user_id", auth()->user()->id)->get();
+
+        return view('frontend.frontUser.frontUser', compact('Orders'));
     }
 
     public function frontUserProfileUpdate(Request $request)
@@ -40,5 +40,17 @@ class FrontUserController extends Controller
         notify()->success('Profile', 'Update Successfully');
 
         return redirect()->back();
+    }
+
+
+    public function frontUserOrderTrack($id)
+    {
+
+        $order = DOT::where("order_id", $id)->first();
+        // dd($order);
+        $status = ["Process", "Shipped", "Way", "Arrived"];
+        $ind = array_search($order->status, $status);
+
+        return view('frontend.frontUser.frontUserOrder', compact("ind"));
     }
 }

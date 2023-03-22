@@ -187,8 +187,7 @@ class SslCommerzPaymentController extends Controller
 
         $sslc = new SslCommerzNotification();
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
+        $order_details = Order::where('transaction_id', $tran_id)
             ->select('id', 'transaction_id', 'status', 'currency', 'amount', 'email')->first();
 
         if ($order_details->status == 'Pending') {
@@ -201,8 +200,7 @@ class SslCommerzPaymentController extends Controller
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
                 */
-                $update_product = DB::table('orders')
-                    ->where('transaction_id', $tran_id)
+                $update_product = Order::where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
                 echo "<br >Transaction is successfully Completed";

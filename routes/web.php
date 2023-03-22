@@ -87,8 +87,10 @@ Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
+    Route::get('/frontUser-order-track/{id}', [FrontUserController::class, 'frontUserOrderTrack'])->name('frontuser.order.track');
     Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
 
+    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
@@ -202,7 +204,6 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
     Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
     Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
-    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
 
 
     /////////////-------User-------////////////////

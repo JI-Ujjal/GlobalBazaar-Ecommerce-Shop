@@ -358,7 +358,7 @@
                                                     <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('order.reciept', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                    <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
 
                                             </tr>

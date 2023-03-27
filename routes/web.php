@@ -24,6 +24,7 @@ use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\frontend\FOReceiptController;
 use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\DeliveryManController;
 use App\Http\Controllers\backend\SubCategoryController;
@@ -90,7 +91,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/frontUser-order-track/{id}', [FrontUserController::class, 'frontUserOrderTrack'])->name('frontuser.order.track');
     Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
 
-    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
+    Route::get('/front-order-receipt/{id}', [FOReceiptController::class, 'frontOrderReceipt'])->name('front.order.receipt');
+
+    
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
@@ -202,8 +205,10 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
+    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
     Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
     Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
+
 
 
     /////////////-------User-------////////////////

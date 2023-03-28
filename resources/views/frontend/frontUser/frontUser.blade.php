@@ -326,7 +326,6 @@
                         </div>
 
 
-
                         <!-- Tracking -->
 
                         <div class="tracking tab-pane fade pt-3" id="profile-change-order-list">
@@ -348,10 +347,10 @@
                                         </thead>
                                         <tbody>
 
-                                            @foreach ($Orders as $Order)
+                                            @foreach ($Orders as $key=>$Order)
                                             <tr>
 
-                                                <th scope="row">{{$Order->id}}</th>
+                                                <th scope="row">{{$key + 1}}</th>
                                                 <td>{{$Order->created_at}}</td>
                                                 <td>{{$Order->amount}} BDT</td>
                                                 <td>

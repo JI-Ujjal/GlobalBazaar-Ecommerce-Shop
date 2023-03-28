@@ -6,7 +6,7 @@
         <div class="container mb-5 mt-3">
             <div class="row d-flex align-items-baseline">
                 <div class="col-xl-9">
-                    <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: {{auth()->user()->id}}</strong></p>
+                    <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: {{$Order->id}}</strong></p>
                 </div>
                 <div class="col-xl-3 float-end">
                     <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i class="fas fa-print text-primary"></i> Print</a>
@@ -36,7 +36,7 @@
                     <div class="col-xl-4">
                         <p class="text-muted">Invoice</p>
                         <ul class="list-unstyled">
-                            <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span>{{auth()->user()->id}}</li>
+                            <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span>{{$Order->id}}</li>
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
                                     {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>

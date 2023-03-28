@@ -4,7 +4,7 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('admin.newPage') }}">
-            <i class="bi bi-bug-fill"></i>
+            <i class="bi bi-amd"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->

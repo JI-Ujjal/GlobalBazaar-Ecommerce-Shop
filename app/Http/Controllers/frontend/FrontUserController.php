@@ -15,8 +15,8 @@ class FrontUserController extends Controller
     public function frontUserProfile()
     {
         $Orders = Order::where("user_id", auth()->user()->id)->get();
-
-        return view('frontend.frontUser.frontUser', compact('Orders'));
+        $recentOrder = Order::where("user_id",auth()->user()->id)->whereDate("updated_at", "=",date('Y-m-d'))->get();
+        return view('frontend.frontUser.frontUser', compact('Orders', 'recentOrder'));
     }
 
     public function frontUserProfileUpdate(Request $request)
@@ -50,7 +50,8 @@ class FrontUserController extends Controller
         // dd($order);
         $status = ["Process", "Shipped", "Way", "Arrived"];
         $ind = array_search($order->status, $status);
+        
 
-        return view('frontend.frontUser.frontUserOrder', compact("ind"));
+        return view('frontend.frontUser.frontUserOrder', compact('ind'));
     }
 }

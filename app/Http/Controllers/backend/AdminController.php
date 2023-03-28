@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\DOT;
 use App\Models\OrderDetails;
 use App\Models\Product;
 use App\Models\User;
@@ -35,6 +36,8 @@ class AdminController extends Controller
         $Users = User::all();
         $Orders = Order::orderBy('id', 'DESC')->paginate(10);
         $order_details = OrderDetails::with("order")->with("product")->get();
+    
+    
         return view('backend.pages.order.orderlist', compact('Orders', 'order_details', 'Users'));
     }
 

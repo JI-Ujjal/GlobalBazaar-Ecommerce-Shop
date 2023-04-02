@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class PageController extends Controller
 {
-    public function pagesShopDetails()
+    public function pagesShopDetails($id)
     {
-        return view('frontend.headermenu.pages.shopDetails');
+        $Products = Product::all();
+        $Product = Product::find($id);
+        return view('frontend.headermenu.pages.shopDetails', compact('Product', 'Products'));
     }
 }

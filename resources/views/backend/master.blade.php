@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Ogani E-commerce</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -79,6 +79,8 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <!-- Vendor JS Files -->
     <script src="{{ url('backend/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ url('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -89,18 +91,13 @@
     <script src="{{ url('backend/assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ url('backend/assets/vendor/php-email-form/validate.js') }}"></script>
 
-    <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
 
-
-
-    <script src="dashboard.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ url('backend/assets/js/main.js') }}"></script>

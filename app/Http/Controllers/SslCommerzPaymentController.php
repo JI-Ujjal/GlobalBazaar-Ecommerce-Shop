@@ -235,8 +235,7 @@ class SslCommerzPaymentController extends Controller
         }
 
 
-
-        Mail::to('jahedulislamujjal0@gmail.com')->send(new OrderEmail());
+        Mail::to(auth()->user()->email)->send(new OrderEmail());
 
         session()->forget('myCart');
 

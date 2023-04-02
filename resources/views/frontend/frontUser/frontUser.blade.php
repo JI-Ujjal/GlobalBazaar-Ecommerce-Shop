@@ -177,6 +177,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-recent-list">Recent Order</button>
+                        </li>
+
+                        <li class="nav-item">
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-order-list">Order Tracking List</button>
                         </li>
 
@@ -348,6 +352,49 @@
                                         <tbody>
 
                                             @foreach ($Orders as $key=>$Order)
+                                            <tr>
+
+                                                <th scope="row">{{$key + 1}}</th>
+                                                <td>{{$Order->created_at}}</td>
+                                                <td>{{$Order->amount}} BDT</td>
+                                                <td>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                </td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Recent Order -->
+
+                        <div class="tracking tab-pane fade pt-3" id="profile-change-recent-list">
+
+
+                            <div class="container px-1 px-md-4 py-5" style="margin-top: -80px;">
+
+                                <div style="margin-top: 30px;">
+                                    <table class="table">
+
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Order Date</th>
+                                                <th scope="col">Order Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Order Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($recentorders as $key=>$Order)
                                             <tr>
 
                                                 <th scope="row">{{$key + 1}}</th>

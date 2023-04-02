@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> foysal.kodeeo@gmail.com</li>
+                            <li><i class="fa fa-envelope"></i> ujjal.kodeeo@gmail.com</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
@@ -43,9 +43,9 @@
                             @endguest
 
                             @auth
-                            
+
                             <button class="btn btn-outline-success"><a href="{{route('frontuser.profile')}}"> {{auth()->user()->name}}
-                                <i class="fa fa-user" ></i> </a></button>
+                                    <i class="fa fa-user"></i> </a></button>
                             <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
                             @endauth
 
@@ -65,11 +65,11 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
+
                         <li class="active"><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('shop.page')}}">Shop</a></li>
                         <li><a href="">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{route('pages.shop.details')}}">Shop Details</a></li>
                                 <li><a href="{{route('cart.details')}}">Shoping Cart</a></li>
                                 <li><a href="{{route('checkout')}}">Check Out</a></li>
                                 <li><a href="{{route('blog.details')}}">Blog Details</a></li>

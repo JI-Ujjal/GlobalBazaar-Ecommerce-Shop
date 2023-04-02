@@ -58,7 +58,6 @@
         <div class="row featured__filter">
 
             @foreach($Products as $Product)
-
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{url('uploads/product', $Product->product_image)}}">
@@ -67,6 +66,7 @@
                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
 
                             @if($Product->product_quantity>0)
+
 
                             <li><a href="{{route('add.cart.page',$Product->id)}}"><i class="fa fa-shopping-cart"></i></a></li>
 
@@ -77,9 +77,10 @@
                             @endif
 
                         </ul>
+
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">{{$Product->product_name}}</a></h6>
+                        <h6><a href="{{route('pages.shop.details', $Product->id)}}">{{$Product->product_name}}</a></h6>
                         <h5>{{$Product->product_price}}</h5>
                     </div>
                 </div>
@@ -182,6 +183,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
                     <h4>Top Rated Products</h4>
@@ -247,6 +250,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="latest-product__text">
                     <h4>Review Products</h4>

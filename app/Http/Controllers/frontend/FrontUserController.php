@@ -15,8 +15,8 @@ class FrontUserController extends Controller
     public function frontUserProfile()
     {
         $Orders = Order::where("user_id", auth()->user()->id)->get();
-        $recentOrder = Order::where("user_id",auth()->user()->id)->whereDate("updated_at", "=",date('Y-m-d'))->get();
-        return view('frontend.frontUser.frontUser', compact('Orders', 'recentOrder'));
+        $recentorders = Order::where("user_id",auth()->user()->id)->whereDate("updated_at", "=",date('Y-m-d'))->get();
+        return view('frontend.frontUser.frontUser', compact('Orders', 'recentorders'));
     }
 
     public function frontUserProfileUpdate(Request $request)

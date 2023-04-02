@@ -46,8 +46,15 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
-            <i class="bi bi-stack"></i>
+            <i class="bi bi-card-checklist"></i>
                 <span>Order List</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('todays.order') }}">
+            <i class="bi bi-cart4"></i>
+                <span>Todays Order</span>
             </a>
         </li>
 

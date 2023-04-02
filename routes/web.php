@@ -72,7 +72,12 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 /////////////////////-----frontend Category routes-----//////////////////////////
 
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
-Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
+
+
+/////////////////////------- Shop Details -------//////////////////////////////
+
+Route::get('/pages-shop-details/{id}', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
+
 
 
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
@@ -93,7 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/front-order-receipt/{id}', [FOReceiptController::class, 'frontOrderReceipt'])->name('front.order.receipt');
 
-    
+
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
@@ -208,6 +213,9 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
     Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
     Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
+
+
+    Route::get('/todays-order', [AdminController::class, 'todaysOrder'])->name('todays.order');
 
 
 

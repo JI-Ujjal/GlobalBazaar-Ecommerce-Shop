@@ -23,12 +23,13 @@
             </a>
         </li> -->
 
+        <!--
         <li class="nav-item">
             <a class="nav-link " href="{{ route('brand.list') }}">
             <i class="bi bi-bootstrap-fill"></i>
                 <span>Brand</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('product.list') }}">
@@ -37,16 +38,17 @@
             </a>
         </li>
 
+        <!--
         <li class="nav-item">
             <a class="nav-link " href="{{ route('customer.list') }}">
             <i class="bi bi-person-lines-fill"></i>
                 <span>Customer</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
-            <i class="bi bi-card-checklist"></i>
+            <i class="bi bi-menu-button-wide-fill"></i>
                 <span>Order List</span>
             </a>
         </li>
@@ -76,6 +78,13 @@
             <a class="nav-link " href="{{ route('user.list') }}">
                 <i class="fa fa-fw fa-user"></i>
                 <span>Users</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('payment.list') }}">
+            <i class="bi bi-currency-dollar"></i>
+                <span>Payment</span>
             </a>
         </li>
 

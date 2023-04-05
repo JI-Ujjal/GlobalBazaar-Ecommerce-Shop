@@ -248,7 +248,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-warning" href="{{route('forgot.pass.link')}}">Reset Password</a>
                     <button type="submit" class="btn btn-primary">submit</button>
                 </div>
                 </form>

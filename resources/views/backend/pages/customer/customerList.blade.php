@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('contents')
 <div>
-    <h3>Customer Table</h3>
+<h3 style="font-size: 30px;">Customer List</h3>
     <a class="btn btn-success" href="{{route('customer.create.form')}}"> Create </a>
     
     @if(session()->has('message'))

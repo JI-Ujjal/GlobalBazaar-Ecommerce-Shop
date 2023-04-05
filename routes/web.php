@@ -15,6 +15,7 @@ use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\ShopController;
+use App\Http\Controllers\backend\PaymentController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\frontend\SearchController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\frontend\FOReceiptController;
 use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\DeliveryManController;
 use App\Http\Controllers\backend\SubCategoryController;
+use App\Http\Controllers\frontend\ForgotPasswordController;
 use App\Http\Controllers\backend\DeliveryOrderTrackingController;
 
 /*
@@ -140,6 +142,12 @@ Route::post('/register-submit', [AuthController::class, 'registerSubmitForm'])->
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login-submit', [AuthController::class, 'loginSubmitForm'])->name('login.submit');
 
+//////------Reset Password-------///////
+
+Route::get('/forgot-password-link', [ForgotPasswordController::class, 'forgotPass'])->name('forgot.pass.link');
+Route::post('/submit-forgot-password', [ForgotPasswordController::class, 'submitForgotPass'])->name('submit.forgot.pass');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPass'])->name('reset.pass.link');
+Route::post('/submit-reset-password', [ForgotPasswordController::class, 'submitResetPassword'])->name('submit.reset.pass');
 
 //all_routes
 
@@ -147,9 +155,9 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     /////////-----Dashboard-----/////////
-    Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
+ 
     Route::get('/master-dashboard', [AdminController::class, 'master']);
-    Route::get('/admin-newPage', [AdminController::class, 'newPage'])->name('admin.newPage');
+    Route::get('/dashboard', [AdminController::class, 'newPage'])->name('admin.newPage');
 
 
 
@@ -242,6 +250,9 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
     Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
     Route::put('/dot-update/{id}', [DeliveryOrderTrackingController::class, 'dOTUpdate'])->name('dot.update');
+
+
+    Route::get('/payment', [PaymentController::class, 'paymentList'])->name('payment.list');
 });
 
 

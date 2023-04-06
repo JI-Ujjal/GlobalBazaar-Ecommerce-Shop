@@ -6,6 +6,8 @@ namespace App\Http\Controllers\frontend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,14 +15,17 @@ class HomeController extends Controller
 {
     public function frontendHome()
     {
+
         $Products = Product::all();
         return view('frontend.pages.home',compact('Products'));
     }
 
     public function registerSubmitForm(Request $request)
     {
-        User::create([
+        
+        Customer::create([
             'name' => $request->name,
+            'image' =>$request->image,
             'email' => $request->email,
             'password' => bcrypt($request['password'])
 

@@ -1,3 +1,4 @@
+
 <header class="header">
     <div class="header__top">
         <div class="container">
@@ -107,17 +108,15 @@
                             <span>All departments</span>
                         </div>
                         <ul @if(request()->route()->getName() !='home') style="display: none;" @endif>
-                            <li><a href="#">Fresh Meat</a></i>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+
+
+                            @foreach($Categories as $Category)
+
+                            <li><a href="#">{{$Category->category_name}}</a></i>
+                                @endforeach
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -189,11 +188,19 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="exampleInputPassword1">Image</label>
+                            <input type="file" name="image" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Image">
+
+
+                        </div>
+
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Email Address</label>
                             <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
 
 
                         </div>
+
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>

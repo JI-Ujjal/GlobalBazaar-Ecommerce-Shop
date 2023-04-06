@@ -29,7 +29,7 @@ class ForgotPasswordController extends Controller
 
         ]);
 
-        $token = Str::random(64);                   // Str = 
+        $token = Str::random(64);                // Str = class or helper function provides various string manipulation method
 
         DB::table('password_resets')->insert([
 

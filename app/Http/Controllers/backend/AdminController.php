@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DOT;
 use App\Models\OrderDetails;
 use App\Models\Product;
@@ -26,7 +27,7 @@ class AdminController extends Controller
     
     public function newPage()
     {
-        $totalCustomer = User::get()->count();
+        $totalCustomer = Customer::get()->count();
         $totalOrderAmount = Order::pluck('amount')->toArray();
 
         $totalAmount = array_sum($totalOrderAmount);

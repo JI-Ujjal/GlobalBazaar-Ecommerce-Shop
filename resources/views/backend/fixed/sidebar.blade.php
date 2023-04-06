@@ -4,17 +4,17 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('admin.newPage') }}">
-            <i class="bi bi-amd"></i>
+                <i class="bi bi-amd"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
             <a class="nav-link " href="{{ route('category.list') }}">
-            <i class="bi bi-circle-square"></i>
+                <i class="bi bi-circle-square"></i>
                 <span>Category</span>
             </a>
         </li>
-        
+
         <!--
         <li class="nav-item">
             <a class="nav-link " href="{{ route('sub.category.list') }}">
@@ -33,43 +33,43 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('product.list') }}">
-            <i class="bi bi-p-circle-fill"></i>
+                <i class="bi bi-p-circle-fill"></i>
                 <span>Product</span>
             </a>
         </li>
 
-        <!--
+
         <li class="nav-item">
             <a class="nav-link " href="{{ route('customer.list') }}">
             <i class="bi bi-person-lines-fill"></i>
                 <span>Customer</span>
             </a>
-        </li> -->
+        </li> 
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
-            <i class="bi bi-menu-button-wide-fill"></i>
-                <span>Order List</span>
+                <i class="bi bi-menu-button-wide-fill"></i>
+                <span>Order</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('todays.order') }}">
-            <i class="bi bi-cart4"></i>
+                <i class="bi bi-cart4"></i>
                 <span>Todays Order</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('delivery.man.list') }}">
-            <i class="bi bi-microsoft-teams"></i>
+                <i class="bi bi-microsoft-teams"></i>
                 <span>Delivery Man</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('dot.list') }}">
-            <i class="bi bi-geo-alt-fill"></i>
+                <i class="bi bi-geo-alt-fill"></i>
                 <span>Delivery Order Tracking</span>
             </a>
         </li>
@@ -83,8 +83,16 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('payment.list') }}">
-            <i class="bi bi-currency-dollar"></i>
+                <i class="bi bi-currency-dollar"></i>
                 <span>Payment</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('contact.us') }}">
+            <i class="bi bi-person-rolodex"></i>
+                <span>Contact Us</span>
             </a>
         </li>
 

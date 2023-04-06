@@ -234,7 +234,7 @@ class SslCommerzPaymentController extends Controller
             }
         }
 
-
+        
         Mail::to(auth()->user()->email)->send(new OrderEmail());
 
         session()->forget('myCart');

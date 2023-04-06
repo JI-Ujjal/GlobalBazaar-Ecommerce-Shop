@@ -18,7 +18,7 @@
                 <th scope="col">User Id</th>
                 <th scope="col">Transection Id</th>
                 <th scope="col">Amount</th>
-                <th scope="col">Action</th>
+    
 
 
             </tr>
@@ -31,9 +31,7 @@
                 <td>{{$payment->user_id}}</td>
                 <td>{{$payment->transaction_id}}</td>
                 <td>{{$payment->amount}} BDT</td>
-                <td>
-                    <a class="btn btn-danger" href="">Delete</a>
-                <td>
+                
             </tr>
             @endforeach
         </tbody>

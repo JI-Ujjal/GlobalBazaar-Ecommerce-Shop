@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('contents')
 
-<h3 style="font-size: xx-large;">Order List</h3>
+<h3 style="font-size: xx-large;">Todays Order List</h3>
 
 <table class="table">
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f448a86bea8b27ad82382f18cbe51965",
+    "content-hash": "927595b607010306e0b5f17f76dbb76d",
     "packages": [
         {
             "name": "brick/math",
@@ -896,6 +896,68 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "iqbalhasandev/laravel-bulksmsbd",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iqbalhasandev/laravel-bulksmsbd.git",
+                "reference": "c648fdac03a30b1c4c2c2c655067f17e52111c51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iqbalhasandev/laravel-bulksmsbd/zipball/c648fdac03a30b1c4c2c2c655067f17e52111c51",
+                "reference": "c648fdac03a30b1c4c2c2c655067f17e52111c51",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "iqbalhasandev\\bulksmsbd\\BulkSMSBDServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "iqbalhasandev\\bulksmsbd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "IQBAL HASAN",
+                    "email": "iqbalhasan.dev@gmail.com"
+                }
+            ],
+            "description": "Integrate SMS system into your project easily with bulk sms bd's API via this plugin.",
+            "keywords": [
+                "bulksms",
+                "bulksmsbd",
+                "laravel-bulksms",
+                "laravel-bulksmsbd",
+                "laravel-package",
+                "laravel-plugin",
+                "laravel-sms-gateway",
+                "library",
+                "package",
+                "plugin",
+                "sms-api"
+            ],
+            "support": {
+                "issues": "https://github.com/iqbalhasandev/laravel-bulksmsbd/issues",
+                "source": "https://github.com/iqbalhasandev/laravel-bulksmsbd/tree/3.0.0"
+            },
+            "abandoned": "nanopkg/laravel-bulk-sms-bd",
+            "time": "2023-01-09T06:07:40+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3207,6 +3269,70 @@
                 }
             ],
             "time": "2023-02-15T07:13:11+00:00"
+        },
+        {
+            "name": "shipu/muthofun-sms-gateway",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shipu/muthofun-sms-gateway.git",
+                "reference": "b6c1ffdeef3f33602f6ee8931307d81bc4899250"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shipu/muthofun-sms-gateway/zipball/b6c1ffdeef3f33602f6ee8931307d81bc4899250",
+                "reference": "b6c1ffdeef3f33602f6ee8931307d81bc4899250",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shipu\\MuthoFun\\MuthoFunServiceProvider"
+                    ],
+                    "aliases": {
+                        "MUTHOFUN": "Shipu\\MuthoFun\\Facades\\MuthoFun"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Shipu\\MuthoFun\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shipu Ahamed",
+                    "email": "shipuahamed01@gmail.com"
+                }
+            ],
+            "description": "PHP client for MuthoFun SMS Payment Gateway API",
+            "keywords": [
+                "api",
+                "gateway",
+                "laravel",
+                "lumen",
+                "muthofun",
+                "php",
+                "php-muthofun",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/Shipu/muthofun-sms-gateway/issues",
+                "source": "https://github.com/Shipu/muthofun-sms-gateway/tree/v2.0.0"
+            },
+            "time": "2020-09-27T07:27:45+00:00"
         },
         {
             "name": "spatie/fractalistic",

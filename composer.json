@@ -7,12 +7,14 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "iqbalhasandev/laravel-bulksmsbd": "^3.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "mckenziearts/laravel-notify": "^2.3",
         "musonza/chat": "^6.2",
         "realrashid/sweet-alert": "^6.0",
+        "shipu/muthofun-sms-gateway": "^2.0",
         "yajra/laravel-datatables-oracle": "^10.3"
     },
     "require-dev": {

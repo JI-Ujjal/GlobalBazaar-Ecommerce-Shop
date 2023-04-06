@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         //return view('backend.pages.categoryList');
         //read 2nd
-        $Categories = Category::paginate(3);
+        $Categories = Category::paginate(10);
         return view('backend.pages.category.categoryList', compact('Categories'));
     }
 

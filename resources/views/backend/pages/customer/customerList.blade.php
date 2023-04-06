@@ -15,19 +15,19 @@
                 <th scope="col">Id</th>
                 <th scope="col">Customer Name</th>
                 <th scope="col">Customer Image</th>
-                <th scope="col">Customer Order</th>
-                <th scope="col">Customer Address</th>
-                <th scope="col">Edit/Delete</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($Customers as $Customer)
             <tr>
                 <th scope="row">{{$Customer->id}}</th>
-                <td>{{$Customer->customer_name}}</td>
-                <td><img width="70px" src="{{ url('uploads/customer', $Customer->customer_image) }}" alt="" srcset=""></td>
-                <td>{{$Customer->customer_order}}</td>
-                <td>{{$Customer->customer_address}}</td>
+                <td>{{$Customer->name}}</td>
+                <td><img width="70px" src="{{ url('uploads/customer', $Customer->image) }}" alt="" srcset=""></td>
+                <td>{{$Customer->email}}</td>
+                <td>{{$Customer->password}}</td>
                 <td>
                     <a class="btn btn-success" href="{{route('edit.customer',$Customer->id)}}">edit</a>
                     <a class="btn btn-primary" href="{{route('view.customer',$Customer->id)}}">view</a>

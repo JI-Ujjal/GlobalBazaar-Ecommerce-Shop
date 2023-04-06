@@ -20,6 +20,7 @@ use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CheckoutController;
@@ -104,6 +105,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
+   
+
+
+    //////////---------- ssl commerz-----------//////////
+
 
     Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name("pay.now");
     //Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
@@ -124,6 +130,7 @@ Route::get('/blog-details', [BlogController::class, 'blogDetails'])->name('blog.
 
 //////////////////////Contact//////////////////////////////
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::get('/contact-submit', [ContactController::class, 'contactSubmit'])->name('contact.submit');
 
 
 
@@ -155,7 +162,7 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     /////////-----Dashboard-----/////////
- 
+
     Route::get('/master-dashboard', [AdminController::class, 'master']);
     Route::get('/dashboard', [AdminController::class, 'newPage'])->name('admin.newPage');
 
@@ -252,7 +259,16 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::put('/dot-update/{id}', [DeliveryOrderTrackingController::class, 'dOTUpdate'])->name('dot.update');
 
 
+    ////////////////----------------payment list----------------////////////////
+
     Route::get('/payment', [PaymentController::class, 'paymentList'])->name('payment.list');
+
+
+    //////////-------------contact us-------------//////////////////
+
+    Route::get('/contact-us-list', [ContactUsController::class, 'contactUsList'])->name('contact.us');
+    Route::get('/contact-edit/{id}', [ContactUsController::class, 'contactEdit'])->name('edit.contact');
+    Route::post('/contact-reply-submit/{id}', [ContactUsController::class, 'contactReplySubmit'])->name('contact.reply.submit');
 });
 
 

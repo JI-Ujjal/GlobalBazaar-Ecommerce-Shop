@@ -30,16 +30,10 @@
                     <div class="sidebar__item">
                         <h4>Department</h4>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
+                            @foreach($Categories as $Category)
+
+                            <li><a href="#">{{$Category->category_name}}</a></i>
+                                @endforeach
                         </ul>
                     </div>
                     <div class="sidebar__item">
@@ -196,36 +190,37 @@
                     <div class="section-title product__discount__title">
                         <h2>All Products</h2>
                     </div>
-                    @foreach($Products as $Product)
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="{{url('uploads/product', $Product->product_image)}}">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                    <div class="row">
+                        @foreach($Products as $Product)
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg" data-setbg="{{url('uploads/product', $Product->product_image)}}">
+                                    <ul class="featured__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
 
-                                    @if($Product->product_quantity>0)
+                                        @if($Product->product_quantity>0)
 
 
-                                    <li><a href="{{route('add.cart.page',$Product->id)}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="{{route('add.cart.page',$Product->id)}}"><i class="fa fa-shopping-cart"></i></a></li>
 
-                                    @else
+                                        @else
 
-                                    <p style="color: red;">Stock Out</p>
+                                        <p style="color: red;">Stock Out</p>
 
-                                    @endif
+                                        @endif
 
-                                </ul>
+                                    </ul>
 
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="{{route('pages.shop.details', $Product->id)}}">{{$Product->product_name}}</a></h6>
-                                <h5>{{$Product->product_price}}</h5>
+                                </div>
+                                <div class="featured__item__text">
+                                    <h6><a href="{{route('pages.shop.details', $Product->id)}}">{{$Product->product_name}}</a></h6>
+                                    <h5>{{$Product->product_price}}</h5>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-
-                    @endforeach
                 </div>
             </div>
         </div>

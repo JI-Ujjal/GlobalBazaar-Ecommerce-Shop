@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <ul class="list-unstyled">
-                            <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{auth()->user()->name}}</span></li>
+                            <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{auth('customer')->user()->name}}</span></li>
                            
                             <li class="text-muted">{{$Order->address}}</li>
                             <li class="text-muted"><i class="fa fa-phone"></i> 01308260888</li>

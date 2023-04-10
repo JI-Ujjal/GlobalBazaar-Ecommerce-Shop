@@ -15,7 +15,7 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Order Id</th>
-                <th scope="col">User Id</th>
+                <th scope="col">Customer Id</th>
                 <th scope="col">Transection Id</th>
                 <th scope="col">Amount</th>
     
@@ -28,7 +28,7 @@
             <tr>
                 <th scope="row">{{$key+1}}</th>
                 <td>{{$payment->id}}</td>
-                <td>{{$payment->user_id}}</td>
+                <td>{{$payment->customer_id}}</td>
                 <td>{{$payment->transaction_id}}</td>
                 <td>{{$payment->amount}} BDT</td>
                 

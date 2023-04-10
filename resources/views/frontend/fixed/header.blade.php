@@ -1,4 +1,3 @@
-
 <header class="header">
     <div class="header__top">
         <div class="container">
@@ -29,9 +28,19 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            @guest
 
 
+
+
+
+
+                            @auth('customer')
+
+                            <button class="btn btn-outline-success"><a href="{{route('frontuser.profile')}}"> {{auth('customer')->user()->name}}
+                                    <i class="fa fa-user"></i> </a></button>
+                            <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
+
+                            @else
 
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registration">
                                 Registration
@@ -40,14 +49,6 @@
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login">
                                 Login
                             </button>
-
-                            @endguest
-
-                            @auth
-
-                            <button class="btn btn-outline-success"><a href="{{route('frontuser.profile')}}"> {{auth()->user()->name}}
-                                    <i class="fa fa-user"></i> </a></button>
-                            <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
                             @endauth
 
                         </div>

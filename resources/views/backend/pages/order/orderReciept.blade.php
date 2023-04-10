@@ -1,3 +1,4 @@
+
 @extends('backend.master')
 @section('contents')
 
@@ -6,7 +7,7 @@
     <div class="container mb-5 mt-3">
       <div class="row d-flex align-items-baseline">
         <div class="col-xl-9">
-          <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: {{auth()->user()->id}}</strong></p>
+          <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: {{$Order->customer_id}}</strong></p>
         </div>
         <div class="col-xl-3 float-end">
           <button onclick="printReport()" type="button" class="btn btn-success">Print</button>
@@ -26,7 +27,7 @@
         <div class="row">
           <div class="col-xl-8">
             <ul class="list-unstyled">
-              <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{auth()->user()->name}}</span></li>
+              <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{$Order->customer->name}}</span></li>
               <li class="text-muted">Street, City</li>
               <li class="text-muted">State, Country</li>
               <li class="text-muted"><i class="bi bi-telephone-fill"></i></i></i>  {{$Order->phone}}</li>
@@ -35,7 +36,7 @@
           <div class="col-xl-4">
             <p class="text-muted">Invoice</p>
             <ul class="list-unstyled">
-              <li class="text-muted"><i class="bi bi-award"></i> <span class="fw-bold">ID:</span> {{auth()->user()->id}} </li>
+              <li class="text-muted"><i class="bi bi-award"></i> <span class="fw-bold">ID:</span> {{$Order->customer_id}} </li>
               <li class="text-muted"><i class="bi bi-alarm"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
               <li class="text-muted"><i class="bi bi-bezier2"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
                   {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>

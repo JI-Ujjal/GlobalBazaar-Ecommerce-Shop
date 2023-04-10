@@ -12,7 +12,7 @@ class PaymentController extends Controller
     public function paymentList()
     {
 
-        $payments = Order::select('id','user_id','transaction_id','amount')->paginate(10);
+        $payments = Order::select('id','customer_id','transaction_id','amount')->paginate(10);
 
         return view('backend.pages.payment.paymentList', compact('payments'));
     }

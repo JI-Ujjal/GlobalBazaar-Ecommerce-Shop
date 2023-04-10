@@ -23,7 +23,7 @@ class CheckAdminMiddleware
             return $next($request);
         } else {
             Alert::error('Admin ? 🙄', 'You are not Admin 😡');
-            return back();
+            return redirect()->route('login');
         }
     }
 }

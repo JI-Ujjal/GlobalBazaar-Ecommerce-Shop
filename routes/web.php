@@ -59,6 +59,7 @@ Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
 Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
+Route::post('/front-pass-update',[HomeController::class, 'frontPassUpdate'])->name('front.pass.update');
 
 
 Route::get('/switch-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('switch.language');
@@ -93,11 +94,11 @@ Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name
 
 ///////////////////////-----------front user         &&&&&&     Check-out--------------///////////////////////
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth:customer']], function () {
 
     Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
     Route::get('/frontUser-order-track/{id}', [FrontUserController::class, 'frontUserOrderTrack'])->name('frontuser.order.track');
-    Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
+    Route::post('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
 
     Route::get('/front-order-receipt/{id}', [FOReceiptController::class, 'frontOrderReceipt'])->name('front.order.receipt');
 
@@ -105,7 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
-   
+
 
 
     //////////---------- ssl commerz-----------//////////

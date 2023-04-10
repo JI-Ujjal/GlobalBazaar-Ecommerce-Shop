@@ -24,7 +24,7 @@ class AdminController extends Controller
         return view('backend.master');
     }
 
-    
+
     public function newPage()
     {
         $totalCustomer = Customer::get()->count();
@@ -34,7 +34,17 @@ class AdminController extends Controller
         $totalOrder = Order::whereDate('created_at', '=', date('Y-m-d'))->get()->count();
 
         $Orders = Order::orderBy('id', 'DESC')->paginate(10);
-        return view('backend.pages.newPage', compact('Orders', 'totalOrder', 'totalCustomer', 'totalAmount'));
+
+
+        
+        $totalOrderCount = [];
+
+      for ($m = 1; $m <= 12; $m++) {
+         $count= Order::whereMonth("created_at", $m)->get()->count();
+         $totalOrderCount[] =$count;
+      }
+
+        return view('backend.pages.newPage', compact('Orders', 'totalOrder', 'totalCustomer', 'totalAmount', 'totalOrderCount'));
     }
 
 
@@ -49,12 +59,13 @@ class AdminController extends Controller
 
     public function orderList()
     {
-        $Users = User::all();
+
+        $Customers = Customer::all();
         $Orders = Order::orderBy('id', 'DESC')->paginate(10);
         $order_details = OrderDetails::with("order")->with("product")->get();
 
 
-        return view('backend.pages.order.orderlist', compact('Orders', 'order_details', 'Users'));
+        return view('backend.pages.order.orderlist', compact('Orders', 'order_details', 'Customers'));
     }
 
     public function orderEdit($id)
@@ -75,13 +86,11 @@ class AdminController extends Controller
 
     public function orderReciept($id)
     {
+
         $Order = Order::find($id);
 
         $Product = Product::all();
         $order_details = OrderDetails::where("order_id", $id)->get();
         return view('backend.pages.order.orderReciept', compact('Order', 'order_details', 'Product'));
     }
-
-
-    
 }

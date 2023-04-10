@@ -8,14 +8,16 @@ use App\Models\Order;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\DOT;
 
 class FrontUserController extends Controller
 {
     public function frontUserProfile()
     {
-        $Orders = Order::where("user_id", auth()->user()->id)->get();
-        $recentorders = Order::where("user_id",auth()->user()->id)->whereDate("updated_at", "=",date('Y-m-d'))->get();
+
+        $Orders = Order::where("customer_id", auth('customer')->user()->id)->get();
+        $recentorders = Order::where("customer_id", auth('customer')->user()->id)->whereDate("updated_at", "=", date('Y-m-d'))->get();
         return view('frontend.frontUser.frontUser', compact('Orders', 'recentorders'));
     }
 
@@ -23,17 +25,16 @@ class FrontUserController extends Controller
     {
 
 
-        $fileName = (auth()->user()->image);
+        $fileName = (auth('customer')->user()->image);
         if ($request->hasFile('image')) {
             $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('uploads/frontUser', $fileName);
         }
 
-        $User = User::find(auth()->user()->id)->update([
+        Customer::find(auth('customer')->user()->id)->update([
             'image' => $fileName,
             'name' => $request->name,
             'email' => $request->email,
-            'phone' => $request->phone
 
         ]);
 
@@ -50,8 +51,10 @@ class FrontUserController extends Controller
         // dd($order);
         $status = ["Process", "Shipped", "Way", "Arrived"];
         $ind = array_search($order->status, $status);
-        
+
 
         return view('frontend.frontUser.frontUserOrder', compact('ind'));
     }
+
+  
 }

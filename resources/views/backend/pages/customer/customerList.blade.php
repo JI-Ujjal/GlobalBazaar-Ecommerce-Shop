@@ -25,7 +25,7 @@
             <tr>
                 <th scope="row">{{$Customer->id}}</th>
                 <td>{{$Customer->name}}</td>
-                <td><img width="70px" src="{{ url('uploads/customer', $Customer->image) }}" alt="" srcset=""></td>
+                <td><img width="70px" src="{{ url('uploads/frontUser', $Customer->image) }}" alt="" srcset=""></td>
                 <td>{{$Customer->email}}</td>
                 <td>{{$Customer->password}}</td>
                 <td>

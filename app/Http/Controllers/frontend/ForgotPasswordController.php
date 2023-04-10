@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Support\Str;
+
+
 use Illuminate\Http\Request;
-
-
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -25,7 +26,7 @@ class ForgotPasswordController extends Controller
 
         $request->validate([
 
-            'email' => 'required|email|exists:users',
+            'email' => 'required|email|exists:customers',
 
         ]);
 
@@ -64,7 +65,7 @@ class ForgotPasswordController extends Controller
 
         $request->validate([
 
-            'email' => 'required|email|exists:users',
+            'email' => 'required|email|exists:customers',
 
             'password' => 'required|string|min:6|confirmed',
 
@@ -89,7 +90,7 @@ class ForgotPasswordController extends Controller
             return back()->withInput()->with('error', 'Invalid token!');
         }
 
-        $user = User::where('email', $request->email)
+        $Customer = Customer::where('email', $request->email)
 
             ->update(['password' => Hash::make($request->password)]);
 

@@ -77,7 +77,7 @@ class SslCommerzPaymentController extends Controller
         #Before  going to initiate the payment order status need to insert or update as Pending.
         $update_product = Order::where('transaction_id', $post_data['tran_id'])
             ->updateOrCreate([
-                "user_id" => auth()->user()->id,
+                "customer_id" => auth('customer')->user()->id,
                 'name' => $post_data['cus_name'],
                 'email' => $post_data['cus_email'],
                 'phone' => $post_data['cus_phone'],
@@ -235,7 +235,7 @@ class SslCommerzPaymentController extends Controller
         }
 
         
-        Mail::to(auth()->user()->email)->send(new OrderEmail());
+        Mail::to(auth('customer')->user()->email)->send(new OrderEmail());
 
         session()->forget('myCart');
 

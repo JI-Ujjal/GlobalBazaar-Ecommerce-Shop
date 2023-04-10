@@ -41,7 +41,7 @@ class CustomerController extends Controller
         $fileName = null;
         if ($request->hasFile('image')) {
             $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('uploads/customer', $fileName);
+            $request->file('image')->storeAs('uploads/frontUser', $fileName);
         }
 
         // dd($fileName);
@@ -75,7 +75,7 @@ class CustomerController extends Controller
         $fileName = null;
         if ($request->hasFile('image')) {
             $fileName = 'BOYZOBD' . '.' . date('Ymdhmsis') . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('uploads/customer', $fileName);
+            $request->file('image')->storeAs('uploads/frontUser', $fileName);
         }
 
         // dd($fileName);

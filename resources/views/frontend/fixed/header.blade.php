@@ -5,7 +5,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> foysal.kodeeo@gmail.com</li>
+                            <li><i class="fa fa-envelope"></i> ujjal.kodeeo@gmail.com</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
@@ -28,9 +28,19 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            @guest
 
 
+
+
+
+
+                            @auth('customer')
+
+                            <button class="btn btn-outline-success"><a href="{{route('frontuser.profile')}}"> {{auth('customer')->user()->name}}
+                                    <i class="fa fa-user"></i> </a></button>
+                            <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
+
+                            @else
 
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registration">
                                 Registration
@@ -39,14 +49,6 @@
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login">
                                 Login
                             </button>
-
-                            @endguest
-
-                            @auth
-                            
-                            <button class="btn btn-outline-success"><a href="{{route('frontuser.profile')}}"> {{auth()->user()->name}}
-                                <i class="fa fa-user" ></i> </a></button>
-                            <button class="btn btn-success"><a href="{{route('front.logout')}}">Log Out</a></button>
                             @endauth
 
                         </div>
@@ -65,11 +67,11 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
+
                         <li class="active"><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('shop.page')}}">Shop</a></li>
                         <li><a href="">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{route('pages.shop.details')}}">Shop Details</a></li>
                                 <li><a href="{{route('cart.details')}}">Shoping Cart</a></li>
                                 <li><a href="{{route('checkout')}}">Check Out</a></li>
                                 <li><a href="{{route('blog.details')}}">Blog Details</a></li>
@@ -107,17 +109,15 @@
                             <span>All departments</span>
                         </div>
                         <ul @if(request()->route()->getName() !='home') style="display: none;" @endif>
-                            <li><a href="#">Fresh Meat</a></i>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+
+
+                            @foreach($Categories as $Category)
+
+                            <li><a href="#">{{$Category->category_name}}</a></i>
+                                @endforeach
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -195,6 +195,7 @@
 
                         </div>
 
+
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
@@ -248,7 +249,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-warning" href="{{route('forgot.pass.link')}}">Reset Password</a>
                     <button type="submit" class="btn btn-primary">submit</button>
                 </div>
                 </form>

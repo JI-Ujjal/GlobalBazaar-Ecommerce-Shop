@@ -15,18 +15,22 @@ use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\ShopController;
+use App\Http\Controllers\backend\PaymentController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\frontend\FOReceiptController;
 use App\Http\Controllers\frontend\FrontUserController;
 use App\Http\Controllers\backend\DeliveryManController;
 use App\Http\Controllers\backend\SubCategoryController;
+use App\Http\Controllers\frontend\ForgotPasswordController;
 use App\Http\Controllers\backend\DeliveryOrderTrackingController;
 
 /*
@@ -55,6 +59,7 @@ Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
 Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
+Route::post('/front-pass-update',[HomeController::class, 'frontPassUpdate'])->name('front.pass.update');
 
 
 Route::get('/switch-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('switch.language');
@@ -71,7 +76,12 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 /////////////////////-----frontend Category routes-----//////////////////////////
 
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
-Route::get('/pages-shop-details', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
+
+
+/////////////////////------- Shop Details -------//////////////////////////////
+
+Route::get('/pages-shop-details/{id}', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');
+
 
 
 Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details');
@@ -84,13 +94,23 @@ Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name
 
 ///////////////////////-----------front user         &&&&&&     Check-out--------------///////////////////////
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth:customer']], function () {
 
     Route::get('/frontUser-profile', [FrontUserController::class, 'frontUserProfile'])->name('frontuser.profile');
-    Route::put('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
+    Route::get('/frontUser-order-track/{id}', [FrontUserController::class, 'frontUserOrderTrack'])->name('frontuser.order.track');
+    Route::post('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
+
+    Route::get('/front-order-receipt/{id}', [FOReceiptController::class, 'frontOrderReceipt'])->name('front.order.receipt');
+    
+
 
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
+    Route::get('/cancel-order/{id}', [FrontUserController::class, 'cancelOrder'])->name('cancel.order');
+
+
+    //////////---------- ssl commerz-----------//////////
 
 
     Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name("pay.now");
@@ -112,6 +132,7 @@ Route::get('/blog-details', [BlogController::class, 'blogDetails'])->name('blog.
 
 //////////////////////Contact//////////////////////////////
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+Route::get('/contact-submit', [ContactController::class, 'contactSubmit'])->name('contact.submit');
 
 
 
@@ -130,6 +151,12 @@ Route::post('/register-submit', [AuthController::class, 'registerSubmitForm'])->
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login-submit', [AuthController::class, 'loginSubmitForm'])->name('login.submit');
 
+//////------Reset Password-------///////
+
+Route::get('/forgot-password-link', [ForgotPasswordController::class, 'forgotPass'])->name('forgot.pass.link');
+Route::post('/submit-forgot-password', [ForgotPasswordController::class, 'submitForgotPass'])->name('submit.forgot.pass');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPass'])->name('reset.pass.link');
+Route::post('/submit-reset-password', [ForgotPasswordController::class, 'submitResetPassword'])->name('submit.reset.pass');
 
 //all_routes
 
@@ -137,9 +164,9 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     /////////-----Dashboard-----/////////
-    Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
+
     Route::get('/master-dashboard', [AdminController::class, 'master']);
-    Route::get('/admin-newPage', [AdminController::class, 'newPage'])->name('admin.newPage');
+    Route::get('/dashboard', [AdminController::class, 'newPage'])->name('admin.newPage');
 
 
 
@@ -200,9 +227,13 @@ Route::middleware('CheckAdmin')->group(function () {
 
 
     Route::get('/order-list', [AdminController::class, 'orderList'])->name('order.list');
+    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
     Route::get('/order-edit/{id}', [AdminController::class, 'orderEdit'])->name('order.edit');
     Route::get('/order-update/{id}', [AdminController::class, 'orderUpdate'])->name('order.update');
-    Route::get('/order-reciept/{id}', [AdminController::class, 'orderReciept'])->name('order.reciept');
+
+
+    Route::get('/todays-order', [AdminController::class, 'todaysOrder'])->name('todays.order');
+
 
 
     /////////////-------User-------////////////////
@@ -228,6 +259,18 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
     Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
     Route::put('/dot-update/{id}', [DeliveryOrderTrackingController::class, 'dOTUpdate'])->name('dot.update');
+
+
+    ////////////////----------------payment list----------------////////////////
+
+    Route::get('/payment', [PaymentController::class, 'paymentList'])->name('payment.list');
+
+
+    //////////-------------contact us-------------//////////////////
+
+    Route::get('/contact-us-list', [ContactUsController::class, 'contactUsList'])->name('contact.us');
+    Route::get('/contact-edit/{id}', [ContactUsController::class, 'contactEdit'])->name('edit.contact');
+    Route::post('/contact-reply-submit/{id}', [ContactUsController::class, 'contactReplySubmit'])->name('contact.reply.submit');
 });
 
 

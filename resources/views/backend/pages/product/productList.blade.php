@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('contents')
 <div>
-    <h3>Product List</h3>
+    <h3 style="font-size: 30px;">Product List</h3>
     <div class="row">
         
         <div class="col-md-6">
@@ -35,7 +35,7 @@
 
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">#Id</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Category Name</th>
                     <th scope="col">Product Image</th>

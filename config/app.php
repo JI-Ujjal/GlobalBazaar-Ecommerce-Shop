@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return [
         'Bangla' => 'bn',
         'French' => 'fr',
         'Spanish' => 'es',
-      ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -204,6 +204,8 @@ return [
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        iqbalhasandev\bulksmsbd\BulkSMSBDServiceProvider::class,
+        Shipu\MuthoFun\MuthoFunServiceProvider::class,
     ],
 
     /*
@@ -221,6 +223,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'MUTHOFUN'   =>  Shipu\MuthoFun\Facades\MuthoFun::class,
     ])->toArray(),
 
 ];

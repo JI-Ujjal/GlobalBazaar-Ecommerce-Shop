@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('customer_id')->constrained('customers');
             $table->string("name", 100);
             $table->string("email", 500);
             $table->string("phone", 20);
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text("address");
             $table->string("transaction_id");
             $table->string("currency", 10)->nullable();
+            $table->foreignId('dot_id')->constrained('d_o_t_s');
             $table->timestamps();
         });
     }

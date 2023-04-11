@@ -34,9 +34,10 @@ class SslCommerzPaymentController extends Controller
 
 
 
+        
 
         $post_data = array();
-        $post_data['total_amount'] = "$request->total_payment"; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->total_payment; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
@@ -76,8 +77,8 @@ class SslCommerzPaymentController extends Controller
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
         $update_product = Order::where('transaction_id', $post_data['tran_id'])
-            ->updateOrInsert([
-                "user_id" => auth()->user()->id,
+            ->updateOrCreate([
+                "customer_id" => auth('customer')->user()->id,
                 'name' => $post_data['cus_name'],
                 'email' => $post_data['cus_email'],
                 'phone' => $post_data['cus_phone'],
@@ -85,7 +86,10 @@ class SslCommerzPaymentController extends Controller
                 'status' => 'Pending',
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'currency' => $post_data['currency'],
+                'dot_id' => 'id'
+                
+
             ]);
 
 
@@ -152,9 +156,8 @@ class SslCommerzPaymentController extends Controller
 
 
         #Before  going to initiate the payment order status need to update as Pending.
-        $update_product = DB::table('orders')
-            ->where('transaction_id', $post_data['tran_id'])
-            ->updateOrInsert([
+        $update_product = Order::where('transaction_id', $post_data['tran_id'])
+            ->updateOrCreate([
 
                 'name' => $post_data['cus_name'],
                 'email' => $post_data['cus_email'],
@@ -164,6 +167,7 @@ class SslCommerzPaymentController extends Controller
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency']
+                
             ]);
 
         $sslc = new SslCommerzNotification();
@@ -187,8 +191,7 @@ class SslCommerzPaymentController extends Controller
 
         $sslc = new SslCommerzNotification();
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
+        $order_details = Order::where('transaction_id', $tran_id)
             ->select('id', 'transaction_id', 'status', 'currency', 'amount', 'email')->first();
 
         if ($order_details->status == 'Pending') {
@@ -201,8 +204,7 @@ class SslCommerzPaymentController extends Controller
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
                 */
-                $update_product = DB::table('orders')
-                    ->where('transaction_id', $tran_id)
+                $update_product = Order::where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
                 echo "<br >Transaction is successfully Completed";
@@ -237,9 +239,8 @@ class SslCommerzPaymentController extends Controller
             }
         }
 
-
-
-        Mail::to('jahedulislamujjal0@gmail.com')->send(new OrderEmail());
+        
+        Mail::to(auth('customer')->user()->email)->send(new OrderEmail());
 
         session()->forget('myCart');
 
@@ -251,12 +252,10 @@ class SslCommerzPaymentController extends Controller
     {
         $tran_id = $request->input('tran_id');
 
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
+        $order_details = Order::where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount')->first();
         if ($order_details->status == 'Pending') {
-            $update_product = DB::table('orders')
-                ->where('transaction_id', $tran_id)
+            $update_product = Order::where('transaction_id', $tran_id)
                 ->update(['status' => 'Failed']);
             echo "Transaction is Falied";
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
@@ -270,12 +269,10 @@ class SslCommerzPaymentController extends Controller
     {
         $tran_id = $request->input('tran_id');
 
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
+        $order_details = Order::where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount')->first();
         if ($order_details->status == 'Pending') {
-            $update_product = DB::table('orders')
-                ->where('transaction_id', $tran_id)
+            $update_product = Order::where('transaction_id', $tran_id)
                 ->update(['status' => 'Canceled']);
             echo "Transaction is Cancel";
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
@@ -294,8 +291,7 @@ class SslCommerzPaymentController extends Controller
             $tran_id = $request->input('tran_id');
 
             #Check order status in order tabel against the transaction id or order id.
-            $order_details = DB::table('orders')
-                ->where('transaction_id', $tran_id)
+            $order_details = Order::where('transaction_id', $tran_id)
                 ->select('transaction_id', 'status', 'currency', 'amount')->first();
 
             if ($order_details->status == 'Pending') {
@@ -307,8 +303,7 @@ class SslCommerzPaymentController extends Controller
                     in order table as Processing or Complete.
                     Here you can also sent sms or email for successful transaction to customer
                     */
-                    $update_product = DB::table('orders')
-                        ->where('transaction_id', $tran_id)
+                    $update_product = Order::where('transaction_id', $tran_id)
                         ->update(['status' => 'Processing']);
 
                     echo "Transaction is successfully Completed";

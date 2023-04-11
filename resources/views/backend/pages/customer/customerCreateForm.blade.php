@@ -7,31 +7,31 @@
         @csrf
     <div class="form-group">
         <label for="exampleInputEmail1">Customer Name</label>
-        <input type="text" name="customer_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
             placeholder="Enter your name" >
-            @error('customer_name')<div class="alert alert-danger">{{$message}}</div>@enderror
+            @error('name')<div class="alert alert-danger">{{$message}}</div>@enderror
 
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Customer Image</label>
-        <input type="file" name="customer_image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            placeholder="Enter your order image">
-            @error('customer_image')<div class="alert alert-danger">{{$message}}</div>@enderror
+        <input type="file" name="image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter your image">
+            @error('image')<div class="alert alert-danger">{{$message}}</div>@enderror
 
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Customer Order</label>
-        <input type="text" name="customer_order" class="form-control" id="exampleInputPassword1"
-            placeholder="Which Product?">
-            @error('customer_order')<div class="alert alert-danger">{{$message}}</div>@enderror
+        <label for="exampleInputPassword1">Email</label>
+        <input type="text" name="email" class="form-control" id="exampleInputPassword1"
+            placeholder="Your Email">
+            @error('email')<div class="alert alert-danger">{{$message}}</div>@enderror
 
     </div>
 
     <div class="form-group">
-        <label for="exampleInputPassword1">Customer Address</label>
-        <input type="text"  name="customer_address" class="form-control" id="exampleInputPassword1"
+        <label for="exampleInputPassword1">Password</label>
+        <input type="text"  name="password" class="form-control" id="exampleInputPassword1"
             placeholder="Enter your address">
-            @error('customer_address')<div class="alert alert-danger">{{$message}}</div>@enderror
+            @error('password')<div class="alert alert-danger">{{$message}}</div>@enderror
 
     </div>
 

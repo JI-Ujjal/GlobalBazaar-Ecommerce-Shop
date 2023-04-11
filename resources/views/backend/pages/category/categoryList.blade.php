@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('contents')
 
-<h3 style="font-size: xx-large;">Category List</h3>
+<h3 style="font-size: 30px;">Category List</h3>
 
 <a class="btn btn-success" href="{{ route('create.form') }}">Create</a>
 

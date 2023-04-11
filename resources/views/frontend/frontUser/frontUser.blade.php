@@ -138,8 +138,8 @@
             <div class="card" style="color: green;">
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                    <img width="200" src="{{ url ('uploads/frontUser', auth()->user()->image)}}" alt="Profile" class="rounded-circle">
-                    <h2>{{auth()->user()->name}}</h2>
+                    <img width="200" src="{{ url ('uploads/frontUser', auth('customer')->user()->image)}}" alt="Profile" class="rounded-circle">
+                    <h2>{{auth('customer')->user()->name}}</h2>
                     <h3>Web Developer</h3>
                     <div class="social-links mt-2">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -169,15 +169,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-                        </li>
-
-                        <li class="nav-item">
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
                         </li>
 
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-order-list">Order Tracking List</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-recent-list">Recent Order</button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-order-list"> Orders </button>
                         </li>
 
                     </ul>
@@ -190,20 +190,17 @@
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label ">Name</div>
-                                <div class="col-lg-9 col-md-8">{{auth()->user()->name}}
+                                <div class="col-lg-9 col-md-8">{{auth('customer')->user()->name}}
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Email</div>
-                                <div class="col-lg-9 col-md-8">{{auth()->user()->email}}</div>
+                                <div class="col-lg-9 col-md-8">{{auth('customer')->user()->email}}</div>
                             </div>
 
 
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Role</div>
-                                <div class="col-lg-9 col-md-8">{{auth()->user()->role}}</div>
-                            </div>
+
 
 
 
@@ -213,9 +210,9 @@
                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                             <!-- Profile Edit Form -->
-                            <form action="{{route('frontuser.profile.update', auth()->user()->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('frontuser.profile.update', auth('customer')->user()->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
+
                                 <div class="row mb-3">
                                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                     <input type="file" class="bi bi-upload" name="image">
@@ -224,23 +221,17 @@
                                 <div class="row mb-3">
                                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="name" type="text" class="form-control" id="name" value="{{auth()->user()->name}}">
+                                        <input name="name" type="text" class="form-control" id="name" value="{{auth('customer')->user()->name}}">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="email" type="email" class="form-control" id="Email" value="{{auth()->user()->email}}">
+                                        <input name="email" type="email" class="form-control" id="Email" value="{{auth('customer')->user()->email}}">
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Role</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="role" type="text" class="form-control" id="role" value="{{auth()->user()->role}}">
-                                    </div>
-                                </div>
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success">Save Changes</button>
@@ -250,71 +241,16 @@
                         </div>
 
 
-
-                        <div class="tab-pane fade pt-3" id="profile-settings">
-
-                            <!-- Settings Form -->
-                            <form>
-
-                                <div class="row mb-3">
-                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                                            <label class="form-check-label" for="changesMade">
-                                                Changes made to your account
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                                            <label class="form-check-label" for="newProducts">
-                                                Information on new products and services
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="proOffers">
-                                            <label class="form-check-label" for="proOffers">
-                                                Marketing and promo offers
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                                            <label class="form-check-label" for="securityNotify">
-                                                Security alerts
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                </div>
-                            </form><!-- End settings Form -->
-
-                        </div>
-
                         <div class="tab-pane fade pt-3" id="profile-change-password">
                             <!-- Change Password Form -->
-                            <form>
+                            <form action="{{route('front.pass.update', auth('customer')->user()->id)}}" method="POST">
+                                @csrf
+
 
                                 <div class="row mb-3">
-                                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                                    <label for="password" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="password" type="password" class="form-control" id="currentPassword">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="newpassword" type="password" class="form-control" id="newPassword">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                        <input name="password" type="password" class="form-control" id="newPassword">
                                     </div>
                                 </div>
 
@@ -325,6 +261,51 @@
 
                         </div>
 
+
+                        <!-- Recent Order -->
+
+                        <div class="tracking tab-pane fade pt-3" id="profile-change-recent-list">
+
+
+                            <div class="container px-1 px-md-4 py-5" style="margin-top: -80px;">
+
+                                <div style="margin-top: 30px;">
+                                    <table class="table">
+
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Order Date</th>
+                                                <th scope="col">Order Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Order Details</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($recentorders as $key=>$Order)
+                                            <tr>
+
+                                                <th scope="row">{{$key + 1}}</th>
+                                                <td>{{$Order->created_at}}</td>
+                                                <td>{{$Order->amount}} BDT</td>
+                                                <td>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                </td>
+
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
 
 
                         <!-- Tracking -->
@@ -344,21 +325,28 @@
                                                 <th scope="col">Order Amount</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Order Details</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($Orders as $Order)
+
+                                            @foreach ($Orders as $key=>$Order)
                                             <tr>
 
-                                                <th scope="row">{{$Order->id}}</th>
+                                                <th scope="row">{{$key + 1}}</th>
                                                 <td>{{$Order->created_at}}</td>
                                                 <td>{{$Order->amount}} BDT</td>
                                                 <td>
-                                                    <a type="submit" href="" class="btn btn-success">Tracking Status</a>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
                                                 </td>
                                                 <td>
-                                                    <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                    <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
+                                                
+                                                <td>
+                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                </td>
+                                               
 
                                             </tr>
                                             @endforeach
@@ -368,6 +356,8 @@
                             </div>
 
                         </div>
+
+
 
 
 

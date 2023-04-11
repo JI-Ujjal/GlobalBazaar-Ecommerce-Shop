@@ -1,3 +1,4 @@
+
 @extends('backend.master')
 @section('contents')
 
@@ -6,20 +7,19 @@
     <div class="container mb-5 mt-3">
       <div class="row d-flex align-items-baseline">
         <div class="col-xl-9">
-          <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: {{auth()->user()->id}}</strong></p>
+          <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: {{$Order->customer_id}}</strong></p>
         </div>
         <div class="col-xl-3 float-end">
-          <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i class="fas fa-print text-primary"></i> Print</a>
-          <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i class="far fa-file-pdf text-danger"></i> Export</a>
+          <button onclick="printReport()" type="button" class="btn btn-success">Print</button>
         </div>
         <hr>
       </div>
 
-      <div class="container">
+      <div class="container" id="printableArea">
         <div class="col-md-12">
           <div class="text-center">
             <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
-            <p class="pt-0">MDBootstrap.com</p>
+            
           </div>
 
         </div>
@@ -27,18 +27,18 @@
         <div class="row">
           <div class="col-xl-8">
             <ul class="list-unstyled">
-              <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{auth()->user()->name}}</span></li>
+              <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{$Order->customer->name}}</span></li>
               <li class="text-muted">Street, City</li>
               <li class="text-muted">State, Country</li>
-              <li class="text-muted"><i class="fas fa-phone"></i> 123-456-789</li>
+              <li class="text-muted"><i class="bi bi-telephone-fill"></i></i></i>  {{$Order->phone}}</li>
             </ul>
           </div>
           <div class="col-xl-4">
             <p class="text-muted">Invoice</p>
             <ul class="list-unstyled">
-              <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">ID:</span>#123-456 </li>
-              <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
-              <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
+              <li class="text-muted"><i class="bi bi-award"></i> <span class="fw-bold">ID:</span> {{$Order->customer_id}} </li>
+              <li class="text-muted"><i class="bi bi-alarm"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
+              <li class="text-muted"><i class="bi bi-bezier2"></i> <span class="me-1 fw-bold">Payment:</span><span class="badge bg-warning text-black fw-bold">
                   {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>
             </ul>
           </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="row">
           <div class="col-xl-8">
-            <p class="ms-3">Add additional notes and payment information</p>
+            <p class="ms-2">Add additional notes and payment information</p>
 
           </div>
           <div class="col-xl-3">
@@ -110,5 +110,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  function printReport() {
+    var printContents = document.getElementById('printableArea').innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+  }
+</script>
 
 @endsection

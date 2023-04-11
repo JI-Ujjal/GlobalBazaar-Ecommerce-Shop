@@ -37,7 +37,7 @@
 
         <div class="form-group">
             <label for="">Product Quantity</label>
-            <input type="number" name="product_quantity" class="form-control" placeholder="Enter Product Quantity">
+            <input type="number" name="product_quantity" class="form-control" placeholder="Enter Product Quantity (Kg/Pics)">
         </div>
 
         <div class="from-group">

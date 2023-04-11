@@ -16,15 +16,16 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('delivery_men_id')->nullable()->constrained('delivery_men');
             $table->string("name", 100);
             $table->string("email", 500);
             $table->string("phone", 20);
             $table->double("amount");
-            $table->string("status", 10)->nullable();
+            $table->string("status", 10)->default('pending');
+            $table->string("payment_status", 10)->default('cod');
             $table->text("address");
             $table->string("transaction_id");
             $table->string("currency", 10)->nullable();
-            $table->foreignId('dot_id')->constrained('d_o_t_s');
             $table->timestamps();
         });
     }

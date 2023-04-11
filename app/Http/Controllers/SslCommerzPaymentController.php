@@ -34,7 +34,7 @@ class SslCommerzPaymentController extends Controller
 
 
 
-        
+
 
         $post_data = array();
         $post_data['total_amount'] = $request->total_payment; # You cant not pay less than 10
@@ -86,9 +86,7 @@ class SslCommerzPaymentController extends Controller
                 'status' => 'Pending',
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency'],
-                'dot_id' => 'id'
-                
+                'currency' => $post_data['currency']
 
             ]);
 
@@ -167,7 +165,7 @@ class SslCommerzPaymentController extends Controller
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency']
-                
+
             ]);
 
         $sslc = new SslCommerzNotification();
@@ -239,7 +237,7 @@ class SslCommerzPaymentController extends Controller
             }
         }
 
-        
+
         Mail::to(auth('customer')->user()->email)->send(new OrderEmail());
 
         session()->forget('myCart');

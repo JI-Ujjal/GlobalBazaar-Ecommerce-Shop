@@ -8,7 +8,7 @@
                 <div class="col-xl-9">
                     <p style="color: green;font-size: 20px;">Invoice <strong>ID: {{$Order->id}}</strong></p>
                 </div>
-                
+
                 <hr>
             </div>
 
@@ -16,7 +16,7 @@
                 <div class="col-md-12">
                     <div class="text-center">
                         <i class="fab fa-mdb fa-4x ms-0" style="color:green ;"></i>
-                       
+
                     </div>
 
                 </div>
@@ -25,7 +25,7 @@
                     <div class="col-xl-8">
                         <ul class="list-unstyled">
                             <li class="text-muted">To: <span style="color:green ;">{{auth('customer')->user()->name}}</span></li>
-                           
+
                             <li class="text-muted">{{$Order->address}}</li>
                             <li class="text-muted"><i class="fa fa-phone"></i> 01308260888</li>
                         </ul>
@@ -34,7 +34,7 @@
                         <p class="text-muted">Invoice</p>
                         <ul class="list-unstyled">
                             <li class="text-muted"><i class="bi bi-award" style="color:green ;"></i> <span class="fw-bold">ID:</span>{{$Order->id}}</li>
-                            <li class="text-muted"><i class="bi bi-alarm" style="color:green ;"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
+                            <li class="text-muted"><i class="bi bi-alarm" style="color:green ;"></i> <span class="fw-bold">Creation Date: </span>{{$Order->created_at->toDateString()}}</li>
                             <li class="text-muted"><i class="bi bi-bezier2" style="color:green ;"></i> <span class="me-1 fw-bold">Payment:</span><span class="badge bg-warning text-black fw-bold">
                                     {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>
                         </ul>

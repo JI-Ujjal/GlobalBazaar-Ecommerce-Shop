@@ -44,7 +44,7 @@
             <i class="bi bi-person-lines-fill"></i>
                 <span>Customer</span>
             </a>
-        </li> 
+        </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.list') }}">
@@ -68,7 +68,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link " href="{{ route('dot.list') }}">
+            <a class="nav-link " href="">
                 <i class="bi bi-geo-alt-fill"></i>
                 <span>Delivery Order Tracking</span>
             </a>

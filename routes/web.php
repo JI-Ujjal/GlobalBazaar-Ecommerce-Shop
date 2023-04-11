@@ -101,7 +101,7 @@ Route::group(['middleware' => ['auth:customer']], function () {
     Route::post('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
 
     Route::get('/front-order-receipt/{id}', [FOReceiptController::class, 'frontOrderReceipt'])->name('front.order.receipt');
-    
+
 
 
 
@@ -254,11 +254,12 @@ Route::middleware('CheckAdmin')->group(function () {
     //////////----------Order Tracking------------//////////////
 
 
-    Route::get('/dot-list', [DeliveryOrderTrackingController::class, 'dOrderTracking'])->name('dot.list');
-    Route::get('/dot-create', [DeliveryOrderTrackingController::class, 'dOTCreate'])->name('dot.create');
-    Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
-    Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
-    Route::put('/dot-update/{id}', [DeliveryOrderTrackingController::class, 'dOTUpdate'])->name('dot.update');
+//    Route::get('/dot-list', [DeliveryOrderTrackingController::class, 'dOrderTracking'])->name('dot.list');
+//    Route::get('/dot-create', [DeliveryOrderTrackingController::class, 'dOTCreate'])->name('dot.create');
+//    Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
+//    Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
+    Route::get('/edit-order/{id}', [DeliveryOrderTrackingController::class, 'editOrder'])->name('order.edit');
+    Route::put('/update-order/{id}', [DeliveryOrderTrackingController::class, 'updateOrder'])->name('order.update');
 
 
     ////////////////----------------payment list----------------////////////////

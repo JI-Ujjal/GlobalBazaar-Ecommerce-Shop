@@ -15,12 +15,8 @@ class FrontUserController extends Controller
 {
     public function frontUserProfile()
     {
-       
-        $dots = DOT::all();
-        $Orders = Order::where("customer_id", auth('customer')->user()->id)->whereNot("status", "cancel")->get();
-
-        $recentorders = Order::where("customer_id", auth('customer')->user()->id)->whereDate("updated_at", "=", date('Y-m-d'))->get();
-        return view('frontend.frontUser.frontUser', compact('Orders', 'recentorders', 'dots'));
+        $Orders = Order::where("customer_id", auth('customer')->user()->id)->get();
+        return view('frontend.frontUser.frontUser', compact('Orders'));
     }
 
     public function frontUserProfileUpdate(Request $request)
@@ -48,14 +44,9 @@ class FrontUserController extends Controller
 
     public function frontUserOrderTrack($id)
     {
-        $dots = DOT::all();
-        $order = DOT::where("order_id", $id)->first();
-        // dd($order);
-        $status = ["Process", "Shipped", "Way", "Arrived"];
-        $ind = array_search($order->status, $status);
 
-
-        return view('frontend.frontUser.frontUserOrder', compact('ind','dots'));
+        $order=Order::find($id);
+        return view('frontend.frontUser.frontUserOrder', compact('order'));
     }
 
 

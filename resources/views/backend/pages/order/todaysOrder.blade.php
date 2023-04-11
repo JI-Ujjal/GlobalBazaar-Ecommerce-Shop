@@ -35,9 +35,7 @@
             <td>{{$Order->currency}}</td>
             <td>
                 @if(!($Order->status == "cancel"))
-                <a type="submit" href="{{route('order.update', $Order->id)}}" class="btn btn-outline-success">Approve</a>
-                <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-outline-dark">Order Reciept</a>
-                <a type="submit" href="{{route('dot.create', $Order->id)}}" class="btn btn-outline-dark">Order Track</a>
+                <a type="submit" href="{{route('order.edit', $Order->id)}}" class="btn btn-outline-dark">Edit</a>
                 @endif
             </td>
 

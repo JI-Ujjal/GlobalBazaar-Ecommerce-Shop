@@ -147,15 +147,32 @@
                 <ul id="progressbar" class="text-center">
 
 
-                    @for($i = 0; $i <= 3; $i++) 
-                    
-                    @if($i <=$ind) 
+                    @if($order->status=='pending')
                     <li class="active step0"></li>
-                    @else
-
-                    <li class="step0"></li>
+                        <li class="step1">
+                        <li class="step2">
+                        <li class="step3">
                     @endif
-                    @endfor
+                        @if($order->status=='processing')
+                            <li class="active step0"></li>
+                            <li class="active step1"  style="color:white"></li>
+                            <li class="step2">
+                            <li class="step3">
+                        @endif
+                        @if($order->status=='dispatched')
+                            <li class="active step0"></li>
+                            <li class="active step1" style="color:white"></li>
+                            <li class="active step2" style="color:white"></li>
+                            <li class="step3">
+                        @endif
+
+                    @if($order->status=='delivered')
+                            <li class="active step0"></li>
+                            <li class="active step1" style="color:white"></li>
+                            <li class="active step2" style="color:white"></li>
+                            <li class="active step3" style="color:white"></li>
+                        @endif
+
                 </ul>
             </div>
         </div>
@@ -166,25 +183,25 @@
                     <i class="bi bi-card-checklist"></i>
                 </div>
                 <div class="d-flex flex-column">
-                    <p class="font-weight-bold">Order<br>Processed</p>
+                    <p class="font-weight-bold">Order<br>Pending</p>
                 </div>
             </div>
             <div class="row flex-column icon-content">
                 <i class="bi bi-box-seam"></i>
                 <div class="d-flex flex-column">
-                    <p class="font-weight-bold">Order<br>Shipped</p>
+                    <p class="font-weight-bold">Order<br>Processing</p>
                 </div>
             </div>
             <div class="row flex-column icon-content">
                 <i class="bi bi-truck"></i>
                 <div class="d-flex flex-column">
-                    <p class="font-weight-bold">Order<br>En Route</p>
+                    <p class="font-weight-bold">Order<br>Dispatched</p>
                 </div>
             </div>
             <div class="row flex-column icon-content">
                 <i class="bi bi-folder-check"></i>
                 <div class="d-flex flex-column">
-                    <p class="font-weight-bold">Order<br>Arrived</p>
+                    <p class="font-weight-bold">Order<br>Delivered</p>
                 </div>
             </div>
         </div>

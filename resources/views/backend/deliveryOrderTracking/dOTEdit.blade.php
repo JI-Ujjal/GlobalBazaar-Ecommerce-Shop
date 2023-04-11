@@ -4,26 +4,15 @@
 <div class="container">
     <h3 style="font-size: 30px">Delivery Order Tracking List Update</h3>
 
-    <form action="{{ route('dot.update', $dots->id) }}" method="POST">
+    <form action="{{ route('order.update', $order->id) }}" method="POST">
         @method('PUT')
         @csrf
         <div class="form-group">
-            <label for="">Order</label>
-            <select name="order_id" class="form-control" placeholder="Enter Order Id">
-                @foreach ($Orders as $Order)
-
-                <option value="{{$Order->id}}">{{$Order->id}}</option>
-
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <label for="">Delivery Man Name</label>
-            <select name="man_name" class="form-control" placeholder="Enter Man Name">
+            <select name="man_id" class="form-control" placeholder="Enter Man Name">
+                <option value="">--Assign Delivery Men--</option>
                 @foreach ($deliverymans as $deliveryman)
-
-                <option value="{{$deliveryman->id}}">{{$deliveryman->man_name}}</option>
-
+                <option value="{{$deliveryman->id}}" @if($order->delivery_men_id==$deliveryman->id) selected @endif>{{$deliveryman->man_name}}</option>
                 @endforeach
             </select>
         </div>
@@ -31,11 +20,11 @@
         <div class="from-group" style="padding: 10px;">
             <label for="">Tracking Status</label>
             <select name="status" class="from-control" id="">
-                <option selected>Choose...</option>
-                <option value="Process">Order Process</option>
-                <option value="Shipped">Order Shipped</option>
-                <option value="Way">On The Way</option>
-                <option value="Arrived">Order Arrived</option>
+                <option @if($order->status=='pending') selected @endif>Pending</option>
+                <option  @if($order->status=='processing') selected @endif value="processing">Order Process</option>
+                <option @if($order->status=='dispatched') selected @endif value="dispatched">Order Dispatched</option>
+                <option @if($order->status=='delivered') selected @endif value="delivered">Delivered</option>
+                <option @if($order->status=='cancel') selected @endif value="cancel">Cancel</option>
             </select>
         </div>
 

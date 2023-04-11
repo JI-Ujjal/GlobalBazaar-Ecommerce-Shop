@@ -284,7 +284,7 @@
                                         </thead>
                                         <tbody>
 
-                                            @foreach ($recentorders as $key=>$Order)
+                                            @foreach ($Orders as $key=>$Order)
                                             <tr>
 
                                                 <th scope="row">{{$key + 1}}</th>
@@ -342,11 +342,11 @@
                                                 <td>
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
-                                                
+
                                                 <td>
                                                     <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                 </td>
-                                               
+
 
                                             </tr>
                                             @endforeach

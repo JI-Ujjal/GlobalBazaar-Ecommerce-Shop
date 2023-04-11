@@ -18,18 +18,14 @@ class DeliveryOrderTrackingController extends Controller
 
     public function dOTCreate()
     {
-
-        $Orders = Order::all();
-        $deliverymans = DeliveryMan::all();
         return view('backend.deliveryOrderTracking.dOTCreate', compact('Orders', 'deliverymans'));
     }
 
-    public function dOTEdit($id)
+    public function editOrder($id)
     {
-        $dots = DOT::find($id);
-        $Orders = Order::all();
+        $order = Order::find($id);
         $deliverymans = DeliveryMan::all();
-        return view('backend.deliveryOrderTracking.dOTEdit', compact('dots', 'Orders', 'deliverymans'));
+        return view('backend.deliveryOrderTracking.dOTEdit', compact('order', 'deliverymans'));
     }
 
     public function dOTSubmit(Request $request)
@@ -37,22 +33,23 @@ class DeliveryOrderTrackingController extends Controller
 
         DOT::create([
             'order_id' => $request->order_id,
-            'delivery_man_id' => $request->man_name,
+            'delivery_men_id' => $request->man_name,
             'status' => $request->status
 
         ]);
         return redirect()->route('dot.list')->with('message', 'Delivery Order Tracking Create Successfully.');
     }
 
-    public function dOTUpdate(Request $request, $id)
-    {
-        $dots = DOT::find($id);
-        $dots->update([
-            'order_id' => $request->order_id,
-            'delivery_man_id' => $request->man_name,
-            'status' => $request->status
 
+
+    public function updateOrder(Request $request, $id)
+    {
+        $dots = ORder::find($id);
+        $dots->update([
+            'delivery_men_id' => $request->man_id,
+            'status' => $request->status
         ]);
-        return redirect()->route('dot.list')->with('message', 'Delivery Order Tracking Create Successfully.');
+
+        return redirect()->back()->with('message', 'Order Updated Successfully.');
     }
 }

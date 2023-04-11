@@ -101,12 +101,13 @@ Route::group(['middleware' => ['auth:customer']], function () {
     Route::post('/frontUser-profile-update', [FrontUserController::class, 'frontUserProfileUpdate'])->name('frontuser.profile.update');
 
     Route::get('/front-order-receipt/{id}', [FOReceiptController::class, 'frontOrderReceipt'])->name('front.order.receipt');
+    
 
 
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
-
+    Route::get('/cancel-order/{id}', [FrontUserController::class, 'cancelOrder'])->name('cancel.order');
 
 
     //////////---------- ssl commerz-----------//////////

@@ -157,7 +157,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Reports <span>/Today</span></h5>
+                            <h5 class="card-title">Reports <span>/This Month</span></h5>
 
                             <!-- Line Chart -->
                             <div id="reportsChart"></div>
@@ -167,7 +167,7 @@
 
                             <script>
                                 var xValues = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                                var yValues = ["{{$jan}}","{{$feb}}","{{$mar}}","{{$apr}}","{{$may}}","{{$jun}}","{{$jul}}","{{$aug}}","{{$sep}}","{{$oct}}","{{$nov}}","{{$dec}}"];
+                                var yValues = ["{{$jan}}","{{$feb}}","{{$mar}}","{{$apr}}","{{$may}}","{{$jun}}","{{$jul}}","{{$aug}}","{{$sep}}","{{$oct}}","{{$nov}}","{{$dec}}",'50'];
                                 var barColors = ["red", "green", "blue", "orange", "brown", "pink", "tan", "gray"];
 
                                 new Chart("myChart", {
@@ -215,7 +215,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Total Orders <span>| Today</span></h5>
+                            <h5 class="card-title">Total Orders <span>| This Month</span></h5>
 
                             <table class="table">
 

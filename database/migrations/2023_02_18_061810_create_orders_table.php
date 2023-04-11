@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text("address");
             $table->string("transaction_id");
             $table->string("currency", 10)->nullable();
+            $table->foreignId('dot_id')->constrained('d_o_t_s');
             $table->timestamps();
         });
     }

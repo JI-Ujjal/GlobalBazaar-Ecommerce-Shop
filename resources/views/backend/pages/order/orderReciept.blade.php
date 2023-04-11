@@ -38,7 +38,7 @@
             <ul class="list-unstyled">
               <li class="text-muted"><i class="bi bi-award"></i> <span class="fw-bold">ID:</span> {{$Order->customer_id}} </li>
               <li class="text-muted"><i class="bi bi-alarm"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
-              <li class="text-muted"><i class="bi bi-bezier2"></i> <span class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
+              <li class="text-muted"><i class="bi bi-bezier2"></i> <span class="me-1 fw-bold">Payment:</span><span class="badge bg-warning text-black fw-bold">
                   {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>
             </ul>
           </div>

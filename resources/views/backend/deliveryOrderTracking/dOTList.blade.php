@@ -26,6 +26,7 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach ($dots as $key=>$dot)
                 <tr>
                     <th scope="row">{{ $key+1 }}</th>

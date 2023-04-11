@@ -189,13 +189,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Image</label>
-                            <input type="file" name="image" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Image">
-
-
-                        </div>
-
-                        <div class="form-group">
                             <label for="exampleInputPassword1">Email Address</label>
                             <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
 

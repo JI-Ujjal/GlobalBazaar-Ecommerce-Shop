@@ -177,7 +177,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-order-list">Order Tracking List</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-order-list"> Orders </button>
                         </li>
 
                     </ul>
@@ -200,10 +200,7 @@
                             </div>
 
 
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Role</div>
-                                <div class="col-lg-9 col-md-8">{{auth('customer')->user()->role}}</div>
-                            </div>
+
 
 
 
@@ -215,7 +212,7 @@
                             <!-- Profile Edit Form -->
                             <form action="{{route('frontuser.profile.update', auth('customer')->user()->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                
+
                                 <div class="row mb-3">
                                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                     <input type="file" class="bi bi-upload" name="image">
@@ -235,12 +232,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Role</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input name="role" type="text" class="form-control" id="role" value="{{auth('customer')->user()->role}}">
-                                    </div>
-                                </div>
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success">Save Changes</button>
@@ -271,49 +262,6 @@
                         </div>
 
 
-                        <!-- Tracking -->
-
-                        <div class="tracking tab-pane fade pt-3" id="profile-change-order-list">
-
-
-                            <div class="container px-1 px-md-4 py-5" style="margin-top: -80px;">
-
-                                <div style="margin-top: 30px;">
-                                    <table class="table">
-
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th scope="col">Id</th>
-                                                <th scope="col">Order Date</th>
-                                                <th scope="col">Order Amount</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Order Details</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            @foreach ($Orders as $key=>$Order)
-                                            <tr>
-
-                                                <th scope="row">{{$key + 1}}</th>
-                                                <td>{{$Order->created_at}}</td>
-                                                <td>{{$Order->amount}} BDT</td>
-                                                <td>
-                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
-                                                </td>
-
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                        </div>
-
                         <!-- Recent Order -->
 
                         <div class="tracking tab-pane fade pt-3" id="profile-change-recent-list">
@@ -331,6 +279,7 @@
                                                 <th scope="col">Order Amount</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Order Details</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -348,6 +297,7 @@
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
 
+
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -356,6 +306,58 @@
                             </div>
 
                         </div>
+
+
+                        <!-- Tracking -->
+
+                        <div class="tracking tab-pane fade pt-3" id="profile-change-order-list">
+
+
+                            <div class="container px-1 px-md-4 py-5" style="margin-top: -80px;">
+
+                                <div style="margin-top: 30px;">
+                                    <table class="table">
+
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Order Date</th>
+                                                <th scope="col">Order Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Order Details</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($Orders as $key=>$Order)
+                                            <tr>
+
+                                                <th scope="row">{{$key + 1}}</th>
+                                                <td>{{$Order->created_at}}</td>
+                                                <td>{{$Order->amount}} BDT</td>
+                                                <td>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
+                                                </td>
+                                                
+                                                <td>
+                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                </td>
+                                               
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+
 
 
 

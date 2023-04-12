@@ -22,7 +22,7 @@ class CheckAdminMiddleware
         if (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
         } else {
-            Alert::error('Admin ? 🙄', 'You are not Admin 😡');
+            toastr()->error('Admin ? 🙄', 'You are not Admin 😡');
             return redirect()->route('login');
         }
     }

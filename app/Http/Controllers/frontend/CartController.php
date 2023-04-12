@@ -60,7 +60,7 @@ class CartController extends Controller
             }
         }
 
-        notify()->success('Cart Successfully');
+        toastr()->success('Cart Successfully');
         return redirect()->back();
     }
 
@@ -70,7 +70,7 @@ class CartController extends Controller
         unset($newCart[$id]);
         session()->put('myCart', $newCart);
 
-        notify()->success('Item deleted from cart.');
+        toastr()->success('Item deleted from cart.');
         return redirect()->back();
     }
 
@@ -84,13 +84,13 @@ class CartController extends Controller
         $product = Product::find($id);
 
         if($product->product_quantity < $request->qty){
-            Alert::warning("Stock Out" , "Product Available $product->product_quantity");
+            toastr()->warning("Stock Out" , "Product Available $product->product_quantity");
             return redirect()->back();
         }
 
         //dd(gettype($myCart[2]['product_price']));
         if($request->qty < 1){
-            Alert::warning("Cart Error" , "Cart 1 or More Product");
+            toastr()->warning("Cart Error" , "Cart 1 or More Product");
             return redirect()->back();
         }
 
@@ -104,6 +104,7 @@ class CartController extends Controller
         
 
         session()->put('myCart', $myCart);
+        toastr()->success('Cart Update Succes!');
         return to_route('cart.details');
     }
 }

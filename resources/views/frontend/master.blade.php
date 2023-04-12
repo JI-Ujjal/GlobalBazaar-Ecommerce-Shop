@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{url('frontend/assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/style.css')}}" type="text/css">
 
-    @notifyCss
+   
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
     <section>
 
-        <x:notify-messages />
+        
         @include('sweetalert::alert')
         @yield('contents')
 
@@ -56,7 +56,7 @@
     <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
 
-    @notifyJs
+   
 
     <script>
         var obj = {};

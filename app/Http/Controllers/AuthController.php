@@ -43,10 +43,10 @@ class AuthController extends Controller
 
 
         if ($authentication) {
-            smilify('success', 'Admin Login successfully');
+            toastr()->success('Admin Login successfully');
             return to_route('admin.newPage');
         } else {
-            notify()->error('Please! login as Admin');
+            toastr()->error('Please! login as Admin');
             return to_route('home');
         }
     }
@@ -55,7 +55,7 @@ class AuthController extends Controller
     
         Auth::logout();
         session()->flush();
-        smilify('error', 'Admin Logout successfully');
+        toastr()->warning('Admin Logout successfully');
         return to_route('login');
     }
 }

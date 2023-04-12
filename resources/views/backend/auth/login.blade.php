@@ -28,13 +28,8 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url('backend/assets/css/style.css') }}" rel="stylesheet">
-  @notifyCss
-  <style>
-        .notify {
-            z-index: 99999999;
-            margin-top: 40px;
-        }
-    </style>
+
+  
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -45,7 +40,7 @@
 </head>
 
 <body>
-<x:notify-messages />
+
 
 
   <section class="vh-100" style="background-color: #eee;">
@@ -125,7 +120,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url('backend/assets/js/main.js') }}"></script>
-  @notifyJs
+ 
 
 </body>
 

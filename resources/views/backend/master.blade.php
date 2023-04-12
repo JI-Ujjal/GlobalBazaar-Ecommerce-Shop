@@ -47,13 +47,8 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    @notifyCss
-    <style>
-        .notify {
-            z-index: 99999999;
-            margin-top: 40px;
-        }
-    </style>
+   
+    
 </head>
 
 <body>
@@ -68,7 +63,7 @@
 
     <main id="main" class="main">
 
-        <x:notify-messages />
+    
         @yield('contents')
 
     </main><!-- End #main -->
@@ -101,7 +96,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ url('backend/assets/js/main.js') }}"></script>
-    @notifyJs
+    
 
     @stack('js')
 

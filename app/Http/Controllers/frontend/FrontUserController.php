@@ -8,6 +8,7 @@ use App\Models\Order;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Customer;
 use App\Models\DOT;
 
@@ -15,8 +16,9 @@ class FrontUserController extends Controller
 {
     public function frontUserProfile()
     {
+        $Categories = Category::all();
         $Orders = Order::where("customer_id", auth('customer')->user()->id)->get();
-        return view('frontend.frontUser.frontUser', compact('Orders'));
+        return view('frontend.frontUser.frontUser', compact('Orders', 'Categories'));
     }
 
     public function frontUserProfileUpdate(Request $request)
@@ -36,7 +38,7 @@ class FrontUserController extends Controller
 
         ]);
 
-        notify()->success('Profile', 'Update Successfully');
+        toastr()->success('Profile', 'Update Successfully');
 
         return redirect()->back();
     }
@@ -56,7 +58,7 @@ class FrontUserController extends Controller
         $order = Order::find($id)->update([
             'status' => 'cancel',
         ]);
-        notify()->success('success', 'Order has been canceled!');
+        toastr()->success('success', 'Order has been canceled!');
         return redirect()->back();
     }
 }

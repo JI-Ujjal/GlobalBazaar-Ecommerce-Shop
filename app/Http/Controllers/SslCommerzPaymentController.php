@@ -192,7 +192,7 @@ class SslCommerzPaymentController extends Controller
         $order_details = Order::where('transaction_id', $tran_id)
             ->select('id', 'transaction_id', 'status', 'currency', 'amount', 'email')->first();
 
-        if ($order_details->status == 'Pending') {
+        if ($order_details->status == 'pending') {
 
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
 
@@ -242,7 +242,7 @@ class SslCommerzPaymentController extends Controller
 
         session()->forget('myCart');
 
-        Alert::success('Payment', 'Transection Successfully');
+        toastr()->success('Payment', 'Transection Successfully');
         return to_route('home');
     }
 

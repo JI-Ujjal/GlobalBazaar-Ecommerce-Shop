@@ -201,10 +201,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+        
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        iqbalhasandev\bulksmsbd\BulkSMSBDServiceProvider::class,
+        //iqbalhasandev\bulksmsbd\BulkSMSBDServiceProvider::class,
         Shipu\MuthoFun\MuthoFunServiceProvider::class,
     ],
 

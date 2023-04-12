@@ -15,9 +15,9 @@ class HomeController extends Controller
 {
     public function frontendHome()
     {
-
+        $Categories = Category::all();
         $Products = Product::all();
-        return view('frontend.pages.home', compact('Products'));
+        return view('frontend.pages.home', compact('Products', 'Categories'));
     }
 
     public function registerSubmitForm(Request $request)
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         ]);
 
-        notify()->success('Customer Registration Successfully');
+        toastr()->success('Customer Registration Successfully');
         return back();
     }
 
@@ -43,13 +43,13 @@ class HomeController extends Controller
         $authentication = auth::guard('customer')->attempt($credentials);
         if ($authentication) {
             // dd($authentication);
-            notify()->success('login Successfully!');
+            toastr()->success('login Successfully!');
             if (auth('customer')->check()) {
                 return to_route('home');
             }
             return to_route('admin.newPage');
         } else {
-            notify()->error('Email or Password Not Matched!');
+            toastr()->error('Email or Password Not Matched!', 'Opps!');
             return to_route('home');
         }
     }
@@ -60,7 +60,7 @@ class HomeController extends Controller
         $Customer = Customer::find(auth('customer')->user()->id)->update([
             'password' => bcrypt($request->password)
         ]);
-        notify()->success('Password updated Successfuly');
+        toastr()->success('Password updated Successfuly');
         return redirect()->back();
     }
 
@@ -69,7 +69,7 @@ class HomeController extends Controller
     {
         auth()->logout();
         session()->flush();
-        notify()->success('logout Successfully');
+        toastr()->warning('logout Successfully', 'Opps!');
         return to_route('home');
     }
 }

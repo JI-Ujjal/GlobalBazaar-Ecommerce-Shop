@@ -17,7 +17,6 @@
             <th scope="col">Order Address</th>
             <th scope="col">Transaction ID</th>
             <th scope="col">Currency</th>
-            <th scope="col">Tracking Status</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -34,13 +33,12 @@
             <td>{{$Order->address}}</td>
             <td>{{$Order->transaction_id}}</td>
             <td>{{$Order->currency}}</td>
-            <td>{{$Order->dot->status}}</td>
-           
+
             <td>
                 @if(!($Order->status == "cancel"))
-                <a type="submit" href="{{route('order.update', $Order->id)}}" class="btn btn-outline-success">Approve</a>
                 <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-outline-dark">Order Reciept</a>
-                <a type="submit" href="{{route('dot.create', $Order->id)}}" class="btn btn-outline-dark">Order Track</a>
+                <a type="submit" href="{{route('order.edit', $Order->id)}}" class="btn btn-outline-dark">Edit</a>
+
                 @endif
             </td>
 

@@ -139,8 +139,8 @@
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                     <img width="200" src="{{ url ('uploads/frontUser', auth('customer')->user()->image)}}" alt="Profile" class="rounded-circle">
-                    <h2>{{auth('customer')->user()->name}}</h2>
-                    <h3>Web Developer</h3>
+                    <h3>{{auth('customer')->user()->name}}</h3>
+                    <h4>Web Developer</h4>
                     <div class="social-links mt-2">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="3" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -279,6 +279,7 @@
                                                 <th scope="col">Order Amount</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Order Details</th>
+                                                <th scope="col">Action</th>
 
                                             </tr>
                                         </thead>
@@ -296,6 +297,12 @@
                                                 <td>
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
+
+                                                @if($Order->status == "pending")
+                                                <td>
+                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                </td>
+                                                @endif
 
 
                                             </tr>
@@ -342,11 +349,11 @@
                                                 <td>
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
-
+                                                @if($Order->status == "pending")
                                                 <td>
                                                     <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                 </td>
-
+                                                @endif
 
                                             </tr>
                                             @endforeach

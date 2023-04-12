@@ -80,7 +80,7 @@ class DeliveryManController extends Controller
     public function dManDelete($id)
     {
         $deliveryman = DeliveryMan::find($id)->delete();
-        notify()->success('Delete','Delivery Man Delete Successfully.');
+        toastr()->warning('Delete!','Delivery Man Delete Successfully.');
         return redirect()->route('delivery.man.list');
     }
 }

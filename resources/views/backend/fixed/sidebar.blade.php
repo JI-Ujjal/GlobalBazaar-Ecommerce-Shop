@@ -67,12 +67,12 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link " href="">
                 <i class="bi bi-geo-alt-fill"></i>
                 <span>Delivery Order Tracking</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('user.list') }}">

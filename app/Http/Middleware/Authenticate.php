@@ -17,14 +17,14 @@ class Authenticate extends Middleware
     {
         // dd($request);
         if (request()->route()->getName() == "checkout") {
-            Alert::warning('You are not Customer', 'Log in Or Register as Customer');
+            toastr()->warning('You are not Customer', 'Log in Or Register as Customer');
 
             return route('home');
         };
 
         if (!$request->expectsJson()) {
 
-            Alert::error('Unknown User! 😴', 'Login as Customer');
+            toastr()->error('Unknown User! 😴', 'Login as Customer');
             return route('home');
         }
     }

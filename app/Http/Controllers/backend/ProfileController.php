@@ -31,7 +31,7 @@ class ProfileController extends Controller
 
         ]);
 
-        notify()->success('Profile', 'Update Successfully');
+        toastr()->success('Profile', 'Update Successfully');
 
         return redirect()->back();
     }

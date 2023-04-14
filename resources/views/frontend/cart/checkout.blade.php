@@ -68,7 +68,7 @@
                             <input type="text" required name="city">
                         </div>
                         <div class="checkout__input">
-                            <p>State<span></span></p>
+                            <p>State<span>*</span></p>
                             <input type="text" required name="state">
                         </div>
                         <div class="checkout__input">

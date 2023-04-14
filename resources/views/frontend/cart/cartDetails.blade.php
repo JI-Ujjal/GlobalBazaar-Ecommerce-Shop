@@ -1,3 +1,4 @@
+
 @extends('frontend.master')
 @section('contents')
 
@@ -38,6 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             @if (session()->has('myCart'))
 
                             @foreach (session()->get('myCart') as $key => $cart)

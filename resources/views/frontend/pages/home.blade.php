@@ -7,7 +7,7 @@
             <div class="categories__slider owl-carousel">
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="{{url('frontend/assets/img/categories/cat-1.jpg')}}">
-                        <h5><a href="#">Fresh Fruit</a></h5>
+                        <h5><a href="{{route('shop.page')}}">Fresh Fruit</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -46,11 +46,8 @@
                 </div>
                 <div class="featured__controls">
                     <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Oranges</li>
-                        <li data-filter=".fresh-meat">Fresh Meat</li>
-                        <li data-filter=".vegetables">Vegetables</li>
-                        <li data-filter=".fastfood">Fastfood</li>
+                        <li class="active" data-filter="*">All Products</li>
+                        
                     </ul>
                 </div>
             </div>
@@ -62,8 +59,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{url('uploads/product', $Product->product_image)}}">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
+                            <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
 
                             @if($Product->product_quantity>0)
 
@@ -81,7 +78,7 @@
                     </div>
                     <div class="featured__item__text">
                         <h6><a href="{{route('pages.shop.details', $Product->id)}}">{{$Product->product_name}}</a></h6>
-                        <h5>{{$Product->product_price}}</h5>
+                        <h5>{{$Product->product_price}} BDT</h5>
                     </div>
                 </div>
             </div>

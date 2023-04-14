@@ -13,9 +13,11 @@ class CartController extends Controller
 {
     public function cartDetails()
     {
-        //$carts = session()->get('myCart');
 
-        return view('frontend.cart.cartDetails');
+        //$carts = session()->get('myCart');
+        $Product = Product::all();
+
+        return view('frontend.cart.cartDetails', compact('Product'));
     }
 
     public function addCartPage($id)
@@ -83,14 +85,14 @@ class CartController extends Controller
 
         $product = Product::find($id);
 
-        if($product->product_quantity < $request->qty){
-            toastr()->warning("Stock Out" , "Product Available $product->product_quantity");
+        if ($product->product_quantity < $request->qty) {
+            toastr()->warning("Stock Out", "Product Available $product->product_quantity");
             return redirect()->back();
         }
 
         //dd(gettype($myCart[2]['product_price']));
-        if($request->qty < 1){
-            toastr()->warning("Cart Error" , "Cart 1 or More Product");
+        if ($request->qty < 1) {
+            toastr()->warning("Cart Error", "Cart 1 or More Product");
             return redirect()->back();
         }
 
@@ -101,7 +103,7 @@ class CartController extends Controller
 
         $myCart[$id]['subtotal'] = (float) $myCart[$id]['product_price'] * (int) $myCart[$id]['product_quantity'];
 
-        
+
 
         session()->put('myCart', $myCart);
         toastr()->success('Cart Update Succes!');

@@ -20,32 +20,23 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
-                    <h3>Vetgetable’s Package</h3>
+                    <h3>Category - {{$Product->categories->category_name}}</h3>
                     <div class="product__details__rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <span>(18 reviews)</span>
+                       <h5>{{$Product->product_name}}</h5>
                     </div>
-                    <div class="product__details__price">{{$Product->product_price}} BDT</div>
-                    <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                        vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                        quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
-                    <div class="product__details__quantity">
+                    <div class="product__details__price">{{$Product->product_price}} BDT (per kg/pis)</div>
+                    <p>{{$Product->product_details}}</p>
+                    <!-- <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
                                 <input type="text" value="1">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <a href="{{route('add.cart.page', $Product->id)}}" class="primary-btn">ADD TO CARD</a>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <!-- <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a> -->
                     <ul>
-                        <li><b>Availability</b> <span>In Stock</span></li>
-                        <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                        <li><b>Weight</b> <span>0.5 kg</span></li>
+                        <li><b>Availability</b> <span style="color: red;">In Stock : {{$Product->product_quantity}} (kg/Pis)</span></li>
                         <li><b>Share on</b>
                             <div class="share">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -155,8 +146,8 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{url('uploads/product', $Product->product_image)}}">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
 
                             @if($Product->product_quantity>0)
 
@@ -174,7 +165,7 @@
                     </div>
                     <div class="featured__item__text">
                         <h6><a href="{{route('pages.shop.details', $Product->id)}}">{{$Product->product_name}}</a></h6>
-                        <h5>{{$Product->product_price}}</h5>
+                        <h5>{{$Product->product_price}} BDT</h5>
                     </div>
                 </div>
             </div>

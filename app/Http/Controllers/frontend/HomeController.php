@@ -69,7 +69,7 @@ class HomeController extends Controller
     {
         auth()->logout();
         session()->flush();
-        toastr()->warning('logout Successfully', 'Opps!');
+        toastr()->success('logout Successfully', 'Logout!');
         return to_route('home');
     }
 }

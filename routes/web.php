@@ -19,10 +19,11 @@ use App\Http\Controllers\backend\PaymentController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\frontend\SearchController;
+use App\Http\Controllers\Support\SupportController;
 use App\Http\Controllers\backend\CategoryController;
-use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\frontend\ContactController;
+use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\SslCommerzPaymentController;
@@ -59,7 +60,7 @@ Route::get('/', [HomeController::class, 'frontendHome'])->name('home');
 Route::post('/register-submit-front', [HomeController::class, 'registerSubmitForm'])->name('register.submit.front');
 Route::post('/login-submit-front', [HomeController::class, 'loginSubmitForm'])->name('login.submit.front');
 Route::get('/frontlogout', [HomeController::class, 'frontLogout'])->name('front.logout');
-Route::post('/front-pass-update',[HomeController::class, 'frontPassUpdate'])->name('front.pass.update');
+Route::post('/front-pass-update', [HomeController::class, 'frontPassUpdate'])->name('front.pass.update');
 
 
 Route::get('/switch-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('switch.language');
@@ -88,6 +89,12 @@ Route::get('/cart', [CartController::class, 'cartDetails'])->name('cart.details'
 Route::get('/add-cart/{id}', [CartController::class, 'addCartPage'])->name('add.cart.page');
 Route::get('/delete-cart-item/{id}', [CartController::class, 'deleteCartItem'])->name('delete.cart.item');
 Route::get('/cart-update/{id}', [CartController::class, 'updateCartItem'])->name('update.cart.item');
+
+
+/////////////----------Front Support---------//////////
+//support
+Route::get('/frontend-support', [SupportController::class, 'support'])->name('frontend.support.support');
+Route::post('/frontend-support-message', [SupportController::class, 'message'])->name('frontend.support.message');
 
 
 
@@ -254,10 +261,13 @@ Route::middleware('CheckAdmin')->group(function () {
     //////////----------Order Tracking------------//////////////
 
 
-//    Route::get('/dot-list', [DeliveryOrderTrackingController::class, 'dOrderTracking'])->name('dot.list');
-//    Route::get('/dot-create', [DeliveryOrderTrackingController::class, 'dOTCreate'])->name('dot.create');
-//    Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
-//    Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
+    //    Route::get('/dot-list', [DeliveryOrderTrackingController::class, 'dOrderTracking'])->name('dot.list');
+    //    Route::get('/dot-create', [DeliveryOrderTrackingController::class, 'dOTCreate'])->name('dot.create');
+    //    Route::post('/dot-submit', [DeliveryOrderTrackingController::class, 'dOTSubmit'])->name('dot.submit');
+    //    Route::get('/dot-edit/{id}', [DeliveryOrderTrackingController::class, 'dOTEdit'])->name('dot.edit');
+
+     //////////----------Order Tracking------------//////////////
+
     Route::get('/edit-order/{id}', [DeliveryOrderTrackingController::class, 'editOrder'])->name('order.edit');
     Route::put('/update-order/{id}', [DeliveryOrderTrackingController::class, 'updateOrder'])->name('order.update');
 
@@ -272,6 +282,12 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/contact-us-list', [ContactUsController::class, 'contactUsList'])->name('contact.us');
     Route::get('/contact-edit/{id}', [ContactUsController::class, 'contactEdit'])->name('edit.contact');
     Route::post('/contact-reply-submit/{id}', [ContactUsController::class, 'contactReplySubmit'])->name('contact.reply.submit');
+
+
+    ////////////////-------------Support------------////////////////
+    Route::get('/backend-support-list', [SupportController::class, 'list'])->name('backend.support.list');
+    Route::get('/backend-suport-reply/{id}', [SupportController::class, 'reply'])->name('backend.support.reply');
+    Route::post('/backend-support-send', [SupportController::class, 'send'])->name('backend.support.send');
 });
 
 

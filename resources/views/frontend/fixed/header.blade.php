@@ -6,7 +6,7 @@
                     <div class="header__top__left">
                         <ul>
                             <li><i class="fa fa-envelope"></i> ujjal.kodeeo@gmail.com</li>
-                            <li>Free Shipping for all Order of $99</li>
+                            <li>Delivery Charge 100tk</li>
                         </ul>
                     </div>
                 </div>
@@ -70,14 +70,7 @@
 
                         <li class="active"><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('shop.page')}}">Shop</a></li>
-                        <li><a href="">Pages</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="{{route('cart.details')}}">Shoping Cart</a></li>
-                                <li><a href="{{route('checkout')}}">Check Out</a></li>
-                                <li><a href="{{route('blog.details')}}">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{route('blog')}}">Blog</a></li>
+                        <!-- <li><a href="{{route('blog')}}">Blog</a></li> -->
                         <li><a href="{{route('contact')}}">Contact</a></li>
                     </ul>
                 </nav>
@@ -85,7 +78,7 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> -->
                         <li><a href="{{route('cart.details')}}"><i class="fa fa-shopping-bag"></i>
                                 <span>{{session()->has('myCart')?count(session()->get('myCart')):0}}</span>
                             </a></li>

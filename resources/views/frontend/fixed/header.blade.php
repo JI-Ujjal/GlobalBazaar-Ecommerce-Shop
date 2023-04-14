@@ -78,7 +78,7 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> -->
+                        <li><a href="{{route('frontend.support.support')}}"><i class="bi bi-chat"></i> <span>0</span></a></li>
                         <li><a href="{{route('cart.details')}}"><i class="fa fa-shopping-bag"></i>
                                 <span>{{session()->has('myCart')?count(session()->get('myCart')):0}}</span>
                             </a></li>

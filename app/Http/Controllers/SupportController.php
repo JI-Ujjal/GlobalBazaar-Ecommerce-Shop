@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Support;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+
 use App\Models\Support;
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class SupportController extends Controller
     public function support()
     {
 
-        $message = Support::where('from_user', auth()->user()->id)->OrWhere('to_user', auth()->user()->id)->get();
+        $message = Support::where('from_user', auth('customer')->user()->id)->OrWhere('to_user', auth('customer')->user()->id)->get();
 
         return view('frontend.support.support', compact('message'));
     }
@@ -26,7 +26,7 @@ class SupportController extends Controller
 
         Support::create([
 
-            'from_user' => auth()->user()->id,
+            'from_user' => auth('customer')->user()->id,
             'to_user' => 1,
             'message' => $request->message,
 
@@ -64,7 +64,7 @@ class SupportController extends Controller
         $conversation = Support::find($request->message_id);
 
         Support::create([
-            'from_user' => auth()->user()->id,
+            'from_user' => auth('customer')->user()->id,
             'to_user' => $conversation->from_user,
             'message' => $request->message,
         ]);
@@ -72,3 +72,4 @@ class SupportController extends Controller
         return redirect()->route('backend.support.list');
     }
 }
+

@@ -1,4 +1,4 @@
-@extends(frontend.master)
+@extends('frontend.master')
 @section('contents')
 
 <style>
@@ -376,7 +376,7 @@ body {
 
                             @foreach($message as $msg)
 
-                            @if($msg->from_user==auth()->user()->id)
+                            @if($msg->from_user==auth('customer')->user()->id)
                              {{-- for me --}}
                              <div class="direct-chat-msg right">
                                 <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">To user</span> <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">

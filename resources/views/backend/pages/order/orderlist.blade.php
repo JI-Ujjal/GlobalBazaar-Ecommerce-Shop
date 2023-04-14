@@ -36,7 +36,7 @@
 
             <td>
                 @if(!($Order->status == "cancel"))
-                <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-outline-dark">Order Reciept</a>
+                <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-success">Order Reciept</a>
                 <a type="submit" href="{{route('order.edit', $Order->id)}}" class="btn btn-outline-dark">Edit</a>
 
                 @endif

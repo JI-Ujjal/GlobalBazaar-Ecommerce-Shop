@@ -92,11 +92,11 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Discount</li>
+                    
 
                         <!--'''session()->get('myCart') ?''' ternary operator-->
 
-                        <li>Total Amount <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }}</span></li>
+                        <li>Total Amount <span>{{ session()->get('myCart') ? array_sum(array_column($carts = session()->get('myCart'),'subtotal')) : 0 }} BDT</span></li>
                     </ul>
                     <a href="{{route('checkout')}}" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>

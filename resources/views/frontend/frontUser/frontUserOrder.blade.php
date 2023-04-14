@@ -6,7 +6,7 @@
         color: #000;
         overflow-x: hidden;
         height: 100%;
-        background-color: #8C9EFF;
+        background-color: white;
         background-repeat: no-repeat;
     }
 
@@ -134,11 +134,10 @@
     <div class="card">
         <div class="row d-flex justify-content-between px-3 top">
             <div class="d-flex">
-                <h5>ORDER <span class="text-primary font-weight-bold">#Y34XDHR</span></h5>
+                <h5>ORDER :<span class="text-primary font-weight-bold">{{$order->id}}</span></h5>
             </div>
             <div class="d-flex flex-column text-sm-right">
-                <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
-                <p>USPS <span class="font-weight-bold">234094567242423422898</span></p>
+                <p class="mb-0">Order Date <span>{{$order->created_at}}</span></p>
             </div>
         </div>
         <!-- Add class 'active' to progress -->

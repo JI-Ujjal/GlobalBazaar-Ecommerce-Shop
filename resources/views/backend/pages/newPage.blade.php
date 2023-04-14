@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6> {{ $totalOrder }} </h6>
-                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                    
 
                                 </div>
                             </div>
@@ -77,8 +77,8 @@
                                     <i class="bi bi-currency-dollar"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>{{ $totalAmount }}</h6>
-                                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                    <h6>{{ $totalAmount }} BDT</h6>
+                                   
 
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6>{{ $totalCustomer }}</h6>
-                                    <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                                    
 
                                 </div>
                             </div>
@@ -230,7 +230,6 @@
                                         <th scope="col">Order Address</th>
                                         <th scope="col">Transaction ID</th>
                                         <th scope="col">Currency</th>
-                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -245,10 +244,6 @@
                                         <td>{{$Order->address}}</td>
                                         <td>{{$Order->transaction_id}}</td>
                                         <td>{{$Order->currency}}</td>
-                                        <td>
-                                            <a class="btn btn-outline-success" href="{{route('order.update', $Order->id)}}">Approve</a>
-                                        </td>
-
                                     </tr>
 
                                     @endforeach

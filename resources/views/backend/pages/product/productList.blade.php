@@ -58,7 +58,7 @@
                     <td>{{$Product->product_quantity}}</td>
                     <td>{{$Product->product_status}}</td>
                     <td><a class="btn btn-success" href="{{route('edit.product', $Product->id)}}">Edit</a>
-                        <a class="btn btn-primary" href="{{route('view.product', $Product->id)}}">view</a>
+                        <!-- <a class="btn btn-primary" href="{{route('view.product', $Product->id)}}">view</a> -->
                         <a class="btn btn-danger" href="{{route('delete.product', $Product->id)}}">Delete</a>
 
 

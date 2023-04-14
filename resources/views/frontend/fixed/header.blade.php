@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="{{route('home')}}"><img src="{{url('frontend/assets/img/logo.png')}}" alt=""></a>
+                    <a href="{{route('home')}}"><img src="{{url('frontend/assets/img/globalbazar.png')}}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">

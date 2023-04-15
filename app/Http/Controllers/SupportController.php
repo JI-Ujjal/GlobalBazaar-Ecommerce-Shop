@@ -43,7 +43,7 @@ class SupportController extends Controller
     public function list()
     {
        
-        $categories = Support::with(['userFrom', 'userTo'])->orderBy('id', 'DESC')->get();
+        $categories = Support::with(['userFrom', 'userTo'])->orderBy('id', 'DESC')->paginate(10);
         
 
         return view('backend.support.list', compact('categories'));

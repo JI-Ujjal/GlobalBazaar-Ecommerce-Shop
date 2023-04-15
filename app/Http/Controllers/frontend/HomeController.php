@@ -9,15 +9,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Support;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function frontendHome()
     {
+        $allchat = Support::get()->count();
         $Categories = Category::all();
         $Products = Product::all();
-        return view('frontend.pages.home', compact('Products', 'Categories'));
+        return view('frontend.pages.home', compact('Products', 'Categories','allchat'));
     }
 
     public function registerSubmitForm(Request $request)

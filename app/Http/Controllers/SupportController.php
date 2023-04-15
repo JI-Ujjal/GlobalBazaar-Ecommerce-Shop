@@ -10,10 +10,12 @@ class SupportController extends Controller
 {
     public function support()
     {
-
+       
         $message = Support::where('from_user', auth('customer')->user()->id)->OrWhere('to_user', auth('customer')->user()->id)->get();
 
-        return view('frontend.support.support', compact('message'));
+        $allchat = Support::get()->count();
+
+        return view('frontend.support.support', compact('message', 'allchat'));
     }
 
 
@@ -40,7 +42,9 @@ class SupportController extends Controller
     ////User SUppprt
     public function list()
     {
-        $categories = support::with(['userFrom', 'userTo'])->get();
+       
+        $categories = Support::with(['userFrom', 'userTo'])->orderBy('id', 'DESC')->get();
+        
 
         return view('backend.support.list', compact('categories'));
     }
@@ -64,7 +68,7 @@ class SupportController extends Controller
         $conversation = Support::find($request->message_id);
 
         Support::create([
-            'from_user' => auth('customer')->user()->id,
+            'from_user' => auth()->user()->id,
             'to_user' => $conversation->from_user,
             'message' => $request->message,
         ]);

@@ -96,6 +96,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('backend.support.list') }}">
+            <i class="bi bi-chat-left-dots-fill"></i>
+                <span>Support</span>
+            </a>
+        </li>
+
     </ul>
 
 </aside>

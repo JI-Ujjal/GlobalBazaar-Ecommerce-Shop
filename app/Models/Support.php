@@ -13,11 +13,12 @@ class Support extends Model
 
     public function userFrom()
     {
-        return $this->belongsTo(User::class, 'from_user', 'id');
+        return $this->belongsTo(Customer::class, 'from_user', 'id');
     }
 
     public function userTo()
     {
         return $this->belongsTo(User::class, 'to_user', 'id');
     }
+    
 }

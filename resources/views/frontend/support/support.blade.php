@@ -358,7 +358,7 @@ body {
 }
 </style>
 
-<div style="margin-top: 100px;" >
+<div style="margin-top: 5px;" >
 
 
 <div class="page-content page-container" id="page-content">
@@ -369,7 +369,7 @@ body {
                 <div class="box box-warning direct-chat direct-chat-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title">Chat Messages</h3>
-                        <div class="box-tools pull-right"> <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="3 New Messages">20</span> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button> <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts"> <i class="fa fa-comments"></i></button> <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i> </button> </div>
+                        <div class="box-tools pull-right"> <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="3 New Messages">{{$allchat}}</span> <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts"> <i class="fa fa-comments"></i></button> <a href="{{route('home')}}" type="submit" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></a></div>
                     </div>
                     <div class="box-body">
                         <div class="direct-chat-messages">
@@ -379,13 +379,13 @@ body {
                             @if($msg->from_user==auth('customer')->user()->id)
                              {{-- for me --}}
                              <div class="direct-chat-msg right">
-                                <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">To user</span> <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">
+                                <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">{{auth('customer')->user()->name}}</span> <span class="direct-chat-timestamp pull-left">{{$msg->created_at}}</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">
                                 <div class="direct-chat-text"> {{ $msg->message }} </div>
                             </div>
                             @else
                             {{-- for admin --}}
                             <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">From user</span> <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
+                                <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">Admin</span> <span class="direct-chat-timestamp pull-right">{{$msg->created_at}}</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
                                 <div class="direct-chat-text"> {{ $msg->message   }} </div>
                             </div>
                             @endif

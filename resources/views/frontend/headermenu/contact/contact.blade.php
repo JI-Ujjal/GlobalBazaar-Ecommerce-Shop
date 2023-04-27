@@ -27,14 +27,14 @@
                 <div class="contact__widget">
                     <span class="icon_phone"></span>
                     <h4>Phone</h4>
-                    <p>+880 1854-969657</p>
+                    <p>+880 1308260888</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                 <div class="contact__widget">
                     <span class="icon_pin_alt"></span>
                     <h4>Address</h4>
-                    <p>Sector-10/A, Uttara, Dhaka-1230</p>
+                    <p>Road-10/A, House 15, Sector-11,Uttara, Dhaka-1230</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -48,7 +48,7 @@
                 <div class="contact__widget">
                     <span class="icon_mail_alt"></span>
                     <h4>Email</h4>
-                    <p>foysal.kodeeo@gmail.com</p>
+                    <p>ujjal.kodeeo@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -66,8 +66,8 @@
         <div class="inside-widget">
             <h4>Kodeeo Limited</h4>
             <ul>
-                <li>Phone: +880 1854-969657</li>
-                <li>Add: Sector-10/A, Uttara, Dhaka-1230</li>
+                <li>Phone: +880 1308260888</li>
+                <li>Road-10/A, House 15, Sector-11,Uttara, Dhaka-1230</li>
             </ul>
         </div>
     </div>

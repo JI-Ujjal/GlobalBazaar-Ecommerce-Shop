@@ -78,7 +78,7 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        @if(auth()->user())
+                        @if(auth('customer')->user())
                         <li><a href="{{route('frontend.support.support')}}"><i class="bi bi-chat"></i></a></li>
                         @endif
                         <li><a href="{{route('cart.details')}}"><i class="fa fa-shopping-bag"></i>

@@ -5,31 +5,14 @@
     <div class="container">
         <div class="row">
             <div class="categories__slider owl-carousel">
+                @foreach($Categories as $Category)
                 <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="{{url('frontend/assets/img/categories/cat-1.jpg')}}">
-                        <h5><a href="{{route('shop.page')}}">Fresh Fruit</a></h5>
+                    <div class="categories__item set-bg">
+                        <h5><a href="{{route('product.under.catagory', $Category->id)}}">{{$Category->category_name}}</a></h5>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="{{url('frontend/assets/img/categories/cat-2.jpg')}}">
-                        <h5><a href="{{route('shop.page')}}">Dried Fruit</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="{{url('frontend/assets/img/categories/cat-3.jpg')}}">
-                        <h5><a href="{{route('shop.page')}}">Vegetables</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="{{url('frontend/assets/img/categories/cat-4.jpg')}}">
-                        <h5><a href="{{route('shop.page')}}">drink fruits</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="{{url('frontend/assets/img/categories/cat-5.jpg')}}">
-                        <h5><a href="{{route('shop.page')}}">drink fruits</a></h5>
-                    </div>
-                </div>
+
+                @endforeach
             </div>
         </div>
     </div>
@@ -47,7 +30,7 @@
                 <div class="featured__controls">
                     <ul>
                         <li class="active" data-filter="*">All Products</li>
-                        
+
                     </ul>
                 </div>
             </div>

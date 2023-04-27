@@ -78,7 +78,9 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
+                        @if(auth()->user())
                         <li><a href="{{route('frontend.support.support')}}"><i class="bi bi-chat"></i></a></li>
+                        @endif
                         <li><a href="{{route('cart.details')}}"><i class="fa fa-shopping-bag"></i>
                                 <span>{{session()->has('myCart')?count(session()->get('myCart')):0}}</span>
                             </a></li>
@@ -106,7 +108,7 @@
 
                             @foreach($Categories as $Category)
 
-                            <li><a href="#">{{$Category->category_name}}</a></i>
+                            <li><a href="{{route('product.under.catagory', $Category->id)}}">{{$Category->category_name}}</a></i>
                                 @endforeach
 
 

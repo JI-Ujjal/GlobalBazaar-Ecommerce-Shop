@@ -74,4 +74,9 @@ class HomeController extends Controller
         toastr()->success('logout Successfully', 'Logout!');
         return to_route('home');
     }
+
+    public function productUnderCategory($id){
+        $Products = Product::where('category_id',$id)->get();
+        return view('frontend.headermenu.shop.shopPage', compact('Products'));
+    }
 }

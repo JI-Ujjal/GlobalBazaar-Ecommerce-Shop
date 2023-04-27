@@ -39,7 +39,7 @@
                 <th scope="col">Order Address</th>
                 <th scope="col">Transaction ID</th>
                 <th scope="col">Currency</th>
-                <th scope="col">Action</th>
+                <!-- <th scope="col">Action</th> -->
             </tr>
         </thead>
         <tbody>
@@ -59,13 +59,13 @@
                 <td>{{$Order->transaction_id}}</td>
                 <td>{{$Order->currency}}</td>
 
-                <td>
+                <!-- <td>
                     @if(!($Order->status == "cancel"))
                     <a type="submit" href="{{route('order.reciept', $Order->id)}}" class="btn btn-success">Order Reciept</a>
                     <a type="submit" href="{{route('order.edit', $Order->id)}}" class="btn btn-outline-dark">Edit</a>
 
                     @endif
-                </td>
+                </td> -->
 
             </tr>
             @endforeach

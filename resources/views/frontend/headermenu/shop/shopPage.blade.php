@@ -32,11 +32,11 @@
                         <ul>
                             @foreach($Categories as $Category)
 
-                            <li><a href="#">{{$Category->category_name}}</a></i>
+                            <li><a href="{{route('product.under.catagory', $Category->id)}}">{{$Category->category_name}}</a></i>
                                 @endforeach
                         </ul>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -81,4 +81,4 @@
 </section>
 <!-- Product Section End -->
 
-    @endsection
+@endsection

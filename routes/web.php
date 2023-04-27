@@ -80,6 +80,9 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/shop', [ShopController::class, 'shopPage'])->name('shop.page');
 
 
+Route::get('/product/-under-category/{category_id}', [HomeController::class, 'productUnderCategory'])->name('product.under.catagory');
+
+
 /////////////////////------- Shop Details -------//////////////////////////////
 
 Route::get('/pages-shop-details/{id}', [PageController::class, 'pagesShopDetails'])->name('pages.shop.details');

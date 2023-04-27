@@ -12,8 +12,11 @@ class SupportController extends Controller
     {
        
         $message = Support::where('from_user', auth('customer')->user()->id)->OrWhere('to_user', auth('customer')->user()->id)->get();
+        
 
         $allchat = Support::get()->count();
+
+       
 
         return view('frontend.support.support', compact('message', 'allchat'));
     }
@@ -60,6 +63,7 @@ class SupportController extends Controller
 
     public function send(Request $request)
     {
+       
 
         $request->validate([
             'message' => 'required'

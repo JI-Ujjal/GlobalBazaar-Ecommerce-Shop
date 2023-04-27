@@ -7,6 +7,7 @@
             <div class="row d-flex align-items-baseline">
                 <div class="col-xl-9">
                     <p style="color: green;font-size: 20px;">Invoice <strong>ID: {{$Order->id}}</strong></p>
+                    <p style="color: green;font-size: 20px;">Status <strong>{{$Order->status}}</strong></p>
                 </div>
 
                 <hr>

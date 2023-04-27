@@ -28,7 +28,7 @@
                 <tr>
                     <th scope="row">{{$key+1}}</th>
                     <td>{{$dat->userFrom->name}}</td>
-                    <td>Admin</td>
+                    <td>{{$dat->userTo->name}}</td>
                     <td>{{$dat->message}}</td>
                     <td>{{$dat->is_seen}}</td>
 

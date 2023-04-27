@@ -21,5 +21,4 @@ return [
 	'failed_url' => '/fail',
 	'cancel_url' => '/cancel',
 	'ipn_url' => '/ipn',
-	'same_site' => 'null',
 ];

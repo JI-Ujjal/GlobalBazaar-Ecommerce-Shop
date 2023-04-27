@@ -15,7 +15,7 @@
         <form action="{{route('backend.support.send')}}" method="post">
             @csrf
             <input type="hidden" value="{{$id}}" name="message_id">
-            <div class=“form-group”>
+            <div class="form-group">
                 <label for="message">message</label>
                 <input name="message" type="text" class="form-control" id="message">
             </div>

@@ -16,6 +16,7 @@ use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\PageController;
 use App\Http\Controllers\frontend\ShopController;
+use App\Http\Controllers\backend\ReportController;
 use App\Http\Controllers\backend\PaymentController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\ProfileController;
@@ -288,6 +289,12 @@ Route::middleware('CheckAdmin')->group(function () {
     Route::get('/backend-support-list', [SupportController::class, 'list'])->name('backend.support.list');
     Route::get('/backend-suport-reply/{id}', [SupportController::class, 'reply'])->name('backend.support.reply');
     Route::post('/backend-support-send', [SupportController::class, 'send'])->name('backend.support.send');
+
+
+    //////////////-------Report------////////////////
+
+    Route::get('/report',[ReportController::class,'report'])->name('order.report');
+    Route::get('/report-search',[ReportController::class,'reportSearch'])->name('order.report.search');
 });
 
 

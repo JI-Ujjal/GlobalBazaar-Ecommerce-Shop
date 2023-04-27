@@ -103,6 +103,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('order.report') }}">
+            <i class="bi bi-chat-left-dots-fill"></i>
+                <span>Report Generate</span>
+            </a>
+        </li>
+
     </ul>
 
 </aside>

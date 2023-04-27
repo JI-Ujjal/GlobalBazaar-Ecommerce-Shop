@@ -298,7 +298,7 @@
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
 
-                                                @if($Order->status == "pending")
+                                                @if($Order->status == "Pending")
                                                 <td>
                                                     <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                 </td>
@@ -349,7 +349,7 @@
                                                 <td>
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
-                                                @if($Order->status == "pending")
+                                                @if($Order->status == "Pending")
                                                 <td>
                                                     <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                 </td>

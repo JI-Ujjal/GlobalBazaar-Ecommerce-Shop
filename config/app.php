@@ -221,7 +221,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        //'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'MUTHOFUN'   =>  Shipu\MuthoFun\Facades\MuthoFun::class,
     ])->toArray(),

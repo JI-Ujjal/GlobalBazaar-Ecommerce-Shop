@@ -16,10 +16,10 @@ class HomeController extends Controller
 {
     public function frontendHome()
     {
-        $allchat = Support::get()->count();
+        
         $Categories = Category::all();
         $Products = Product::all();
-        return view('frontend.pages.home', compact('Products', 'Categories','allchat'));
+        return view('frontend.pages.home', compact('Products', 'Categories'));
     }
 
     public function registerSubmitForm(Request $request)

@@ -96,8 +96,10 @@ class AdminController extends Controller
 
     public function orderReciept($id)
     {
+       
 
         $Order = Order::find($id);
+        
 
         $Product = Product::all();
         $order_details = OrderDetails::where("order_id", $id)->get();

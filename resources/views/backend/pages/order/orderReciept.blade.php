@@ -24,6 +24,7 @@
 
         </div>
 
+        
         <div class="row">
           <div class="col-xl-8">
             <ul class="list-unstyled">
@@ -36,14 +37,18 @@
           <div class="col-xl-4">
             <p class="text-muted">Invoice</p>
             <ul class="list-unstyled">
+           
               <li class="text-muted"><i class="bi bi-award"></i> <span class="fw-bold">ID:</span> {{$Order->customer_id}} </li>
-              <li class="text-muted"><i class="bi bi-alarm"></i> <span class="fw-bold">Creation Date: </span>{{$order_details[0]->created_at->toDateString()}}</li>
+              <li class="text-muted"><i class="bi bi-alarm"></i> <span class="fw-bold">Creation Date: </span>
+              @if($order_details->count()>0)
+              {{$order_details[0]->created_at->toDateString()}}
+              @endif
+            </li>
               <li class="text-muted"><i class="bi bi-bezier2"></i> <span class="me-1 fw-bold">Payment:</span><span class="badge bg-warning text-black fw-bold">
                   {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>
             </ul>
           </div>
         </div>
-
         <div class="row my-2 mx-1 justify-content-center">
           <table class="table table-striped table-borderless">
             <thead style="background-color:#84B0CA ;" class="text-gray">

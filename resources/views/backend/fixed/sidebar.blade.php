@@ -41,7 +41,7 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('customer.list') }}">
-            <i class="bi bi-person-lines-fill"></i>
+                <i class="bi bi-person-lines-fill"></i>
                 <span>Customer</span>
             </a>
         </li>
@@ -91,21 +91,21 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('contact.us') }}">
-            <i class="bi bi-person-rolodex"></i>
+                <i class="bi bi-person-rolodex"></i>
                 <span>Contact Us</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('backend.support.list') }}">
-            <i class="bi bi-chat-left-dots-fill"></i>
+                <i class="bi bi-chat-dots-fill"></i>
                 <span>Support</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('order.report') }}">
-            <i class="bi bi-chat-left-dots-fill"></i>
+                <i class="bi bi-chat-square-text-fill"></i>
                 <span>Report Generate</span>
             </a>
         </li>

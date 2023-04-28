@@ -38,6 +38,7 @@
         <tbody>
             @foreach ($Orders as $Order)
             <tr>
+                
                 <th scope="row">{{$Order->id}}</th>
                 <td>{{$Order->customer->name}}</td>
                 <td>{{$Order->name}}</td>

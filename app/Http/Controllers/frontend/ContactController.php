@@ -5,15 +5,19 @@ namespace App\Http\Controllers\frontend;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ContactController extends Controller
 {
-    public function contact(){
+    public function contact()
+    {
+      
         
         return view('frontend.headermenu.contact.contact');
     }
 
-    public function contactSubmit(Request $request){
+    public function contactSubmit(Request $request)
+    {
 
         $request->validate([
 
@@ -27,7 +31,7 @@ class ContactController extends Controller
             'email'     => $request->email,
             'details'   => $request->details
         ]);
-
-    return redirect()->back();
-}
+        toastr()->success('Message', 'Send Message');
+        return redirect()->back();
+    }
 }

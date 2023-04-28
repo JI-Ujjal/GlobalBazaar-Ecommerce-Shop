@@ -8,7 +8,7 @@
                 @foreach($Categories as $Category)
                 <div class="col-lg-3">
                     <div class="categories__item set-bg">
-                        <h5><a href="{{route('product.under.catagory', $Category->id)}}">{{$Category->category_name}}</a></h5>
+                        <h5><a class="btn btn-success" href="{{route('product.under.catagory', $Category->id)}}">{{$Category->category_name}}</a></h5>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
 <!-- Banner End -->
 
 <!-- Latest Product Section Begin -->
-<section class="latest-product spad">
+<!-- <section class="latest-product spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
@@ -298,11 +298,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Latest Product Section End -->
 
 <!-- Blog Section Begin -->
-<section class="from-blog spad">
+<!-- <section class="from-blog spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -359,7 +359,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Blog Section End -->
 
 @endsection

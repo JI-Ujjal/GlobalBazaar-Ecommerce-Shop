@@ -27,7 +27,7 @@ class ContactUsController extends Controller
         // dd($request->all());
 
         $Contact = Contact::find($id);
-        $Contact::update([
+        $Contact->update([
             'name'      => $request->name,
             'email'     => $request->email,
             'details'   => $request->details

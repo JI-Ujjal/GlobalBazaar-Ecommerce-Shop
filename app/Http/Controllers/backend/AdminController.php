@@ -36,13 +36,13 @@ class AdminController extends Controller
         $Orders = Order::orderBy('id', 'DESC')->paginate(10);
 
 
-        
+
         $totalOrderCount = [];
 
-      for ($m = 1; $m <= 12; $m++) {
-         $count= Order::whereMonth("created_at", $m)->get()->count();
-         $totalOrderCount[] =$count;
-      }
+        for ($m = 1; $m <= 12; $m++) {
+            $count = Order::whereMonth("created_at", $m)->get()->count();
+            $totalOrderCount[] = $count;
+        }
 
         return view('backend.pages.newPage', compact('Orders', 'totalOrder', 'totalCustomer', 'totalAmount', 'totalOrderCount'));
     }
@@ -59,9 +59,19 @@ class AdminController extends Controller
 
     public function orderList()
     {
+        $Orders = Order::orderBy('id', 'DESC')->paginate(10);
+
+        if (\request()->has('search')) {
+            $search_key = request()->search;
+            $Orders = Order::where('id', 'LIKE', '%' . $search_key . '%')->paginate(10);
+        } else {
+            $search_key = request()->search;
+            $customer = Customer::where('name', 'LIKE', '%' . $search_key . '%')->pluck("id")->toArray();
+            $Orders = Order::whereIn("customer_id",  $customer)->with('customer')->paginate(10);
+        }
 
         $Customers = Customer::all();
-        $Orders = Order::orderBy('id', 'DESC')->paginate(10);
+
         $order_details = OrderDetails::with("order")->with("product")->get();
 
 

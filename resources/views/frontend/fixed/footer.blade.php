@@ -39,7 +39,7 @@
                     <div class="footer__widget">
                         <h6>Join Our Newsletter Now</h6>
                         <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
+                        <form action="{{route('contact.submit')}}">
                             <input type="text" placeholder="Enter your mail">
                             <button type="submit" class="site-btn">Subscribe</button>
                         </form>

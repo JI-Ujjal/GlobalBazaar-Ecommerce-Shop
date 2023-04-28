@@ -24,11 +24,15 @@
 
 
                 @foreach($categories as $key=>$dat)
-
                 <tr>
                     <th scope="row">{{$key+1}}</th>
+                    @if($dat->from_message == "admin")
+                    <td>{{$dat->from_message}}</td>
+                    <td>{{$dat->userFrom->name}}</td>
+                    @else
                     <td>{{$dat->userFrom->name}}</td>
                     <td>{{$dat->userTo->name}}</td>
+                    @endif
                     <td>{{$dat->message}}</td>
                     <td>{{$dat->is_seen}}</td>
 

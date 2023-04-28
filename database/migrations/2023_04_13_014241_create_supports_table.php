@@ -17,9 +17,9 @@ class CreateSupportsTable extends Migration
             $table->id();
             $table->integer('from_user');
             $table->integer('to_user');
+            $table->string("from_message",20)->default("customer");
             $table->text('message');
             $table->boolean('is_seen')->default(0);
-
             $table->timestamps();
         });
     }

@@ -376,7 +376,8 @@
 
                                 @foreach($message as $msg)
 
-                                @if($msg->from_user==auth('customer')->user()->id)
+                                @if(!($msg->from_message == "admin"))
+                                
                                 {{-- for me --}}
                                 <div class="direct-chat-msg right">
                                     <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">{{auth('customer')->user()->name}}</span> <span class="direct-chat-timestamp pull-left">{{$msg->created_at}}</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/office/36/000000/person-female.png" alt="message user image">
@@ -388,7 +389,7 @@
                                     <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">Admin</span> <span class="direct-chat-timestamp pull-right">{{$msg->created_at}}</span> </div> <img class="direct-chat-img" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="message user image">
                                     <div class="direct-chat-text"> {{ $msg->message   }} </div>
                                 </div>
-                                @endif
+                             @endif
                                 @endforeach
 
 

@@ -10,13 +10,13 @@ class SupportController extends Controller
 {
     public function support()
     {
-       
+
         $message = Support::where('from_user', auth('customer')->user()->id)->OrWhere('to_user', auth('customer')->user()->id)->get();
-        
+
 
         $allchat = Support::get()->count();
 
-       
+
 
         return view('frontend.support.support', compact('message', 'allchat'));
     }
@@ -45,9 +45,9 @@ class SupportController extends Controller
     ////User SUppprt
     public function list()
     {
-       
+
         $categories = Support::with(['userFrom', 'userTo'])->orderBy('id', 'DESC')->paginate(10);
-        
+
 
         return view('backend.support.list', compact('categories'));
     }
@@ -63,7 +63,7 @@ class SupportController extends Controller
 
     public function send(Request $request)
     {
-       
+
 
         $request->validate([
             'message' => 'required'
@@ -75,9 +75,9 @@ class SupportController extends Controller
             'from_user' => auth()->user()->id,
             'to_user' => $conversation->from_user,
             'message' => $request->message,
+            "from_message" => "admin"
         ]);
 
         return redirect()->route('backend.support.list');
     }
 }
-

@@ -34,7 +34,7 @@
     }
 
     .box.box-warning {
-        border-top-color: #f39c12
+        border-top-color: #7FAD39
     }
 
     .box {
@@ -309,8 +309,8 @@
     }
 
     .direct-chat-warning .right>.direct-chat-text {
-        background: #f39c12;
-        border-color: #f39c12;
+        background: #7FAD39;
+        border-color: #7FAD39;
         color: #fff
     }
 
@@ -353,8 +353,8 @@
 
     .btn-warning {
         color: #fff;
-        background-color: #f0ad4e;
-        border-color: #eea236
+        background-color: #7FAD39;
+        border-color: #7FAD39
     }
 </style>
 

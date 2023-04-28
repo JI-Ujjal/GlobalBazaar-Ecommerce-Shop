@@ -88,7 +88,7 @@
 
               foreach($order_details as $key=>$data){
                 
-              $subtotal += $data->order->amount;
+              $subtotal =+ $data->order->amount;
               }
 
               $subtotal = $subtotal - 100;

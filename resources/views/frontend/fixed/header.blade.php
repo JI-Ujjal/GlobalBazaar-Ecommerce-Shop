@@ -168,13 +168,13 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+                            <input type="text" name="name" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
 
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email Address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
+                            <input type="email" name="email" required class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
 
 
                         </div>
@@ -219,14 +219,14 @@
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email Address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
+                            <input type="email" name="email" required class="form-control" id="exampleInputPassword1" placeholder="Enter your address">
 
 
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+                            <input type="password" name="password" required class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
 
                         </div>
 

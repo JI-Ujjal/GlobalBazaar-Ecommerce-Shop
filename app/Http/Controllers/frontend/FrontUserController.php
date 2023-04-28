@@ -18,7 +18,7 @@ class FrontUserController extends Controller
     {
         
         $Categories = Category::all();
-        $Orders = Order::where("customer_id", auth('customer')->user()->id)->get();
+        $Orders = Order::where("customer_id", auth('customer')->user()->id)->where('status', 'pending')->orWhere('status', 'processing')->get();
         return view('frontend.frontUser.frontUser', compact('Orders', 'Categories'));
     }
 

@@ -13,20 +13,12 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <!-- <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a> -->
                         </div>
-                        <div class="header__top__right__language">
-                            <img width="30px" src="{{url('frontend/assets/img/Flag_of_Bangladesh.svg.png')}}" alt="">
-                            <div>{{__('Language')}}</div>
-                            <span class="arrow_carrot-down"></span>
-                            <ul>
-                                <li><a href="#">Spanis</a></li>
-                                <li><a href="#">English</a></li>
-                            </ul>
-                        </div>
+                        
                         <div class="header__top__right__auth">
 
 
@@ -101,7 +93,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>All Categories</span>
                         </div>
                         <ul @if(request()->route()->getName() !='home') style="display: none;" @endif>
 
@@ -120,11 +112,8 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="{{route('search')}}">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input name="search_key" type="text" placeholder="What do yo u need?">
+                                
+                                <input name="search_key" type="text" placeholder="Write Here">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -193,7 +182,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+                            <input type="password" name="password" required class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
 
 
                         </div>

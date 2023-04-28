@@ -16,7 +16,7 @@ class HomeController extends Controller
 {
     public function frontendHome()
     {
-        
+
         $Categories = Category::all();
         $Products = Product::all();
         return view('frontend.pages.home', compact('Products', 'Categories'));
@@ -24,6 +24,14 @@ class HomeController extends Controller
 
     public function registerSubmitForm(Request $request)
     {
+
+        $request->validate([
+
+            'name' => 'required',
+            'email' => 'required|unique:customers',
+            'password' => 'required|digits:5'
+
+        ]);
 
         $Customer = Customer::create([
             'name' => $request->name,
@@ -75,8 +83,9 @@ class HomeController extends Controller
         return to_route('home');
     }
 
-    public function productUnderCategory($id){
-        $Products = Product::where('category_id',$id)->get();
+    public function productUnderCategory($id)
+    {
+        $Products = Product::where('category_id', $id)->get();
         return view('frontend.headermenu.shop.shopPage', compact('Products'));
     }
 }

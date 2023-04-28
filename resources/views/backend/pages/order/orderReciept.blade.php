@@ -86,7 +86,8 @@
               @php
               $subtotal = 0;
 
-              foreach($order_details as $data){
+              foreach($order_details as $key=>$data){
+                
               $subtotal += $data->order->amount;
               }
 

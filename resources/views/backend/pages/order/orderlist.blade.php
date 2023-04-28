@@ -9,7 +9,7 @@
             <form action="{{route('order.list')}}" method="get">
                 <div class="row">
                     <div class="col-md-8">
-                        <input class="form-control" name="search" type="text" placeholder="Search product">
+                        <input class="form-control" name="search" type="text" placeholder="Search Order by Id">
                     </div>
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-primary">Search</button>

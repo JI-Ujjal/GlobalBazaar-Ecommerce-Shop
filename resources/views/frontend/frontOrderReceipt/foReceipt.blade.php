@@ -35,7 +35,11 @@
                         <p class="text-muted">Invoice</p>
                         <ul class="list-unstyled">
                             <li class="text-muted"><i class="bi bi-award" style="color:green ;"></i> <span class="fw-bold">ID:</span>{{$Order->id}}</li>
-                            <li class="text-muted"><i class="bi bi-alarm" style="color:green ;"></i> <span class="fw-bold">Creation Date: </span>{{$Order->created_at->toDateString()}}</li>
+                            <li class="text-muted"><i class="bi bi-alarm" style="color:green ;"></i> <span class="fw-bold">Creation Date: </span>
+                                @if($order_details->count()>0)
+                                {{$order_details[0]->created_at->toDateString()}}
+                                @endif
+                            </li>
                             <li class="text-muted"><i class="bi bi-bezier2" style="color:green ;"></i> <span class="me-1 fw-bold">Payment:</span><span class="badge bg-warning text-black fw-bold">
                                     {{$Order->transaction_id? "Paid" : "Unpaid"}}</span></li>
                         </ul>

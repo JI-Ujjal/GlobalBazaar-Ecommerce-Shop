@@ -1,4 +1,4 @@
-<header id="header" class="header fixed-top d-flex align-items-center" style="padding-right: 50px;">
+<header id="header" class="header fixed-top d-flex align-items-center" style="padding-right: 80px;">
 
 
     <div class="d-flex align-items-center justify-content-between">
@@ -15,8 +15,8 @@
             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
         </form>
     </div> -->
-    
-    
+
+
     <!-- End Search Bar -->
 
     <nav class="header-nav ms-auto">
@@ -181,7 +181,7 @@
                 
 
             </li> -->
-            
+
             <!-- End Messages Nav -->
 
 
@@ -196,7 +196,7 @@
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
                         <h6>{{auth()->user()->name}}</h6>
-                        <span>Web Designer</span>
+                        <span>CEO of GlobalBazaar</span>
                     </li>
                     <li>
                         <hr class="dropdown-divider">

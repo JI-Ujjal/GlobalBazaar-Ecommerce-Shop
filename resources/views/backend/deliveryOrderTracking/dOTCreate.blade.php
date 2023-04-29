@@ -8,7 +8,7 @@
         @csrf
         <div class="form-group">
             <label for="">Order</label>
-            <select name="order_id" class="form-control" placeholder="Enter Order Id">
+            <select name="order_id" required class="form-control" placeholder="Enter Order Id">
                 @foreach ($Orders as $Order)
 
                 <option value="{{$Order->id}}">{{$Order->id}}</option>
@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="">Delivery Man Name</label>
-            <select name="man_name" class="form-control" placeholder="Enter Man Name">
+            <select name="man_name" required class="form-control" placeholder="Enter Man Name">
                 @foreach ($deliverymans as $deliveryman)
 
                 <option value="{{$deliveryman->id}}">{{$deliveryman->man_name}}</option>
@@ -29,7 +29,7 @@
 
         <div class="from-group" style="padding: 10px;">
             <label for="">Tracking Status</label>
-            <select name="status" class="from-control" id="">
+            <select name="status" required class="from-control" id="">
                 <option selected>Choose...</option>
                 <option value="Order_Process">Order Process</option>
                 <option value="Order_Shipped">Order Shipped</option>

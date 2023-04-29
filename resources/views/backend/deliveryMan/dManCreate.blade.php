@@ -8,27 +8,27 @@
         @csrf
         <div class="form-group">
             <label for="">Delivery Man Name</label>
-            <input type="text" name="man_name" class="form-control" placeholder="Enter Name">
+            <input type="text" name="man_name" required class="form-control" placeholder="Enter Name">
         </div>
 
         <div class="form-group">
             <label for="">Image</label>
-            <input type="file" name="man_image" class="form-control" placeholder="Enter Image">
+            <input type="file" name="man_image" required class="form-control" placeholder="Enter Image">
         </div>
 
         <div class="form-group">
             <label for="">Email</label>
-            <input type="text" name="man_email" class="form-control" placeholder="Enter Email">
+            <input type="text" name="man_email" required class="form-control" placeholder="Enter Email">
         </div>
 
         <div class="form-group">
             <label for="">Number</label>
-            <input type="text" name="man_number" class="form-control" placeholder="Enter Number">
+            <input type="text" name="man_number" required class="form-control" placeholder="Enter Number">
         </div>
 
         <div class="from-group" style="padding: 10px;">
             <label for="">Service Status</label>
-            <select name="man_status" class="from-control" id="">
+            <select name="man_status" required class="from-control" id="">
                 <option selected>Choose...</option>
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>

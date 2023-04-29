@@ -6,17 +6,17 @@
         @csrf
         <div class="form-group">
             <label for="">Category Name</label>
-            <input type="text" name="category_name" class="form-control" placeholder="Enter Category Name">
+            <input type="text" name="category_name" required class="form-control" placeholder="Enter Category Name">
         </div>
 
         <div class="form-group">
             <label for="">Category Details</label>
-            <input type="text" name="category_details" class="form-control" placeholder="Enter Category Details">
+            <input type="text" name="category_details" required class="form-control" placeholder="Enter Category Details">
         </div>
 
         <div class="from-group" style="padding: 10px;">
             <label for="">Category Status</label>
-            <select name="category_status" class="from-control" id="">
+            <select name="category_status" required class="from-control" id="">
                 <option selected>Choose...</option>
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>

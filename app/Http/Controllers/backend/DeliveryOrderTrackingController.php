@@ -50,6 +50,6 @@ class DeliveryOrderTrackingController extends Controller
             'status' => $request->status
         ]);
 
-        return redirect()->back()->with('message', 'Order Updated Successfully.');
+        return redirect()->route('order.list')->with('message', 'Order Updated Successfully.');
     }
 }

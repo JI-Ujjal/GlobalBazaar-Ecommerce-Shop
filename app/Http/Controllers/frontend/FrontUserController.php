@@ -18,7 +18,7 @@ class FrontUserController extends Controller
     {
         
         $Categories = Category::all();
-        $Orders = Order::where("customer_id", auth('customer')->user()->id)->where('status', 'pending')->orWhere('status', 'processing')->get();
+        $Orders = Order::where("customer_id", auth('customer')->user()->id)->get();
         return view('frontend.frontUser.frontUser', compact('Orders', 'Categories'));
     }
 
@@ -56,7 +56,12 @@ class FrontUserController extends Controller
 
     public function cancelOrder($id)
     {
-        $order = Order::find($id)->update([
+        $order = Order::find($id);
+        if($order->status == "processing"){
+            toastr()->error('error', 'Order Is processing. Cant cancel');
+            return back();
+        }
+        $order->update([
             'status' => 'cancel',
         ]);
         toastr()->success('success', 'Order has been canceled!');

@@ -2,7 +2,7 @@
 @section('contents')
 <div>
     <h3 style="font-size: 30px;">Customer List</h3>
-    <a class="btn btn-success" href="{{route('customer.create.form')}}"> Create </a>
+    <!-- <a class="btn btn-success" href="{{route('customer.create.form')}}"> Create </a> -->
 
     @if(session()->has('message'))
     <p class="alert alert-success">{{session()->get('message')}}</p>
@@ -29,9 +29,9 @@
                 <td>{{$Customer->email}}</td>
                 <!-- <td>{{$Customer->password}}</td> -->
                 <td>
-                    <a class="btn btn-success" href="{{route('edit.customer',$Customer->id)}}">edit</a>
+                    <!-- <a class="btn btn-success" href="{{route('edit.customer',$Customer->id)}}">edit</a> -->
                     <a class="btn btn-primary" href="{{route('view.customer',$Customer->id)}}">view</a>
-                    <a class="btn btn-danger" href="{{route('delete.customer',$Customer->id)}}">Delete</a>
+                    <!-- <a class="btn btn-danger" href="{{route('delete.customer',$Customer->id)}}">Delete</a> -->
                 <td>
             </tr>
             @endforeach

@@ -292,17 +292,20 @@
                                                 <td>{{$Order->created_at}}</td>
                                                 <td>{{$Order->amount}} BDT</td>
                                                 <td>
-                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                    {{$Order->status}}
                                                 </td>
                                                 <td>
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
 
-                                                @if($Order->status == "Pending")
+
                                                 <td>
-                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                    @if($Order->status != "cancel")
+                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger">Cancel</a>
+
+                                                    @endif
                                                 </td>
-                                                @endif
 
 
                                             </tr>
@@ -344,16 +347,18 @@
                                                 <td>{{$Order->created_at}}</td>
                                                 <td>{{$Order->amount}} BDT</td>
                                                 <td>
-                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                    {{$Order->status}}
                                                 </td>
                                                 <td>
                                                     <a href="{{route('front.order.receipt', $Order->id)}}" class="btn btn-warning">Order Reciept</a>
                                                 </td>
-                                                @if($Order->status == "Pending")
                                                 <td>
-                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                    <a href="{{route('frontuser.order.track',$Order->id)}}" class="btn btn-success">Tracking Status</a>
+                                                    @if($Order->status != "cancel")
+                                                    <a href="{{route('cancel.order', $Order->id)}}" class="btn btn-danger">Cancel</a>
+
+                                                    @endif
                                                 </td>
-                                                @endif
 
                                             </tr>
                                             @endforeach

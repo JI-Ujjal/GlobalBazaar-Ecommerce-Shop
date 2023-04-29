@@ -28,7 +28,7 @@ class HomeController extends Controller
         $request->validate([
 
             'name' => 'required',
-            'email' => 'required|unique:customers',
+            'email' => 'required|unique:customers,email',
             'password' => 'required|digits:5'
 
         ]);

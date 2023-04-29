@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title> Ogani Grocery Shop </title>
+    <title> GlobalBazaar Grocery Shop </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{url('frontend/assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('frontend/assets/css/style.css')}}" type="text/css">
 
-   
+
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
     <section>
 
-        
+
         @include('sweetalert::alert')
         @yield('contents')
 
@@ -56,7 +56,7 @@
     <script src="{{url('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{url('frontend/assets/js/main.js')}}"></script>
 
-   
+
 
     <script>
         var obj = {};
